@@ -1,0 +1,51 @@
+<header>
+  <div class="header-content" style="top:50%;">
+    <div class="header-content-inner" style="max-width: 450px;background-color:white;color:black;">
+
+      <form [formGroup]="_loginForm" (ngSubmit)="onSubmit(_loginForm.value)">
+        <div style="padding:20px;">
+          <h2 id="homeHeading pull-left">
+            <img src="/assets/images/logo1.png" style="height:70px;" />
+          </h2>
+          <div class="input-group" style="margin-top:20px;">
+            <span class="input-group-addon">
+              <i class="glyphicon glyphicon-user"></i>
+            </span>
+            <div class="input-group" style="width:100%" [ngClass]="{'has-danger': !_isValid('_loginForm','username')}">
+              <input class="form-control" type="text" placeholder="Email" [formControl]="_loginForm.controls['username']" [ngClass]="{'form-control-danger': !_isValid('_loginForm','username')}">
+            </div>
+            <span class="help-block help-block-error" *ngIf="!_formErrors.username.valid">{{_formErrors.username.message}}</span>
+          </div>
+          <div class="input-group" style="margin-top:20px;">
+            <span class="input-group-addon">
+              <i class="glyphicon glyphicon-lock"></i>
+            </span>
+            <div class="input-group" style="width:100%" [ngClass]="{'has-danger': !_isValid('_loginForm','password')}">
+              <input class="form-control" type="password" placeholder="Password" [formControl]="_loginForm.controls['password']" [ngClass]="{'form-control-danger': !_isValid('_loginForm','password')}">
+            </div>
+            <span class="help-block help-block-error" style="margin-bottom:0px;" *ngIf="!_formErrors.password.valid">{{_formErrors.password.message}}</span>
+          </div>
+          <div class="input-group" style="margin-top:20px;margin-left:10px;">
+            <input type="checkbox" name="checkbox" />
+            <label style="margin-left: 10px;">Remember Me</label>
+          </div>
+          <div class="input-group" style="margin-top:20px;">
+            <button class="btn btn-primary" [disabled]="!_loginForm.valid || _submitted == true">
+              <i *ngIf="_submitted" class="fa fa-circle-o-notch fa-spin fa-fw">
+              </i>Login </button>
+          </div>
+          <div *ngIf="_errorMessage" class="col-xs-12 error-block mt-h">
+            <div class="alert alert-danger">{{_errorMessage}}</div>
+        </div>
+          <div class="input-group" style="margin-top:20px;">
+            <label>Forgot Password?</label>
+            <a class="cursorpointer" id="btnforgotpsd">
+              Click here
+            </a>
+
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</header>
