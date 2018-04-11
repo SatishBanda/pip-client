@@ -129,19 +129,19 @@
           </div>
         </div>
       </div>
-     <!-- <div class="col-sm-12 nopadding margin-top-25">
-        <chart [options]="options" style="min-width: 310px;"></chart>
-      </div> -->
+      <div class="col-sm-12 nopadding margin-top-25">
+        <highcharts-chart [Highcharts]="Highcharts" [options]="columnChartOptions" style="width: 100%; height: 400px; display: block;"></highcharts-chart>
+      </div>
 
       <div class="col-sm-12 nopadding margin-top-25">
         <div class="col-sm-6" style="border:1px solid #e8e7e7;">
           <div class="form-group">
-            <div id="container" style="min-width: 310px;"></div>
+            <highcharts-chart [Highcharts]="Highcharts" [options]="locationChartOptions" style="width: 100%; height: 400px; display: block;"></highcharts-chart>
           </div>
         </div>
         <div class="col-sm-6" style="border:1px solid #e8e7e7;">
           <div class="form-group">
-            <div id="container1" style="min-width: 310px;"></div>
+            <highcharts-chart [Highcharts]="Highcharts" [options]="evaluationChartOptions" style="width: 100%; height: 400px; display: block;"></highcharts-chart>
           </div>
         </div>
       </div>
@@ -152,58 +152,59 @@
           Recent Candidate Evaluations
         </h3>
         <div class="col-sm-12 nopadding">
-          <table class="table table-bordered table-responsive" id="table1">
+          <div class="form-inline">
+            <div class="form-group pull-right padding-10">
+              <label for="email">
+                <b>Search:</b>
+              </label>
+              <input class="form-control mr-left-5" [(ngModel)]="filterQuery" />
+            </div>
+          </div>
+          <table class="table table-hover table-bordered table-striped" [mfData]="evaluationsTableData" #evaluationsTblData="mfDataTable"
+            [mfRowsOnPage]="rowsOnPage">
             <thead>
-              <tr>
-                <th>Candidate ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th class="text-center">Evaluation History</th>
-                <th class="text-center">Status</th>
+              <tr class="tr-blue-grid-head">
+                <th style="width: 10%">
+                  <mfDefaultSorter by="candidate_id">Candidate ID</mfDefaultSorter>
+                </th>
+                <th style="width: 15%">
+                  <mfDefaultSorter by="name">Name</mfDefaultSorter>
+                </th>
+                <th style="width: 20%">
+                  <mfDefaultSorter by="email">Email</mfDefaultSorter>
+                </th>
+                <th style="width: 20%">
+                  <mfDefaultSorter by="phone">Phone</mfDefaultSorter>
+                </th>
+                <th style="width: 20%" class="text-center">
+                  <mfDefaultSorter by="">Evaluation History</mfDefaultSorter>
+                </th>
+                <th style="width: 15%" class="text-center">
+                  <mfDefaultSorter by="">Status</mfDefaultSorter>
+                </th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>CID0001</td>
-                <td>David M</td>
-                <td>david@outlook.com</td>
-                <td>999-999-9999</td>
+              <tr *ngFor="let item of evaluationsTblData.data">
+                <td>{{item.candidate_id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.phone}}</td>
                 <td class="text-center">
-                  <a title="Click to view" data-toggle="modal" data-target="#modalevaluation">View</a>
+                  <a title="Click to view" style="cursor:pointer">View</a>
                 </td>
                 <td class="text-center">
-                  <a>Active</a>
+                  <a style="cursor:pointer">Active</a>
                 </td>
-
-              </tr>
-              <tr>
-                <td>CID0002</td>
-                <td>Roney L</td>
-                <td>roney@pip.com</td>
-                <td>999-777-9999</td>
-                <td class="text-center">
-                  <a title="Click to view" data-toggle="modal" data-target="#modalevaluation">View</a>
-                </td>
-                <td class="text-center">
-                  <a>Active</a>
-                </td>
-
-              </tr>
-              <tr>
-                <td>CID0003</td>
-                <td>Steve R</td>
-                <td>steve@outlook.com</td>
-                <td>999-222-1111</td>
-                <td class="text-center">
-                  <a title="Click to view" data-toggle="modal" data-target="#modalevaluation">View</a>
-                </td>
-                <td class="text-center">
-                  <a>Active</a>
-                </td>
-
               </tr>
             </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="6">
+                  <mfBootstrapPaginator></mfBootstrapPaginator>
+                </td>
+              </tr>
+            </tfoot>
           </table>
         </div>
       </div>
@@ -213,58 +214,59 @@
           Recent Candidate Enquiries
         </h3>
         <div class="col-sm-12 nopadding">
-          <table class="table table-bordered table-responsive" id="table2">
+          <div class="form-inline">
+            <div class="form-group pull-right padding-10">
+              <label for="email">
+                <b>Search:</b>
+              </label>
+              <input class="form-control mr-left-5" [(ngModel)]="filterQuery" />
+            </div>
+          </div>
+          <table class="table table-hover table-bordered table-striped" [mfData]="enquiriesTableData" #enquiriesTblData="mfDataTable"
+            [mfRowsOnPage]="rowsOnPage">
             <thead>
-              <tr>
-                <th>Candidate Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Subject</th>
-                <th class="text-center">Conversation History</th>
-                <th class="text-center">Last Updated</th>
+              <tr class="tr-blue-grid-head">
+                <th style="width: 10%">
+                  <mfDefaultSorter by="candidate_name">Candidate Name</mfDefaultSorter>
+                </th>
+                <th style="width: 20%">
+                  <mfDefaultSorter by="email">Email</mfDefaultSorter>
+                </th>
+                <th style="width: 20%">
+                  <mfDefaultSorter by="phone">Phone</mfDefaultSorter>
+                </th>
+                <th style="width: 20%">
+                  <mfDefaultSorter by="subject">Subject</mfDefaultSorter>
+                </th>
+                <th style="width: 20%" class="text-center">
+                  <mfDefaultSorter by="">Conversation History</mfDefaultSorter>
+                </th>
+                <th style="width: 15%" class="text-center">
+                  <mfDefaultSorter>Last Updated</mfDefaultSorter>
+                </th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Ganesh</td>
-                <td>satya@gmail.com</td>
-                <td>999-393-9999</td>
-                <td>Regarding Authentication</td>
+              <tr *ngFor="let item of enquiriesTblData.data">
+                <td>{{item.candidate_name}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.phone}}</td>
+                <td>{{item.subject}}</td>
                 <td class="text-center">
-                  <a title="Click to view" data-toggle="modal" data-target="#ModalPaymentView">View</a>
+                  <a title="Click to view" style="cursor:pointer">View</a>
                 </td>
-                <td class="text-center">
-                  29/12/17
-                </td>
-
-              </tr>
-              <tr>
-                <td>Roney L</td>
-                <td>roney@pip.com</td>
-                <td>999-234-9999</td>
-                <td>Regarding Payments </td>
-                <td class="text-center">
-                  <a title="Click to view" data-toggle="modal" data-target="#ModalPaymentView">View</a>
-                </td>
-                <td class="text-center">
-                  27/12/17
-                </td>
-
-              </tr>
-              <tr>
-                <td>Steve R</td>
-                <td>Pavan@outlook.com</td>
-                <td>999-222-2345</td>
-                <td>Regarding Venues </td>
-                <td class="text-center">
-                  <a title="Click to view" data-toggle="modal" data-target="#ModalPaymentView">View</a>
-                </td>
-                <td class="text-center">
-                  25/12/17
-                </td>
+                <td>{{item.last_updated}}</td>
               </tr>
             </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="6">
+                  <mfBootstrapPaginator></mfBootstrapPaginator>
+                </td>
+              </tr>
+            </tfoot>
           </table>
+
         </div>
       </div>
     </div>

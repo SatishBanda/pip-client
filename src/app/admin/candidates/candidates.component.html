@@ -17,133 +17,79 @@
 
       <div class="col-sm-12 nopadding  margin-top-10">
         <div class="col-sm-12 nopadding margin-top-5">
-          <a class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal" title="Click to add new Questionnaire">
+          <a class="btn btn-success pull-right" (click)="candidatesModal.show()" title="Click to add new Questionnaire">
             <i class="fa fa-plus"></i>&nbsp;Add Candidate
           </a>
         </div>
         <div class="col-sm-12 nopadding margin-top-5">
           <div class="col-sm-12 nopadding">
-            <table class="table table-bordered table-responsive" id="table1">
+            <div class="form-inline">
+              <div class="form-group pull-right padding-10">
+                <label for="email">
+                  <b>Search:</b>
+                </label>
+                <input class="form-control mr-left-5" [(ngModel)]="filterQuery" />
+              </div>
+            </div>
+            <table class="table table-hover table-bordered table-striped" [mfData]="candidatesTableData" #candidatesTblData="mfDataTable"
+              [mfRowsOnPage]="rowsOnPage">
               <thead>
-                <tr>
-                  <th>Candidate ID</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Phone</th>
-                  <th class="text-center">Current</th>
-                  <th class="text-center">History</th>
-                  <th class="text-center">Conversation</th>
-                  <th class="text-center">Status</th>
-                  <th class="text-center">Actions</th>
+                <tr class="tr-blue-grid-head">
+                  <th style="width: 10%">
+                    <mfDefaultSorter by="candidate_id">Candidate ID</mfDefaultSorter>
+                  </th>
+                  <th style="width: 15%">
+                    <mfDefaultSorter by="name">Name</mfDefaultSorter>
+                  </th>
+                  <th style="width: 15%">
+                    <mfDefaultSorter by="email">Email</mfDefaultSorter>
+                  </th>
+                  <th style="width: 10%">
+                    <mfDefaultSorter by="phone">Phone</mfDefaultSorter>
+                  </th>
+                  <th style="width: 10%" class="text-center">
+                    <mfDefaultSorter by="">Current</mfDefaultSorter>
+                  </th>
+                  <th style="width: 10%" class="text-center">
+                    <mfDefaultSorter by="">History</mfDefaultSorter>
+                  </th>
+                  <th style="width: 10%" class="text-center">
+                    <mfDefaultSorter by="">Conversation</mfDefaultSorter>
+                  </th>
+                  <th style="width: 15%" class="text-center">
+                    <mfDefaultSorter by="">Status</mfDefaultSorter>
+                  </th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>CID0001</td>
-                  <td>Chris </td>
-                  <td>chris@outlook.com</td>
-                  <td>999-999-9999</td>
+                <tr *ngFor="let item of candidatesTblData.data; let rowIndex=index">
+                  <td>{{item.candidate_id}}</td>
+                  <td>{{item.name}}</td>
+                  <td>{{item.email}}</td>
+                  <td>{{item.phone}}</td>
                   <td class="text-center">
-                    <a target="_blank" title="Click to start" href="/admin/evaluation">Start</a>
+                    <a title="Click to view" style="cursor:pointer" [routerLink]="['/admin/evaluation']" target="_blank">{{(rowIndex % 2 == 0)? "Start" : "Resume"}}</a>
                   </td>
                   <td class="text-center">
-                    <a title="Click to view" data-toggle="modal" data-target="#evaluationmodal">2</a>
+                    <a title="Click to view" style="cursor:pointer">{{rowIndex+2}}</a>
                   </td>
                   <td class="text-center">
-                    <a onclick="return viewConversations()">View</a>
+                    <a title="Click to view" style="cursor:pointer">View</a>
                   </td>
                   <td class="text-center">
-                    <a>Active</a>
-                  </td>
-                  <td class="text-center">
-                    <a title="Click to edit details">
-                      <i class="fa fa-pencil-square-o"></i>
-                    </a>
-                    <a title="Click to delete details">
-                      <i class="fa fa-trash red"></i>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>CID0002</td>
-                  <td>Roney L</td>
-                  <td>roney@pip.com</td>
-                  <td>999-777-9999</td>
-                  <td class="text-center">
-                    <a target="_blank" title="Click to Resume" href="/admin/evaluation">Resume</a>
-                  </td>
-                  <td class="text-center">
-                    <a title="Click to view" data-toggle="modal" data-target="#evaluationmodal">4</a>
-                  </td>
-                  <td class="text-center">
-                    <a onclick="return viewConversations()">View</a>
-                  </td>
-                  <td class="text-center">
-                    <a>Active</a>
-                  </td>
-                  <td class="text-center">
-                    <a title="Click to edit details">
-                      <i class="fa fa-pencil-square-o"></i>
-                    </a>
-                    <a title="Click to delete details">
-                      <i class="fa fa-trash red"></i>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>CID0003</td>
-                  <td>Steve R</td>
-                  <td>steve@outlook.com</td>
-                  <td>999-222-1111</td>
-                  <td class="text-center">
-                    <a target="_blank" title="Click to start" href="/admin/evaluation">Start</a>
-                  </td>
-                  <td class="text-center">
-                    <a title="Click to view" data-toggle="modal" data-target="#evaluationmodal">1</a>
-                  </td>
-                  <td class="text-center">
-                    <a onclick="return viewConversations()">View</a>
-                  </td>
-                  <td class="text-center">
-                    <a>Active</a>
-                  </td>
-                  <td class="text-center">
-                    <a title="Click to edit details">
-                      <i class="fa fa-pencil-square-o"></i>
-                    </a>
-                    <a title="Click to delete details">
-                      <i class="fa fa-trash red"></i>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>CID0004</td>
-                  <td>Ram</td>
-                  <td>steve@outlook.com</td>
-                  <td>999-222-1111</td>
-                  <td class="text-center">
-                    <a target="_blank" title="Click to Resume" href="/admin/evaluation">Resume</a>
-                  </td>
-                  <td class="text-center">
-                    <a title="Click to view" data-toggle="modal" data-target="#evaluationmodal">3</a>
-                  </td>
-                  <td class="text-center">
-                    <a onclick="return viewConversations()">View</a>
-                  </td>
-                  <td class="text-center">
-                    <a>Active</a>
-                  </td>
-                  <td class="text-center">
-                    <a title="Click to edit details">
-                      <i class="fa fa-pencil-square-o"></i>
-                    </a>
-                    <a title="Click to delete details">
-                      <i class="fa fa-trash red"></i>
-                    </a>
+                    <a style="cursor:pointer">Active</a>
                   </td>
                 </tr>
               </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="8">
+                    <mfBootstrapPaginator></mfBootstrapPaginator>
+                  </td>
+                </tr>
+              </tfoot>
             </table>
+
           </div>
         </div>
       </div>
@@ -151,7 +97,8 @@
   </div>
 </div>
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
+<div id="myModal" class="modal fade" bsModal #candidatesModal="bs-modal" [config]="{backdrop: 'static'}" role="dialog" aria-labelledby="mySmallModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content">
@@ -198,11 +145,11 @@
         </div>
       </div>
       <div class="modal-footer">
-        <a class="btn btn-default pull-right" data-dismiss="modal">
+        <a class="btn btn-default pull-right" (click)="candidatesModal.hide()">
           <span style="color:#000;">Close</span>
         </a>
-        <a class="btn btn-success pull-right" data-dismiss="modal" style="margin-right:5px;">Add & Start Evaluation</a>
-        <a class="btn btn-success pull-right" data-dismiss="modal" style="margin-right:5px;">Add & Evaluate Later</a>
+        <a class="btn btn-success pull-right"  (click)="candidatesModal.hide()" style="margin-right:5px;">Add & Start Evaluation</a>
+        <a class="btn btn-success pull-right" (click)="candidatesModal.hide()" style="margin-right:5px;">Add & Evaluate Later</a>
       </div>
     </div>
   </div>

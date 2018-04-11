@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ModalDirective } from "ngx-bootstrap";
 
 @Component({
   selector: 'app-candidates',
@@ -7,9 +8,53 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CandidatesComponent implements OnInit {
 
+  @ViewChild('candidatesModal') public candidatesModal: ModalDirective;
+
+  public rowsOnPage = 5;
+  public filterQuery = "";
+  public candidatesTableData = [
+    {
+      "candidate_id": "CID0001",
+      "name": "John",
+      "email": "david@outlook.com",
+      "phone": "999-999-9999"
+    },
+    {
+      "candidate_id": "CID0002",
+      "name": "David M",
+      "email": "	roney@pip.com",
+      "phone": "999-777-9999"
+    },
+    {
+      "candidate_id": "CID0003",
+      "name": "Roney L",
+      "email": "steve@outlook.com",
+      "phone": "999-222-1111"
+    },
+    {
+      "candidate_id": "CID0004",
+      "name": "Roney L",
+      "email": "steve@outlook.com",
+      "phone": "999-999-9999"
+    },
+    {
+      "candidate_id": "CID0005",
+      "name": "David L",
+      "email": "steve@outlook.com",
+      "phone": "999-999-9999"
+    },
+    {
+      "candidate_id": "CID0006",
+      "name": "John L",
+      "email": "steve@outlook.com",
+      "phone": "999-999-9999"
+    }
+  ];
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  
 }

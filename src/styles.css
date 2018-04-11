@@ -15,3 +15,30 @@
 .header-nav .navbar-brand{
     padding: 1px !important;
 }
+
+tr.tr-blue-grid-head {
+    background-color: #116a9e;
+}
+
+tr.tr-blue-grid-head a{
+    color: #fff !important;
+}
+
+.pagination .page-item.active .page-link{
+    background: #116a9e;
+    border-color: #116a9e;
+    color:#fff;
+}
+
+.pagination{
+    float: right;
+}
+
+.settings-tabs .nav-tabs>li.active>a, 
+.settings-tabs .nav-tabs>li.active>a:focus,
+.settings-tabs .nav-tabs>li.active>a:hover {
+    color: #f5f5f5;
+    cursor: default;
+    background-color: #116a9e;
+    border: 1px solid #116a9e;
+}
