@@ -9,7 +9,6 @@ import { GlobalService } from '../services/global.service';
 import { AuthenticationService } from '../services/authentication.service';
 import { ValidationService } from '../services/validation.service';
 
-
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -197,20 +196,21 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(elementValues.username, elementValues.password, elementValues.rememberMe).subscribe(
             result => {
                 if (result.success) {
-                    if (this.redirect_uri) {
+                    this.router.navigate(['/admin/dashboard']);
+                   /* if (this.redirect_uri) {
                         this.router.navigate([this.redirect_uri]);
                     } else {
                         if (result.data.user_type == 1 || result.data.user_type == 2) {
                             this.globalService.getPermissions();
                             if (this.globalService.financial_permission) {
-                                this.router.navigate(['/admin/summary']);
+                                this.router.navigate(['/admin/dashboard']);
                             } else {
                                 this.router.navigate(['/admin/dashboard']);
                             }
                         } else if (result.data.user_type == 3 || result.data.user_type == 4) {
                             this.navigateUser(result.data.user_type);
                         }
-                    }
+                    }*/
                 } else {
                     this._errorMessage = 'Incorrect Username Or Password.';
                     this._submitted = false;

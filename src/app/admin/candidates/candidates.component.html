@@ -1,0 +1,469 @@
+<div class="col-sm-12 nopadding">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-8 nopadding">
+    <h3 class="page-title">
+      Candidates
+      <small>
+        Candidates can be added and their accounts can be managed here.
+      </small>
+    </h3>
+  </div>
+</div>
+
+<div class="col-sm-12 nopadding">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10 nopadding">
+    <div class="col-sm-12 nopadding">
+
+      <div class="col-sm-12 nopadding  margin-top-10">
+        <div class="col-sm-12 nopadding margin-top-5">
+          <a class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal" title="Click to add new Questionnaire">
+            <i class="fa fa-plus"></i>&nbsp;Add Candidate
+          </a>
+        </div>
+        <div class="col-sm-12 nopadding margin-top-5">
+          <div class="col-sm-12 nopadding">
+            <table class="table table-bordered table-responsive" id="table1">
+              <thead>
+                <tr>
+                  <th>Candidate ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th class="text-center">Current</th>
+                  <th class="text-center">History</th>
+                  <th class="text-center">Conversation</th>
+                  <th class="text-center">Status</th>
+                  <th class="text-center">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>CID0001</td>
+                  <td>Chris </td>
+                  <td>chris@outlook.com</td>
+                  <td>999-999-9999</td>
+                  <td class="text-center">
+                    <a target="_blank" title="Click to start" href="/admin/evaluation">Start</a>
+                  </td>
+                  <td class="text-center">
+                    <a title="Click to view" data-toggle="modal" data-target="#evaluationmodal">2</a>
+                  </td>
+                  <td class="text-center">
+                    <a onclick="return viewConversations()">View</a>
+                  </td>
+                  <td class="text-center">
+                    <a>Active</a>
+                  </td>
+                  <td class="text-center">
+                    <a title="Click to edit details">
+                      <i class="fa fa-pencil-square-o"></i>
+                    </a>
+                    <a title="Click to delete details">
+                      <i class="fa fa-trash red"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CID0002</td>
+                  <td>Roney L</td>
+                  <td>roney@pip.com</td>
+                  <td>999-777-9999</td>
+                  <td class="text-center">
+                    <a target="_blank" title="Click to Resume" href="/admin/evaluation">Resume</a>
+                  </td>
+                  <td class="text-center">
+                    <a title="Click to view" data-toggle="modal" data-target="#evaluationmodal">4</a>
+                  </td>
+                  <td class="text-center">
+                    <a onclick="return viewConversations()">View</a>
+                  </td>
+                  <td class="text-center">
+                    <a>Active</a>
+                  </td>
+                  <td class="text-center">
+                    <a title="Click to edit details">
+                      <i class="fa fa-pencil-square-o"></i>
+                    </a>
+                    <a title="Click to delete details">
+                      <i class="fa fa-trash red"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CID0003</td>
+                  <td>Steve R</td>
+                  <td>steve@outlook.com</td>
+                  <td>999-222-1111</td>
+                  <td class="text-center">
+                    <a target="_blank" title="Click to start" href="/admin/evaluation">Start</a>
+                  </td>
+                  <td class="text-center">
+                    <a title="Click to view" data-toggle="modal" data-target="#evaluationmodal">1</a>
+                  </td>
+                  <td class="text-center">
+                    <a onclick="return viewConversations()">View</a>
+                  </td>
+                  <td class="text-center">
+                    <a>Active</a>
+                  </td>
+                  <td class="text-center">
+                    <a title="Click to edit details">
+                      <i class="fa fa-pencil-square-o"></i>
+                    </a>
+                    <a title="Click to delete details">
+                      <i class="fa fa-trash red"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CID0004</td>
+                  <td>Ram</td>
+                  <td>steve@outlook.com</td>
+                  <td>999-222-1111</td>
+                  <td class="text-center">
+                    <a target="_blank" title="Click to Resume" href="/admin/evaluation">Resume</a>
+                  </td>
+                  <td class="text-center">
+                    <a title="Click to view" data-toggle="modal" data-target="#evaluationmodal">3</a>
+                  </td>
+                  <td class="text-center">
+                    <a onclick="return viewConversations()">View</a>
+                  </td>
+                  <td class="text-center">
+                    <a>Active</a>
+                  </td>
+                  <td class="text-center">
+                    <a title="Click to edit details">
+                      <i class="fa fa-pencil-square-o"></i>
+                    </a>
+                    <a title="Click to delete details">
+                      <i class="fa fa-trash red"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">
+          <b>Add Candidate</b>
+        </h4>
+      </div>
+      <div class="modal-body" style="padding:27px;">
+        <div class="row">
+          <div class="col-sm-12 nopadding">
+            <div class="col-sm-3">
+              <label>First Name&nbsp;:</label>
+            </div>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" placeholder="Enter First Name" />
+            </div>
+          </div>
+          <div class="col-sm-12 nopadding margin-top-10">
+            <div class="col-sm-3">
+              <label>Last Name&nbsp;:</label>
+            </div>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" placeholder="Enter Last Name" />
+            </div>
+          </div>
+          <div class="col-sm-12 nopadding margin-top-10">
+            <div class="col-sm-3">
+              <label>Email&nbsp;:</label>
+            </div>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" placeholder="Enter Email ID" />
+            </div>
+          </div>
+          <div class="col-sm-12 nopadding margin-top-10">
+            <div class="col-sm-3">
+              <label>Phone&nbsp;:</label>
+            </div>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" placeholder="Enter Phone Number" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-default pull-right" data-dismiss="modal">
+          <span style="color:#000;">Close</span>
+        </a>
+        <a class="btn btn-success pull-right" data-dismiss="modal" style="margin-right:5px;">Add & Start Evaluation</a>
+        <a class="btn btn-success pull-right" data-dismiss="modal" style="margin-right:5px;">Add & Evaluate Later</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="evaluationmodal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">
+          <b>Evaluation History</b>
+        </h4>
+      </div>
+      <div class="modal-body" style="padding:27px;">
+        <div class="row">
+          <div class="col-sm-12 nopadding">
+            <table class="table table-responsive table-bordered">
+              <thead>
+                <tr>
+                  <th>Evaluation Date & Time</th>
+                  <th>Evaluated By</th>
+                  <th class="text-center">Details</th>
+                  <th class="text-center">Report</th>
+                  <th class="text-center">Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>30-Mar-18 10.00AM</td>
+                  <td>Sampath</td>
+                  <td class="text-center">
+                    <a title="Click to view details" href="/admin/evaluation" target="_blank">View</a>
+                  </td>
+                  <td class="text-center">
+                    <a class="" title="Click to download" href="/assets/theme/PhoneFile/Phone Interview Pro.pdf" download>
+                      <i class="fa fa-download"></i>
+                    </a>
+                  </td>
+                  <td class="text-center">
+                    <a class="" title="Click to send email" href="/admin/emails" target="_blank">
+                      <i class="fa fa-envelope"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>29-Jan-18 10.00AM</td>
+                  <td>Ankith</td>
+                  <td class="text-center">
+                    <a title="Click to view details" href="/admin/evaluation" target="_blank">View</a>
+                  </td>
+                  <td class="text-center">
+                    <a class="" title="Click to download" href="/assets/theme/PhoneFile/Phone Interview Pro.pdf" download>
+                      <i class="fa fa-download"></i>
+                    </a>
+                  </td>
+                  <td class="text-center">
+                    <a class="" title="Click to send email" href="/admin/emails" target="_blank">
+                      <i class="fa fa-envelope"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-default pull-right" data-dismiss="modal">
+          <span style="color:#000;">Close</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="ModalPaymentView" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">
+          <b>Chat Conversation</b>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <div class="portlet light ">
+          <div class="portlet-title">
+            <div class="col-sm-12 nopadding">
+              <div class="col-sm-10">
+              </div>
+              <div class="col-sm-2">
+                <div class="inputs">
+                  <div class="portlet-input input-inline input-small">
+                    <div class="input-icon right">
+                      <i class="icon-magnifier"></i>
+                      <input type="text" class="form-control input-circle pull-right" placeholder="search...">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="portlet-body" id="chats">
+            <div class="scroller" style="height: 353px;" data-always-visible="1" data-rail-visible1="1">
+              <ul class="chats">
+                <li class="in">
+
+                  <img class="avatar" alt="" src="/assets/theme/images/1.jpg" />
+                  <div class="message">
+                    <span class="arrow">
+                    </span>
+                    <a href="#" class="name">
+                      Bob Nilson
+                    </a>
+                    <span class="datetime">
+                      at 20:09
+                    </span>
+                    <span class="body">
+                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                      aliquam erat volutpat.
+                    </span>
+                  </div>
+                </li>
+                <li class="out">
+                  <img class="avatar" alt="" src="/assets/theme/images/2.jpg" />
+                  <div class="message">
+                    <span class="arrow">
+                    </span>
+                    <a href="#" class="name">
+                      Lisa Wong
+                    </a>
+                    <span class="datetime">
+                      at 20:11
+                    </span>
+                    <span class="body">
+                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                      aliquam erat volutpat.
+                    </span>
+                  </div>
+                </li>
+                <li class="in">
+                  <img class="avatar" alt="" src="/assets/theme/images/1.jpg" />
+                  <div class="message">
+                    <span class="arrow">
+                    </span>
+                    <a href="#" class="name">
+                      Bob Nilson
+                    </a>
+                    <span class="datetime">
+                      at 20:30
+                    </span>
+                    <span class="body">
+                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                      aliquam erat volutpat.
+                    </span>
+                  </div>
+                </li>
+                <li class="out">
+                  <img class="avatar" alt="" src="/assets/theme/images/2.jpg" />
+                  <div class="message">
+                    <span class="arrow">
+                    </span>
+                    <a href="#" class="name">
+                      Richard Doe
+                    </a>
+                    <span class="datetime">
+                      at 20:33
+                    </span>
+                    <span class="body">
+                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                      aliquam erat volutpat.
+                    </span>
+                  </div>
+                </li>
+                <li class="in">
+                  <img class="avatar" alt="" src="/assets/theme/images/1.jpg" />
+                  <div class="message">
+                    <span class="arrow">
+                    </span>
+                    <a href="#" class="name">
+                      Richard Doe
+                    </a>
+                    <span class="datetime">
+                      at 20:35
+                    </span>
+                    <span class="body">
+                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                      aliquam erat volutpat.
+                    </span>
+                  </div>
+                </li>
+                <li class="out">
+                  <img class="avatar" alt="" src="/assets/theme/images/2.jpg" />
+                  <div class="message">
+                    <span class="arrow">
+                    </span>
+                    <a href="#" class="name">
+                      Bob Nilson
+                    </a>
+                    <span class="datetime">
+                      at 20:40
+                    </span>
+                    <span class="body">
+                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                      aliquam erat volutpat.
+                    </span>
+                  </div>
+                </li>
+                <li class="in">
+                  <img class="avatar" alt="" src="/assets/theme/images/1.jpg" />
+                  <div class="message">
+                    <span class="arrow">
+                    </span>
+                    <a href="#" class="name">
+                      Richard Doe
+                    </a>
+                    <span class="datetime">
+                      at 20:40
+                    </span>
+                    <span class="body">
+                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                      aliquam erat volutpat.
+                    </span>
+                  </div>
+                </li>
+                <li class="out">
+                  <img class="avatar" alt="" src="/assets/theme/images/2.jpg" />
+                  <div class="message">
+                    <span class="arrow">
+                    </span>
+                    <a href="#" class="name">
+                      Bob Nilson
+                    </a>
+                    <span class="datetime">
+                      at 20:54
+                    </span>
+                    <span class="body">
+                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                      aliquam erat volutpat. sed diam nonummy nibh euismod tincidunt ut laoreet.
+                    </span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="chat-form">
+              <div class="input-cont">
+                <input class="form-control" type="text" placeholder="Type a message here..." />
+              </div>
+              <div class="btn-cont">
+                <span class="arrow">
+                </span>
+                <a href="" class="btn blue icn-only">
+                  <i class="fa fa-check icon-white"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -24,10 +24,10 @@ export class GlobalService {
     ];
 
     constructor() {
-         this.apiHost = 'http://18.236.68.236/v1';
-        this.apiRoot = 'http://18.236.68.236/';
-        //this.apiHost = 'http://pip.localhost/v1';
-        //this.apiRoot = 'http://pip.localhost/';
+        // this.apiHost = 'http://198.90.22.116/v1';
+        //this.apiRoot = 'http://198.90.22.116/';
+        this.apiHost = 'http://pip.localhost/v1';
+        this.apiRoot = 'http://pip.localhost/';
     }
 
     public getHeaders(): any {

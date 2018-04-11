@@ -1,0 +1,189 @@
+<style>
+    @media (min-width: 768px) {
+        .navbar-nav.navbar-center {
+            position: absolute;
+            left: 50%;
+            transform: translatex(-50%);
+        }
+    }
+
+    @media (min-width: 768px) {
+        .navbar-nav {
+            float: left;
+            margin: 0;
+            display: table;
+        }
+    }
+
+    .form-control:focus {
+        border-color: #5cb85c;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+    }
+
+    .has-error .form-control:focus {
+        box-shadow: none;
+        -webkit-box-shadow: none;
+    }
+
+    .modal-title {
+        text-align: left;
+    }
+
+    .img-circle {
+        border-radius: 50% !important;
+        height: 17px;
+    }
+
+
+
+
+    /* stroke */
+
+    nav.stroke ul li a,
+    nav.fill ul li a {
+        position: relative;
+    }
+
+    nav.stroke ul li a:after,
+    nav.fill ul li a:after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 0%;
+        assets: '.';
+        color: transparent;
+        background: #fff;
+        height: 1px;
+    }
+
+    nav.stroke ul li a:hover:after {
+        width: 100%;
+    }
+
+    nav.fill ul li a {
+        transition: all 2s;
+    }
+
+    nav.fill ul li a:after {
+        text-align: left;
+        assets: '.';
+        margin: 0;
+        opacity: 0;
+    }
+
+    nav.fill ul li a:hover {
+        color: #fff;
+        z-index: 1;
+    }
+
+    nav.fill ul li a:hover:after {
+        z-index: -10;
+        animation: fill 1s forwards;
+        -webkit-animation: fill 1s forwards;
+        -moz-animation: fill 1s forwards;
+        opacity: 1;
+    }
+
+    .navbar-inverse .navbar-nav>.active>a,
+    .navbar-inverse .navbar-nav>.active>a:focus,
+    .navbar-inverse .navbar-nav>.active>a:hover {
+        background-color: #f5f5f5;
+        color: #000;
+        font-size: 14px;
+    }
+
+    .dropdown>.dropdown-menu:after,
+    .dropdown-toggle>.dropdown-menu:after,
+    .btn-group>.dropdown-menu:after {
+        position: absolute;
+        top: -7px;
+        left: 10px;
+        right: auto;
+        display: inline-block !important;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid #fff;
+        border-left: 7px solid transparent;
+        assets: '';
+    }
+
+    nav ul li a,
+    nav ul li a:after,
+    nav ul li a:before {
+        transition: all .5s;
+    }
+
+    nav ul li a:hover {
+        color: #555;
+    }
+    
+</style>
+<div class="top-menu">
+    <nav class="navbar navbar-inverse header-nav stroke" role="navigation" style="padding:4px;font-size:15px;font-weight:500;">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/admin/dashboard">
+                <img src="/assets/images/logo.png" style="height: 53px;padding-top: -15px;padding-left: 12px;">
+            </a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-center">
+                <li id="menu1" [routerLinkActive]="['active']">
+                    <a [routerLink]="['/admin/dashboard']" style="color:red;">Dashboard</a>
+                </li>
+                <li id="menu3" [routerLinkActive]="['active']">
+                    <a [routerLink]="['/admin/candidates']">Candidates</a>
+                </li>
+
+                <li id="menu5" [routerLinkActive]="['active']">
+                    <a [routerLink]="['/admin/staff']" style="color:red;">Staff</a>
+                </li>
+
+                <li id="menu6" [routerLinkActive]="['active']">
+                    <a [routerLink]="['/admin/settings']">Settings</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown dropdown-user">
+                    <a  class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                        <img src="/assets/images/Usr.jpg" class="img-circle">
+                        <span class="username username-hide-on-mobile">Admin account</span>
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-default">
+                        <img src="/assets/images/images.jpg" style="height: 50px;margin-left: 30%;">
+                        <li>
+                            <a>
+                                <i class="icon-user"></i> My Profile
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a data-toggle="modal" data-target="#myModal-change-pswd" style="cursor: pointer;">
+                                <i class="icon-lock"></i> Change Password
+                            </a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['']">
+                                <i class="icon-key"></i> Log Out
+                            </a>
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="page-assets-wrapper">
+    <div class="page-assets clearfix " style="min-height:267px">
+        <router-outlet></router-outlet>
+    </div>
+</div>

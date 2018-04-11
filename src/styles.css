@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+.header-nav{
+    background-color: #116a9e !important;
+    border-color: #116a9e !important;
+}
+
+.header-nav .navbar-nav > li > a{
+    color:#fff !important;
+}
+
+.header-nav .navbar-nav > li.active > a{
+    color:black !important;
+}
+
+.header-nav .navbar-brand{
+    padding: 1px !important;
+}
