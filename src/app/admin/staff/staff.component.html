@@ -1,216 +1,221 @@
-
 <div class="col-sm-12 nopadding">
-  <div class="col-sm-1"></div>
-  <div class="col-sm-8 nopadding">
-      <h3 class="page-title">
-          Staff <small></small>
-      </h3>
-  </div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-8 nopadding">
+        <h3 class="page-title">
+            Staff
+            <small></small>
+        </h3>
+    </div>
 </div>
 
 <div class="row nopadding margin-top-25">
-  <div class="col-sm-1"></div>
-  <div class="col-sm-10">
-      <div class="col-sm-12 nopadding">
-          <a class="btn btn-success pull-right" data-toggle="modal" data-target="#addStaffModal">
-              <i class="fa fa-plus"></i>&nbsp;Add Staff
-          </a>
-      </div>
-      <div class="col-sm-12 nopadding margin-top-10">
-          <table class="table table-bordered table-responsive" id="table1">
-              <thead>
-                  <tr>
-                      <th>Staff Name</th>
-                      <th>Email</th>
-                      <th>Phone</th>
-                      <th class="text-center">Permissions</th>
-                      <th class="text-center">Shadow Login</th>
-                      <th class="text-center">Status</th>
-                      <th class="text-center">Actions</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td>John M</td>
-                      <td>john@pip.com</td>
-                      <td>999-999-9999</td>
-                      <td class="text-center"><a title="Click to update permissions" data-toggle="modal" data-target="#permissionmodal">0/4</a></td>
-                      <td class="text-center">
-                          <a title="Click to shadow login"><i class="fa fa-user-secret"></i></a>
-                      </td>
-                      <td class="text-center">
-                          <a>Active</a>
-                      </td>
-                      <td class="text-center">
-                          <a title="Click to edit details">
-                              <i class="fa fa-pencil-square-o"></i>
-                          </a>
-                          <a title="Click to delete details">
-                              <i class="fa fa-trash red"></i>
-                          </a>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>Steve R</td>
-                      <td>steve@pip.com</td>
-                      <td>999-777-9999</td>
-                      <td class="text-center"><a title="Click to update permissions" data-toggle="modal" data-target="#permissionmodal">0/4</a></td>
-                      <td class="text-center">
-                          <a title="Click to shadow login"><i class="fa fa-user-secret"></i></a>
-                      </td>
-                      <td class="text-center">
-                          <a>Active</a>
-                      </td>
-                      <td class="text-center">
-                          <a title="Click to edit details">
-                              <i class="fa fa-pencil-square-o"></i>
-                          </a>
-                          <a title="Click to delete details">
-                              <i class="fa fa-trash red"></i>
-                          </a>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>Robert K</td>
-                      <td>robert@pip.com</td>
-                      <td>999-222-1111</td>
-                      <td class="text-center"><a title="Click to update permissions" data-toggle="modal" data-target="#permissionmodal">0/4</a></td>
-                      <td class="text-center">
-                          <a title="Click to shadow login"><i class="fa fa-user-secret"></i></a>
-                      </td>
-                      <td class="text-center">
-                          <a>Active</a>
-                      </td>
-                      <td class="text-center">
-                          <a title="Click to edit details">
-                              <i class="fa fa-pencil-square-o"></i>
-                          </a>
-                          <a title="Click to delete details">
-                              <i class="fa fa-trash red"></i>
-                          </a>
-                      </td>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
-  </div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <div class="col-sm-12 nopadding">
+            <a class="btn btn-success pull-right" (click)="staffModal.show()">
+                <i class="fa fa-plus"></i>&nbsp;Add Staff
+            </a>
+        </div>
+        <div class="col-sm-12 nopadding margin-top-10">
+            <div class="form-inline">
+                <div class="form-group pull-right padding-10">
+                    <label for="email">
+                        <b>Search:</b>
+                    </label>
+                    <input class="form-control mr-left-5" [(ngModel)]="filterQuery" />
+                </div>
+            </div>
+            <table class="table table-hover table-bordered table-striped" [mfData]="staffData" #staffTblData="mfDataTable" [mfRowsOnPage]="rowsOnPage">
+                <thead>
+                    <tr class="tr-blue-grid-head">
+                        <th style="width: 20%">
+                            <mfDefaultSorter by="candidate_id">Staff Name</mfDefaultSorter>
+                        </th>
+                        <th style="width: 20%">
+                            <mfDefaultSorter by="email">Email</mfDefaultSorter>
+                        </th>
+                        <th style="width: 10%">
+                            <mfDefaultSorter by="phone">Phone</mfDefaultSorter>
+                        </th>
+                        <th style="width: 10%" class="text-center">
+                            <mfDefaultSorter by="">Permissions</mfDefaultSorter>
+                        </th>
+                        <th style="width: 10%" class="text-center">
+                            <mfDefaultSorter by="">Shadow Login</mfDefaultSorter>
+                        </th>
+                        <th style="width: 15%" class="text-center">
+                            <mfDefaultSorter by="">Status</mfDefaultSorter>
+                        </th>
+                        <th style="width: 15%" class="text-center">
+                            <mfDefaultSorter by="">Actions</mfDefaultSorter>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of staffTblData.data; let rowIndex=index">
+                        <td>{{item.staff_name}}</td>
+                        <td>{{item.email}}</td>
+                        <td>{{item.phone}}</td>
+                        <td class="text-center">
+                            <a title="Click to view" style="cursor:pointer" (click)="perimissionsModal.show()">{{item.permissions}}</a>
+                        </td>
+                        <td class="text-center">
+                            <a title="Click to shadow login">
+                                <i class="fa fa-user-secret"></i>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a style="cursor:pointer">Active</a>
+                        </td>
+                        <td class="text-center">
+                            <a title="Click to edit details">
+                                <i class="fa fa-pencil-square-o"></i>
+                            </a>
+                            <a title="Click to delete details">
+                                <i class="fa fa-trash red"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="8">
+                            <mfBootstrapPaginator></mfBootstrapPaginator>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
 </div>
 
 <!-- Modal -->
-<div id="addStaffModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title"><b>Add Staff User</b> </h4>
-          </div>
-          <div class="modal-body" style="padding:27px;">
-              <div class="row">
-                  <div class="col-sm-12 nopadding">
-                      <div class="col-sm-3">
-                          <label>First Name&nbsp;:</label>
-                      </div>
-                      <div class="col-sm-7">
-                          <input type="text" class="form-control" placeholder="Enter First Name" />
-                      </div>
-                  </div>
-                  <div class="col-sm-12 nopadding margin-top-10">
-                      <div class="col-sm-3">
-                          <label>Last Name&nbsp;:</label>
-                      </div>
-                      <div class="col-sm-7">
-                          <input type="text" class="form-control" placeholder="Enter Last Name" />
-                      </div>
-                  </div>
-                  <div class="col-sm-12 nopadding margin-top-10">
-                      <div class="col-sm-3">
-                          <label>Email&nbsp;:</label>
-                      </div>
-                      <div class="col-sm-7">
-                          <input type="text" class="form-control" placeholder="Enter Email ID" />
-                      </div>
-                  </div>
-                  <div class="col-sm-12 nopadding margin-top-10">
-                      <div class="col-sm-3">
-                          <label>Phone&nbsp;:</label>
-                      </div>
-                      <div class="col-sm-7">
-                          <input type="text" class="form-control" placeholder="Enter Phone Number" />
-                      </div>
-                  </div>
+<div id="addStaffModal" class="modal fade"  bsModal #staffModal="bs-modal" [config]="{backdrop: 'static'}" role="dialog" aria-labelledby="mySmallModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">
+                    <b>Add Staff User</b>
+                </h4>
+            </div>
+            <div class="modal-body" style="padding:27px;">
+                <div class="row">
+                    <div class="col-sm-12 nopadding">
+                        <div class="col-sm-3">
+                            <label>First Name&nbsp;:</label>
+                        </div>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" placeholder="Enter First Name" />
+                        </div>
+                    </div>
+                    <div class="col-sm-12 nopadding margin-top-10">
+                        <div class="col-sm-3">
+                            <label>Last Name&nbsp;:</label>
+                        </div>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" placeholder="Enter Last Name" />
+                        </div>
+                    </div>
+                    <div class="col-sm-12 nopadding margin-top-10">
+                        <div class="col-sm-3">
+                            <label>Email&nbsp;:</label>
+                        </div>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" placeholder="Enter Email ID" />
+                        </div>
+                    </div>
+                    <div class="col-sm-12 nopadding margin-top-10">
+                        <div class="col-sm-3">
+                            <label>Phone&nbsp;:</label>
+                        </div>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" placeholder="Enter Phone Number" />
+                        </div>
+                    </div>
 
-                  <div class="col-sm-12 nopadding margin-top-10">
-                      <div class="col-sm-3">
-                          <label>Address&nbsp;:</label>
-                      </div>
-                      <div class="col-sm-7">
-                          <textarea class="form-control"></textarea>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="modal-footer">
-              <a class="btn btn-default pull-right" data-dismiss="modal"><span style="color:#000;">Close</span></a>
-              <a class="btn btn-success pull-right" data-dismiss="modal" style="margin-right:5px;">Add</a>
-          </div>
-      </div>
+                    <div class="col-sm-12 nopadding margin-top-10">
+                        <div class="col-sm-3">
+                            <label>Address&nbsp;:</label>
+                        </div>
+                        <div class="col-sm-7">
+                            <textarea class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-default pull-right" (click)="staffModal.hide()">
+                    <span style="color:#000;">Close</span>
+                </a>
+                <a class="btn btn-success pull-right" (click)="staffModal.hide()" style="margin-right:5px;">Add</a>
+            </div>
+        </div>
 
-  </div>
+    </div>
 </div>
 <!-- Modal -->
-<div id="permissionmodal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title"><b>User Permissions -&nbsp;<small>John M</small></b> </h4>
-          </div>
-          <div class="modal-body" style="padding:27px;">
-              <div class="row">
-                  <div class="col-sm-6">
-                      <div class="col-sm-12 nopadding">
-                          <div class="col-sm-5">
-                              <label>Dashboard&nbsp;:</label>
-                          </div>
-                          <div class="col-sm-7">
-                              <input type="checkbox" class="form-control" />
-                          </div>
-                      </div>
-                      <div class="col-sm-12 nopadding">
-                          <div class="col-sm-5">
-                              <label>Candidates&nbsp;:</label>
-                          </div>
-                          <div class="col-sm-7">
-                              <input type="checkbox" class="form-control" />
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-sm-6">
-                      <div class="col-sm-12 nopadding">
-                          <div class="col-sm-5">
-                              <label>Staff&nbsp;:</label>
-                          </div>
-                          <div class="col-sm-7">
-                              <input type="checkbox" class="form-control" />
-                          </div>
-                      </div>
-                      <div class="col-sm-12 nopadding">
-                          <div class="col-sm-5">
-                              <label>Settings&nbsp;:</label>
-                          </div>
-                          <div class="col-sm-7">
-                              <input type="checkbox" class="form-control" />
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="modal-footer">
-              <a class="btn btn-default pull-right" data-dismiss="modal"><span style="color:#000;">Close</span></a>
-              <a class="btn btn-success pull-right" data-dismiss="modal" style="margin-right:5px;">Add</a>
-          </div>
-      </div>
-  </div>
+<div id="permissionmodal" class="modal fade" bsModal #perimissionsModal="bs-modal" [config]="{backdrop: 'static'}" role="dialog" aria-labelledby="mySmallModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">
+                    <b>User Permissions -&nbsp;
+                        <small>John M</small>
+                    </b>
+                </h4>
+            </div>
+            <div class="modal-body" style="padding:27px;">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="col-sm-12 nopadding">
+                            <div class="col-sm-5">
+                                <label>Dashboard&nbsp;:</label>
+                            </div>
+                            <div class="col-sm-7">
+                                <input type="checkbox" class="form-control" style="height: 20px;"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 nopadding">
+                            <div class="col-sm-5">
+                                <label>Candidates&nbsp;:</label>
+                            </div>
+                            <div class="col-sm-7">
+                                <input type="checkbox" class="form-control" style="height: 20px;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="col-sm-12 nopadding">
+                            <div class="col-sm-5">
+                                <label>Staff&nbsp;:</label>
+                            </div>
+                            <div class="col-sm-7">
+                                <input type="checkbox" class="form-control" style="height: 20px;" />
+                            </div>
+                        </div>
+                        <div class="col-sm-12 nopadding">
+                            <div class="col-sm-5">
+                                <label>Settings&nbsp;:</label>
+                            </div>
+                            <div class="col-sm-7">
+                                <input type="checkbox" class="form-control" style="height: 20px;"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-default pull-right" (click)="perimissionsModal.hide()">
+                    <span style="color:#000;">Close</span>
+                </a>
+                <a class="btn btn-success pull-right" (click)="perimissionsModal.hide()" style="margin-right:5px;">Add</a>
+            </div>
+        </div>
+    </div>
 </div>

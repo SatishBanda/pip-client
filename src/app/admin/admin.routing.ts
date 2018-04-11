@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
 import { CandidatesComponent } from './candidates/candidates.component';
 import { StaffComponent } from './staff/staff.component';
+import { EvaluationComponent } from './evaluation/evaluation.component';
 
 const routes: Routes = [
     {
@@ -28,6 +29,10 @@ const routes: Routes = [
     {
         path: 'staff',
         component: StaffComponent
+    },
+    {
+        path: 'evaluation',
+        component: EvaluationComponent
     }
 ];
 

@@ -7,18 +7,28 @@ import { CandidatesComponent } from './candidates/candidates.component';
 import { StaffComponent } from './staff/staff.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ChartModule } from 'angular2-highcharts';
+import { HighchartsChartComponent } from 'highcharts-angular';
+import { DataTableModule } from "angular2-datatable";
+import { FormsModule } from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap';
+import { EvaluationComponent } from './evaluation/evaluation.component';
 
 @NgModule({
   imports: [
     CommonModule,
     AdminRoutingModule,
+    DataTableModule,
+    ModalModule.forRoot(),
+    FormsModule
     //ChartModule.forRoot(require('highcharts'))
   ],
   declarations: [
     DashboardComponent,
     CandidatesComponent,
     StaffComponent,
-    SettingsComponent
+    SettingsComponent,
+    HighchartsChartComponent,
+    EvaluationComponent
   ]
 })
 export class AdminModule { }
