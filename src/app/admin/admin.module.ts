@@ -12,7 +12,7 @@ import { ChartModule } from 'angular2-highcharts';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    ChartModule.forRoot(require('highcharts'))
+    //ChartModule.forRoot(require('highcharts'))
   ],
   declarations: [
     DashboardComponent,
