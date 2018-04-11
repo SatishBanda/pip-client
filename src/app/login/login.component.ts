@@ -24,14 +24,14 @@ export class LoginComponent implements OnInit {
     model: any = {};
 
     valueChangedForm: any;
-    private _loginForm: FormGroup;
-    private _forgotPwdForm: FormGroup;
-    private _clearFormErrors: any;
-    private _formErrors: any;
-    private _forgotPwdFormErrors: any;
-    private _submitted: boolean = false;
-    private _errorMessage: string = '';
-    private _errorMessageForgotPwd: string = '';
+    public _loginForm: FormGroup;
+    public _forgotPwdForm: FormGroup;
+    public _clearFormErrors: any;
+    public _formErrors: any;
+    public _forgotPwdFormErrors: any;
+    public _submitted: boolean = false;
+    public _errorMessage: string = '';
+    public _errorMessageForgotPwd: string = '';
 
     public maxApplicableYear: number = 0;
 
@@ -138,7 +138,7 @@ export class LoginComponent implements OnInit {
         this._errorMessageForgotPwd = '';
     }
 
-    private _isValid(form, field): boolean {
+    public _isValid(form, field): boolean {
         let isValid: boolean = false;
 
         if (form == '_loginForm') {
