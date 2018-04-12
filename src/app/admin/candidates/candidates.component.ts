@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalDirective } from "ngx-bootstrap";
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-candidates',
@@ -51,7 +52,14 @@ export class CandidatesComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(
+    private title: Title
+  ) {
+
+    let currentTitle = this.title.getTitle();
+
+    this.title.setTitle('PIP | Admin | Candidates');
+  }
 
   ngOnInit() {
   }
