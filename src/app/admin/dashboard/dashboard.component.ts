@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { FormsModule } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard',
@@ -209,8 +210,14 @@ export class DashboardComponent implements OnInit {
       }]
     }]
   };
+  constructor(
+    private title: Title
+  ) {
 
-  constructor() { }
+    let currentTitle = this.title.getTitle();
+
+    this.title.setTitle('PIP | Admin | Dashboard');
+  }
   options;
   ngOnInit() {
 
