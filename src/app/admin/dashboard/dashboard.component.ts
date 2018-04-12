@@ -131,6 +131,7 @@ export class DashboardComponent implements OnInit {
         text: 'No.Of Evaluations'
       }
     },
+    title : { text : 'Evaluations per month for a year' },
     series: [{
       type: 'column',
       name: 'Evaluations',
@@ -139,8 +140,16 @@ export class DashboardComponent implements OnInit {
   };
 
   locationChartOptions = {
+    title : { text : 'Distribution of evaluations by Location' },
     series: [{
       type: 'pie',
+      titles: [
+        {
+          "id": "Title-1",
+          "size": 15,
+          "text": "Tickets"
+        }
+      ],
       name: 'Brands',
       colorByPoint: true,
       data: [{
@@ -168,6 +177,7 @@ export class DashboardComponent implements OnInit {
   };
 
   evaluationChartOptions = {
+    title : { text : 'Distribution of evaluations by Evaluator' },
     series: [{
       type: 'pie',
       name: 'Brands',
