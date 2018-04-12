@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 
@@ -35,7 +35,7 @@ import { CookieModule } from 'ngx-cookie';
     ToastrModule.forRoot({ timeOut: 2000 }),
     CookieModule.forRoot(),
   ],
-  providers: [ValidationService,AuthenticationService,GlobalService],
+  providers: [ValidationService,AuthenticationService,GlobalService,Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
