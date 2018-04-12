@@ -96,7 +96,7 @@ aria-hidden="true">
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button (click)="staffModal.hide()" type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">
                     <b>Add Staff User</b>
                 </h4>
@@ -163,7 +163,7 @@ aria-hidden="true">
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button (click)="perimissionsModal.hide()"  type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">
                     <b>User Permissions -&nbsp;
                         <small>John M</small>
@@ -178,7 +178,7 @@ aria-hidden="true">
                                 <label>Dashboard&nbsp;:</label>
                             </div>
                             <div class="col-sm-7">
-                                <input type="checkbox" class="form-control" style="height: 20px;"/>
+                                <input type="checkbox" class="form-control" style="height: 15px;"/>
                             </div>
                         </div>
                         <div class="col-sm-12 nopadding">
@@ -186,7 +186,7 @@ aria-hidden="true">
                                 <label>Candidates&nbsp;:</label>
                             </div>
                             <div class="col-sm-7">
-                                <input type="checkbox" class="form-control" style="height: 20px;" />
+                                <input type="checkbox" class="form-control" style="height: 15px;" />
                             </div>
                         </div>
                     </div>
@@ -196,7 +196,7 @@ aria-hidden="true">
                                 <label>Staff&nbsp;:</label>
                             </div>
                             <div class="col-sm-7">
-                                <input type="checkbox" class="form-control" style="height: 20px;" />
+                                <input type="checkbox" class="form-control" style="height: 15px;" />
                             </div>
                         </div>
                         <div class="col-sm-12 nopadding">
@@ -204,7 +204,7 @@ aria-hidden="true">
                                 <label>Settings&nbsp;:</label>
                             </div>
                             <div class="col-sm-7">
-                                <input type="checkbox" class="form-control" style="height: 20px;"/>
+                                <input type="checkbox" class="form-control" style="height: 15px;"/>
                             </div>
                         </div>
                     </div>
