@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class DashboardComponent implements OnInit {
   public rowsOnPage = 5;
+  public rowsOnPageEval= 5;
   public filterQuery = "";
   public evaluationsTableData = [
     {

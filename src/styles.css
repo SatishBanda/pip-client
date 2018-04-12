@@ -54,3 +54,8 @@ tr.tr-blue-grid-head a{
 .padding-0{
     padding:0px !important;
 }
+
+.pagination-summary-text{
+    padding: 15px 0px;
+    font-size: 13px;
+}
