@@ -2,8 +2,8 @@
     <div class="col-sm-1"></div>
     <div class="col-sm-8 nopadding">
         <h3 class="page-title">
-            Staff
-            <small></small>
+            Staff Users
+            <small>Staff Users can be added and their accounts can be managed here.</small>
         </h3>
     </div>
 </div>
@@ -11,14 +11,14 @@
 <div class="row nopadding margin-top-25">
     <div class="col-sm-1"></div>
     <div class="col-sm-10">
-        <div class="col-sm-12 nopadding">
-            <a class="btn btn-success pull-right" (click)="staffModal.show()">
+        <div class="col-sm-12 padding-right-0">
+            <a class="btn btn-success pull-right" style="width: 183px;" (click)="staffModal.show()">
                 <i class="fa fa-plus"></i>&nbsp;Add Staff
             </a>
         </div>
         <div class="col-sm-12 nopadding margin-top-10">
             <div class="form-inline">
-                <div class="form-group pull-right padding-10">
+                <div class="form-group pull-right padding-10 padding-right-0">
                     <label for="email">
                         <b>Search:</b>
                     </label>
@@ -79,8 +79,8 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="8">
-                            <mfBootstrapPaginator></mfBootstrapPaginator>
+                        <td colspan="8" class="no-pagination-border padding-0">
+                            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
                         </td>
                     </tr>
                 </tfoot>
