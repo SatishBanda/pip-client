@@ -15,6 +15,11 @@ import { LoginComponent } from './login/login.component';
 import { TabsModule, ModalModule, AccordionModule } from 'ngx-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { CookieModule } from 'ngx-cookie';
+import { HttpService } from './interceptors/http.service';
+import { LoaderService } from './interceptors/loader.service';
+import { PartialViews } from './_partial-views/partial-views.module';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,6 +31,7 @@ import { CookieModule } from 'ngx-cookie';
     BrowserModule,
     AppRoutingModule,
     RouterModule,
+    PartialViews,
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
@@ -34,8 +40,9 @@ import { CookieModule } from 'ngx-cookie';
     AccordionModule.forRoot(),
     ToastrModule.forRoot({ timeOut: 2000 }),
     CookieModule.forRoot(),
+    BrowserAnimationsModule
   ],
-  providers: [ValidationService,AuthenticationService,GlobalService,Title],
+  providers: [ValidationService,AuthenticationService,GlobalService,Title,HttpService,LoaderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

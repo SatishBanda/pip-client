@@ -97,7 +97,7 @@ export class AuthenticationService {
             JSON.stringify({
                 "ChangePasswordForm": {
                     "username": username,
-                    "currentPassword": currentPassword,
+                    "current_password": currentPassword,
                     "newPassword": newPassword,
                     "retypePassword": retypePassword
                 }

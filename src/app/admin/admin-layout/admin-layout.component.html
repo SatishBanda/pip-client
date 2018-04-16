@@ -1,125 +1,4 @@
-<style>
-    @media (min-width: 768px) {
-        .navbar-nav.navbar-center {
-            position: absolute;
-            left: 50%;
-            transform: translatex(-50%);
-        }
-    }
 
-    @media (min-width: 768px) {
-        .navbar-nav {
-            float: left;
-            margin: 0;
-            display: table;
-        }
-    }
-
-    .form-control:focus {
-        border-color: #5cb85c;
-        box-shadow: none;
-        -webkit-box-shadow: none;
-    }
-
-    .has-error .form-control:focus {
-        box-shadow: none;
-        -webkit-box-shadow: none;
-    }
-
-    .modal-title {
-        text-align: left;
-    }
-
-    .img-circle {
-        border-radius: 50% !important;
-        height: 17px;
-    }
-
-
-
-
-    /* stroke */
-
-    nav.stroke ul li a,
-    nav.fill ul li a {
-        position: relative;
-    }
-
-    nav.stroke ul li a:after,
-    nav.fill ul li a:after {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
-        width: 0%;
-        assets: '.';
-        color: transparent;
-        background: #fff;
-        height: 1px;
-    }
-
-    nav.stroke ul li a:hover:after {
-        width: 100%;
-    }
-
-    nav.fill ul li a {
-        transition: all 2s;
-    }
-
-    nav.fill ul li a:after {
-        text-align: left;
-        assets: '.';
-        margin: 0;
-        opacity: 0;
-    }
-
-    nav.fill ul li a:hover {
-        color: #fff;
-        z-index: 1;
-    }
-
-    nav.fill ul li a:hover:after {
-        z-index: -10;
-        animation: fill 1s forwards;
-        -webkit-animation: fill 1s forwards;
-        -moz-animation: fill 1s forwards;
-        opacity: 1;
-    }
-
-    .navbar-inverse .navbar-nav>.active>a,
-    .navbar-inverse .navbar-nav>.active>a:focus,
-    .navbar-inverse .navbar-nav>.active>a:hover {
-        background-color: #f5f5f5;
-        color: #000;
-        font-size: 14px;
-    }
-
-    .dropdown>.dropdown-menu:after,
-    .dropdown-toggle>.dropdown-menu:after,
-    .btn-group>.dropdown-menu:after {
-        position: absolute;
-        top: -7px;
-        left: 10px;
-        right: auto;
-        display: inline-block !important;
-        border-right: 7px solid transparent;
-        border-bottom: 7px solid #fff;
-        border-left: 7px solid transparent;
-        assets: '';
-    }
-
-    nav ul li a,
-    nav ul li a:after,
-    nav ul li a:before {
-        transition: all .5s;
-    }
-
-    nav ul li a:hover {
-        color: #555;
-    }
-    
-</style>
 <div class="top-menu">
     <nav class="navbar navbar-inverse header-nav stroke" role="navigation" style="padding:4px;font-size:15px;font-weight:500;">
         <div class="navbar-header">
@@ -157,7 +36,6 @@
                         <i class="fa fa-angle-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">
-                        <img src="/assets/images/images.jpg" style="height: 50px;margin-left: 30%;">
                         <li>
                             <a>
                                 <i class="icon-user"></i> My Profile
@@ -165,7 +43,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a data-toggle="modal" data-target="#myModal-change-pswd" style="cursor: pointer;">
+                            <a (click) = "changePassword()"  style="cursor: pointer;">
                                 <i class="icon-lock"></i> Change Password
                             </a>
                         </li>
@@ -186,4 +64,92 @@
     <div class="page-assets clearfix " style="min-height:267px">
         <router-outlet></router-outlet>
     </div>
+</div>
+
+
+<div id="myModal" class="modal fade" bsModal #changePasswordModal="bs-modal" [config]="{backdrop: 'static'}" role="dialog" aria-labelledby="mySmallModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header modal-header-color">
+        <button type="button" class="close close-modal modal-opacity close-modal-blue" (click)="closeChangePassword()" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">
+          <b>Change Password</b>
+        </h4>
+      </div>
+      <form [formGroup]="passwordChangeForm">
+        <div class="modal-body" style="padding:27px;">
+          <div class="row">
+            <div class="col-sm-12 nopadding">
+              <div class="col-sm-5">
+                <label class="form-control-label">Email :
+                  <span class="red">*</span>
+                </label>
+              </div>
+              <div class="col-sm-7">
+                <div class="form-group required">
+                  <input type="text" id="candidateuser-username" class="form-control" [formControl]="passwordChangeForm.controls['username']"
+                  [(ngModel)]="passwordChange.username" maxlength="34" readonly>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-12 nopadding margin-top-10">
+              <div class="col-sm-5">
+                <label class="form-control-label">Current Password :
+                  <span class="red">*</span>
+                </label>
+              </div>
+              <div class="col-sm-7">
+                <div class="form-group required" [ngClass]="{'has-danger': !isPasswordChangeValid('current_password')}">
+                  <input type="password" id="candidateuser-current_password" class="form-control" [formControl]="passwordChangeForm.controls['current_password']"
+                    [(ngModel)]="passwordChange.current_password" [ngClass]="{'form-control-danger': !isPasswordChangeValid('current_password')}"
+                    maxlength="34">
+                  <span class="help-block help-block-error" *ngIf="!passwordChangeFormErrors.current_password.valid">{{passwordChangeFormErrors.current_password.message}}</span>
+                  
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-12 nopadding margin-top-10">
+              <div class="col-sm-5">
+                <label class="form-control-label" for="companyuser-email">New Password :
+                  <span class="red">*</span>
+                </label>
+              </div>
+              <div class="col-sm-7">
+                <div class="form-group field-companyuser-email" [ngClass]="{'has-danger': !isPasswordChangeValid('new_password')}">
+                  <input type="password" id="adminusers-password" class="form-control" aria-required="true" [formControl]="passwordChangeForm.controls['new_password']"
+                    [(ngModel)]="passwordChange.new_password" [ngClass]="{'form-control-danger': !isPasswordChangeValid('new_password')}"
+                    maxlength="50">
+                  <span class="help-block help-block-error" *ngIf="!passwordChangeFormErrors.new_password.valid">{{passwordChangeFormErrors.new_password.message}}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-12 nopadding margin-top-10">
+              <div class="col-sm-5">
+                <label class="form-control-label">Confirm New Password :
+                  <span class="red">*</span>
+                </label>
+              </div>
+              <div class="col-sm-7">
+                    <div class="form-group field-companyuser-email" [ngClass]="{'has-danger': !isPasswordChangeValid('confirm_new_password')}">
+                            <input type="password" id="adminusers-confirm-password" class="form-control" aria-required="true" [formControl]="passwordChangeForm.controls['confirm_new_password']"
+                              [(ngModel)]="passwordChange.confirm_new_password" [ngClass]="{'form-control-danger': !isPasswordChangeValid('confirm_new_password')}"
+                              maxlength="50">
+                            <span class="help-block help-block-error" *ngIf="!passwordChangeFormErrors.confirm_new_password.valid">{{passwordChangeFormErrors.confirm_new_password.message}}</span>
+                          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer footer-background">
+          <button type="button" class="btn btn-default pull-right" (click)="closeChangePassword()">Close</button>
+          <button (click)="onPasswordSubmit()" style="margin-right: 5px" type="submit" class="btn btn-success pull-right" [disabled]="!passwordChangeForm.valid || passwordSubmitted == true">
+            <i *ngIf="passwordSubmitted" class="fa fa-circle-o-notch fa-spin fa-fw"></i>Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>

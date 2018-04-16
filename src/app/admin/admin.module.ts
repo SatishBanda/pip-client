@@ -9,17 +9,21 @@ import { SettingsComponent } from './settings/settings.component';
 import { ChartModule } from 'angular2-highcharts';
 import { HighchartsChartComponent } from 'highcharts-angular';
 import { DataTableModule } from "angular2-datatable";
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap';
 import { EvaluationComponent } from './evaluation/evaluation.component';
-
+import { TextMaskModule } from "angular2-text-mask/dist/angular2TextMask";
+import { PartialViews } from '../_partial-views/partial-views.module';
 @NgModule({
   imports: [
     CommonModule,
     AdminRoutingModule,
     DataTableModule,
     ModalModule.forRoot(),
-    FormsModule
+    FormsModule,
+    TextMaskModule,
+    ReactiveFormsModule,
+    PartialViews,
     //ChartModule.forRoot(require('highcharts'))
   ],
   declarations: [
