@@ -412,3 +412,22 @@ img::-moz-selection {
     color: #fff;
     background: 0 0;
 }
+.imgopacity {
+    opacity: 0.4;
+}
+
+.cursorpointer {
+    cursor: pointer;
+}
+
+ .textcolor{
+
+    color:#000 !important;
+}
+ .navbar-brand {
+    float: left;
+    height: 50px;
+    /* padding: 15px 15px; */
+    font-size: 22px;
+    line-height: 20px;
+}

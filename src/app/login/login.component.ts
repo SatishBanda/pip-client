@@ -56,12 +56,12 @@ export class LoginComponent implements OnInit {
         /* ./login form */
 
         /* forgot password form */
-        /*  this._forgotPwdForm = _formBuilder.group({
-              username: ['', [Validators.required, ValidationService.emailValidator]]
-          });*/
+          this._forgotPwdForm = _formBuilder.group({
+              username: ['', [Validators.required, Validators.pattern(this.globalService.emailRegx) ]]
+          });
 
-        /*this._forgotPwdForm.valueChanges
-            .subscribe(data => this.onValueChanged('_forgotPwdForm', data));*/
+        this._forgotPwdForm.valueChanges
+            .subscribe(data => this.onValueChanged('_forgotPwdForm', data));
 
         /* ./forgot password form */
     }
@@ -104,6 +104,7 @@ export class LoginComponent implements OnInit {
 
     }
 
+    
     private _setFormErrors(form, errorFields: any): void {
         if (form == '_loginForm') {
             for (let key in errorFields) {
@@ -233,7 +234,7 @@ export class LoginComponent implements OnInit {
 
 
     forgotPwd() {
-        /*  if (this._forgotPwdForm.dirty && this._forgotPwdForm.valid) {
+         if (this._forgotPwdForm.dirty && this._forgotPwdForm.valid) {
               this.authenticationService.passwordResetRequest(
                   this._forgotPwdForm.value.username).subscribe(
                   result => {
@@ -259,7 +260,7 @@ export class LoginComponent implements OnInit {
                       }
                   });
   
-          }*/
+          }
     }
 
     forgotPwdModalDismiss() {

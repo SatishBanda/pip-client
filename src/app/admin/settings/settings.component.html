@@ -1,92 +1,129 @@
-
 <div class="col-sm-12 nopadding">
-  <div class="col-sm-1"></div>
-  <div class="col-sm-8 nopadding">
-      <h3 class="page-title">
-          Settings <small></small>
-      </h3>
-  </div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-8 nopadding">
+        <h3 class="page-title">
+            Settings
+            <small></small>
+        </h3>
+    </div>
 </div>
 
 <div class="row nopadding margin-top-25">
-  <div class="col-sm-1"></div>
-  <div class="col-sm-10 settings-tabs">
-      <ul class="nav nav-tabs">
-          <li class="active"><a class="tabs" data-toggle="tab" href="#apisettings" aria-expanded="false"><i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;API</a></li>
-          <li class=""><a class="tabs" data-toggle="tab" href="#default" aria-expanded="true"><i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp;&nbsp;Default</a></li>
-      </ul>
-      <div class="tab-content">
-          <div id="default" class="tab-pane fade in">
-              <div class="row margin-top-25">
-                  <div class="col-lg-3 col-md-6 col-sm-12">
-                      <label style="line-height:2;">Default Email for Outgoing Emails&nbsp;:</label>
-                  </div>
-                  <div class="col-lg-3 col-md-6 col-sm-12">
-                      <input type="text" class="form-control" value="Support@phonepro.com" />
-                  </div>
-              </div>
-              <div class="row margin-top-10">
-                  <div class="col-lg-3 col-md-6 col-sm-12">
-                      <label style="line-height:2;">Alerts Notification&nbsp;(Days)&nbsp;:</label>
-                  </div>
-                  <div class="col-lg-3 col-md-6 col-sm-12">
-                      <input type="text" class="form-control" value="1" />
-                  </div>
-              </div>
-              <div class="col-sm-12 nopadding margin-top-10">
-                  <div class="col-lg-3 col-md-6 col-sm-12">
-                  </div>
-                  <div class="col-lg-3 col-md-6 col-sm-12">
-                      <button class="btn btn-success">Update</button>
-                  </div>
-              </div>
-          </div>
-          <div id="apisettings" class="tab-pane active fade in" style="">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10 settings-tabs">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a class="tabs" data-toggle="tab" href="#apisettings" aria-expanded="false">
+                    <i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;API</a>
+            </li>
+            <li class="">
+                <a class="tabs" data-toggle="tab" href="#default" aria-expanded="true">
+                    <i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp;&nbsp;Default</a>
+            </li>
+        </ul>
+        <form [formGroup]="settingForm">
+        <div class="tab-content">
+            
 
-              <div class="col-sm-12 nopadding">
-                  <h3><b>Twilio</b></h3>
-                  <div class="col-lg-3 col-md-6 col-sm-12">
-                      <label style="line-height:2;">Twilio Phone Number&nbsp;:</label>
-                  </div>
-                  <div class="col-lg-4 col-md-6 col-sm-12">
-                      <input type="text" class="form-control" value="+1855-975-5544" />
-                  </div>
-              </div>
-              <div class="col-sm-12 nopadding margin-top-10">
-                  <div class="col-lg-3 col-md-6 col-sm-12">
-                      <label style="line-height:2;">Account ID&nbsp;:</label>
-                  </div>
-                  <div class="col-lg-4 col-md-6 col-sm-12">
-                      <input type="text" class="form-control" value="ACff3e601d4b1d472297c1d40b1ef15906" />
-                  </div>
-              </div>
-              <div class="col-sm-12 nopadding margin-top-10">
-                  <div class="col-lg-3 col-md-6 col-sm-12">
-                      <label style="line-height:2;">Account Auth Token&nbsp;:</label>
-                  </div>
-                  <div class="col-lg-4 col-md-6 col-sm-12">
-                      <input type="text" class="form-control" value="1da17a0f6598f9812ff4a30bf6288ff4" />
-                  </div>
-              </div>
-              <br />
+                <div id="apisettings" class="tab-pane active fade in">
 
-              <div class="col-sm-12 nopadding">
-                  <h3 style="margin-top:10px;"><b>SendGrid</b></h3>
-                  <div class="col-lg-3 col-md-6 col-sm-12">
-                      <label style="line-height:2;">SendGrid API&nbsp;:</label>
-                  </div>
-                  <div class="col-lg-4 col-md-6 col-sm-12">
-                      <input type="text" class="form-control" value="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" />
-                  </div>
-              </div>
-              <div class="col-sm-12 nopadding margin-top-15">
-                  <div class="col-lg-3 col-md-6 col-sm-12">
-                  </div>
-                  <div class="col-lg-3 col-md-6 col-sm-12">
-                      <button class="btn btn-success">Update</button>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+                    <div class="col-sm-12 nopadding">
+                        <h3>
+                            <b>Twilio</b>
+                        </h3>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <label style="line-height:2;">Twilio Phone Number&nbsp;:</label>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="form-group required" [ngClass]="{'has-danger': !isSettingValid('twilio_phone_number')}">
+                                <input type="text" class="form-control" [formControl]="settingForm.controls['twilio_phone_number']" [(ngModel)]="settingsList.twilio_phone_number"
+                                [textMask]="{mask: phoneNumberMask,guide: false, modelClean: true}" placeholder="(___) ___-____" [ngClass]="{'form-control-danger': !isSettingValid('twilio_phone_number')}">
+                                <span class="help-block help-block-error" *ngIf="!settingFormErrors.twilio_phone_number.valid">{{settingFormErrors.twilio_phone_number.message}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 nopadding margin-top-10">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <label style="line-height:2;">Account ID&nbsp;:</label>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="form-group required" [ngClass]="{'has-danger': !isSettingValid('account_id')}">
+                                <input type="text" class="form-control" [formControl]="settingForm.controls['account_id']" [(ngModel)]="settingsList.account_id"
+                                    [ngClass]="{'form-control-danger': !isSettingValid('account_id')}" maxlength="55">
+                                <span class="help-block help-block-error" *ngIf="!settingFormErrors.account_id.valid">{{settingFormErrors.account_id.message}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 nopadding margin-top-10">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <label style="line-height:2;">Account Auth Token&nbsp;:</label>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="form-group required" [ngClass]="{'has-danger': !isSettingValid('account_auth_token')}">
+                                <input type="text" class="form-control" [formControl]="settingForm.controls['account_auth_token']" [(ngModel)]="settingsList.account_auth_token"
+                                    [ngClass]="{'form-control-danger': !isSettingValid('account_auth_token')}">
+                                <span class="help-block help-block-error" *ngIf="!settingFormErrors.account_auth_token.valid">{{settingFormErrors.account_auth_token.message}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+
+                    <div class="col-sm-12 nopadding">
+                        <h3 style="margin-top:10px;">
+                            <b>SendGrid</b>
+                        </h3>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <label style="line-height:2;">SendGrid API&nbsp;:</label>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="form-group required" [ngClass]="{'has-danger': !isSettingValid('send_grid_api')}">
+                                <input type="text" class="form-control" [formControl]="settingForm.controls['send_grid_api']" [(ngModel)]="settingsList.send_grid_api"
+                                    [ngClass]="{'form-control-danger': !isSettingValid('send_grid_api')}">
+                                <span class="help-block help-block-error" *ngIf="!settingFormErrors.send_grid_api.valid">{{settingFormErrors.send_grid_api.message}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="default" class="tab-pane fade in">
+
+                    <div class="col-sm-12 nopadding margin-top-10">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <label style="line-height:2;">Default Email for Outgoing Emails&nbsp;:</label>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="form-group required" [ngClass]="{'has-danger': !isSettingValid('default_email_for_outgoing')}">
+                                <input type="text" class="form-control" [formControl]="settingForm.controls['default_email_for_outgoing']" [(ngModel)]="settingsList.default_email_for_outgoing"
+                                    [ngClass]="{'form-control-danger': !isSettingValid('default_email_for_outgoing')}">
+                                <span class="help-block help-block-error" *ngIf="!settingFormErrors.default_email_for_outgoing.valid">{{settingFormErrors.default_email_for_outgoing.message}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-12 nopadding margin-top-10">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <label style="line-height:2;">Alerts Notification&nbsp;(Days)&nbsp;:</label>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="form-group required" [ngClass]="{'has-danger': !isSettingValid('alerts_notification_days')}">
+                                <input type="text" class="form-control" [formControl]="settingForm.controls['alerts_notification_days']" [(ngModel)]="settingsList.alerts_notification_days"
+                                [textMask]="{mask: numberMask,guide: false, modelClean: true}"   [ngClass]="{'form-control-danger': !isSettingValid('alerts_notification_days')}" maxlength="34">
+                                <span class="help-block help-block-error" *ngIf="!settingFormErrors.alerts_notification_days.valid">{{settingFormErrors.alerts_notification_days.message}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 nopadding margin-top-15">
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <button (click)="onSettingsSubmit()" style="margin-right: 5px" type="submit" class="btn btn-success" [disabled]="!settingForm.valid || settingsSubmitted == true">
+                                <i *ngIf="settingsSubmitted" class="fa fa-circle-o-notch fa-spin fa-fw"></i>Save</button>
+                    </div>
+                </div>
+            
+        </div>
+    </form>
+    </div>
 </div>

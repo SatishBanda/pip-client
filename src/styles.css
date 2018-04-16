@@ -55,6 +55,13 @@ tr.tr-blue-grid-head a{
     padding:0px !important;
 }
 
+.help-block-error{
+    color: #d9534f !important;
+}
+.login-class .has-danger .form-control{
+    border-color: #fb434a;
+}
+
 .pagination-summary-text{
     padding: 15px 0px;
     font-size: 13px;
