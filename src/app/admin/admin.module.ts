@@ -12,8 +12,14 @@ import { DataTableModule } from "angular2-datatable";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap';
 import { EvaluationComponent } from './evaluation/evaluation.component';
+
 import { TextMaskModule } from "angular2-text-mask/dist/angular2TextMask";
 import { PartialViews } from '../_partial-views/partial-views.module';
+
+import { TabsModule } from 'ngx-bootstrap';
+import { NouisliderModule } from 'ng2-nouislider';
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -24,6 +30,10 @@ import { PartialViews } from '../_partial-views/partial-views.module';
     TextMaskModule,
     ReactiveFormsModule,
     PartialViews,
+    TabsModule.forRoot(),
+    FormsModule,
+    NouisliderModule
+
     //ChartModule.forRoot(require('highcharts'))
   ],
   declarations: [

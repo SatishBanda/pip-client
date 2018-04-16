@@ -10,6 +10,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class DashboardComponent implements OnInit {
   public rowsOnPage = 5;
+  public rowsOnPageEval= 5;
   public filterQuery = "";
   public evaluationsTableData = [
     {
