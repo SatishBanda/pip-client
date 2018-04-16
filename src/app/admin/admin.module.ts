@@ -12,6 +12,8 @@ import { DataTableModule } from "angular2-datatable";
 import { FormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap';
 import { EvaluationComponent } from './evaluation/evaluation.component';
+import { TabsModule } from 'ngx-bootstrap';
+import { NouisliderModule } from 'ng2-nouislider';
 
 @NgModule({
   imports: [
@@ -19,7 +21,9 @@ import { EvaluationComponent } from './evaluation/evaluation.component';
     AdminRoutingModule,
     DataTableModule,
     ModalModule.forRoot(),
-    FormsModule
+    TabsModule.forRoot(),
+    FormsModule,
+    NouisliderModule
     //ChartModule.forRoot(require('highcharts'))
   ],
   declarations: [
