@@ -1,3 +1,1794 @@
-<p>
-  evaluation works!
-</p>
+<div class="col-sm-12 nopadding">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10 nopadding">
+    <h3 class="page-title">
+      Evaluation
+      <small>
+      </small>
+    </h3>
+  </div>
+</div>
+
+<div class="col-sm-12 nopadding">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10 nopadding">
+    <!--<ul class="nav nav-pills">
+      <li class="nav-item" style="width:25%">
+          <highcharts-chart [Highcharts]="Highcharts" [options]="gaugeOptions" style="width: 100%; height: 250px; display: block;"></highcharts-chart>
+      </li>
+      <li class="nav-item" style="width:25%">
+      </li>
+      <li class="nav-item" style="width:25%">
+      </li>
+      <li class="nav-item" style="width:25%">
+      </li>
+    </ul>-->
+    <tabset type="pills" class="evaluation-tabs" #evalTabs>
+      <tab customClass="eval-main-nav-li">
+        <ng-template tabHeading>
+          <span>
+            <i class="fa fa-user" aria-hidden="true"></i>Introduction</span>
+        </ng-template>
+        <div class="col-sm-12 nopadding">
+          <label style="font-size: 16px;font-weight:600;">Enclosed is your high level, patent pending Phone Interview Evaluation: 250+ Dimensions of your Phone Interview!</label>
+          <ul class="thirdpanel">
+            <li>Introduction - Client Overall</li>
+            <li>
+              The Interview
+              <ul style="list-style-type:circle">
+                <li>What aspects of your training and education have helped you most on the job/school?</li>
+                <li>What are your two greatest accomplishments?</li>
+                <li>What did you like most and least about your previous jobs?</li>
+                <li>Why should an organisation hire you ?</li>
+                <li> What do you feel are the requirements for good leadership?</li>
+                <li>Tell me about the toughest decision you ever had to make?</li>
+                <li>How do you resolve personal confrontations?</li>
+                <li>Are you lucky?</li>
+              </ul>
+            </li>
+            <li>Closing Questions</li>
+            <li>Human Characterstics Exibhited</li>
+            <li>Recommendation : Items that need improvement</li>
+            <li>Phone Interview Feedback : Strengths and Weaknesses</li>
+            <li>Overall Rating</li>
+            <li>Answer Key</li>
+          </ul>
+        </div>
+        <div class="col-md-12 margin-bottom-20">
+          <div class="col-md-12 tab-content-container">
+              <h4 class="questionstxt margin-bottom-40">
+                  Introduction : Client Rating</h4>
+          <div class="col-md-12">
+            <div class="col-md-3 option-label">
+              <p>Timeliness,On Time For Interview</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(introductionArr[0]=='1')?'red-bar':(introductionArr[0]=='2') ? 'yellow-bar':(introductionArr[0]=='3') ? 'blue-bar':(introductionArr[0]=='4') ? 'orange-bar' : (introductionArr[0]=='5') ? 'green-bar' : ''">
+              <nouislider #slider [tooltips]=[true] [config]="someKeyboardConfig" [(ngModel)]="introductionArr[0]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+            <div class="col-md-3 option-label">
+              <p>Client prepared for interview</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(introductionArr[1]=='1')?'red-bar':(introductionArr[1]=='2') ? 'yellow-bar':(introductionArr[1]=='3') ? 'blue-bar':(introductionArr[1]=='4') ? 'orange-bar' : (introductionArr[1]=='5') ? 'green-bar' : ''">
+              <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="introductionArr[1]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-3 option-label">
+              <p>Excited and enthusiastic</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(introductionArr[2]=='1')?'red-bar':(introductionArr[2]=='2') ? 'yellow-bar':(introductionArr[2]=='3') ? 'blue-bar':(introductionArr[2]=='4') ? 'orange-bar' : (introductionArr[2]=='5') ? 'green-bar' : ''" >
+              <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="introductionArr[2]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+            <div class="col-md-3 option-label">
+              <p>Made small talk, phone "handshake"</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(introductionArr[3]=='1')?'red-bar':(introductionArr[3]=='2') ? 'yellow-bar':(introductionArr[3]=='3') ? 'blue-bar':(introductionArr[3]=='4') ? 'orange-bar' : (introductionArr[3]=='5') ? 'green-bar' : ''">
+              <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="introductionArr[3]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-3 option-label">
+              <p>Quality of phone connection</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(introductionArr[4]=='1')?'red-bar':(introductionArr[4]=='2') ? 'yellow-bar':(introductionArr[4]=='3') ? 'blue-bar':(introductionArr[4]=='4') ? 'orange-bar' : (introductionArr[4]=='5') ? 'green-bar' : ''">
+              <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="introductionArr[4]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+            <div class="col-md-3 option-label">
+              <p>Phone line clear and free of noise</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(introductionArr[5]=='1')?'red-bar':(introductionArr[5]=='2') ? 'yellow-bar':(introductionArr[5]=='3') ? 'blue-bar':(introductionArr[5]=='4') ? 'orange-bar' : (introductionArr[5]=='5') ? 'green-bar' : ''">
+              <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="introductionArr[5]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-3 option-label">
+              <p>Relaxed and normal</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(introductionArr[6]=='1')?'red-bar':(introductionArr[6]=='2') ? 'yellow-bar':(introductionArr[6]=='3') ? 'blue-bar':(introductionArr[6]=='4') ? 'orange-bar' : (introductionArr[6]=='5') ? 'green-bar' : ''">
+              <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="introductionArr[6]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+            <div class="col-md-3 option-label">
+              <p>Focused</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(introductionArr[7]=='1')?'red-bar':(introductionArr[7]=='2') ? 'yellow-bar':(introductionArr[7]=='3') ? 'blue-bar':(introductionArr[7]=='4') ? 'orange-bar' : (introductionArr[7]=='5') ? 'green-bar' : ''">
+              <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="introductionArr[7]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
+          <a class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+            <i class="fa fa-floppy-o"></i>&nbsp;</a>
+          <a id="Nextdiv33" class="btn btn-info" value="Next" (click)="selectTab(1)" style="margin-right:2px;">Next&nbsp;
+            <i class="fa fa-arrow-right"></i>&nbsp;</a>
+        </div>
+      </tab>
+      <tab customClass="eval-main-nav-li">
+        <ng-template tabHeading>
+          <span>
+            <i class="fa fa-question-circle" aria-hidden="true"></i>Questions</span>
+        </ng-template>
+        <tabset [vertical]="true" type="pills" id="test">
+          <tab heading="Question 1">
+            <div class="col-md-12 tab-content-container">
+              <h4 class="questionstxt margin-bottom-40">What aspects of your training and education have helped you most on the job/school</h4>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Listen</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab1Arr[0]=='1')?'red-bar':(QuestionTab1Arr[0]=='2') ? 'yellow-bar':(QuestionTab1Arr[0]=='3') ? 'blue-bar':(QuestionTab1Arr[0]=='4') ? 'orange-bar' : (QuestionTab1Arr[0]=='5') ? 'green-bar' : ''" >
+                  <nouislider #slider [tooltips]=[true] [config]="someKeyboardConfig" [(ngModel)]="QuestionTab1Arr[0]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Bold</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab1Arr[1]=='1')?'red-bar':(QuestionTab1Arr[1]=='2') ? 'yellow-bar':(QuestionTab1Arr[1]=='3') ? 'blue-bar':(QuestionTab1Arr[1]=='4') ? 'orange-bar' : (QuestionTab1Arr[1]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab1Arr[1]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Brief </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab1Arr[2]=='1')?'red-bar':(QuestionTab1Arr[2]=='2') ? 'yellow-bar':(QuestionTab1Arr[2]=='3') ? 'blue-bar':(QuestionTab1Arr[2]=='4') ? 'orange-bar' : (QuestionTab1Arr[2]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab1Arr[2]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Clear</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab1Arr[3]=='1')?'red-bar':(QuestionTab1Arr[3]=='2') ? 'yellow-bar':(QuestionTab1Arr[3]=='3') ? 'blue-bar':(QuestionTab1Arr[3]=='4') ? 'orange-bar' : (QuestionTab1Arr[3]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab1Arr[3]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>To The Point </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab1Arr[4]=='1')?'red-bar':(QuestionTab1Arr[4]=='2') ? 'yellow-bar':(QuestionTab1Arr[4]=='3') ? 'blue-bar':(QuestionTab1Arr[4]=='4') ? 'orange-bar' : (QuestionTab1Arr[4]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab1Arr[4]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Controlled Breathing</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab1Arr[5]=='1')?'red-bar':(QuestionTab1Arr[5]=='2') ? 'yellow-bar':(QuestionTab1Arr[5]=='3') ? 'blue-bar':(QuestionTab1Arr[5]=='4') ? 'orange-bar' : (QuestionTab1Arr[5]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab1Arr[5]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Passionate </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab1Arr[6]=='1')?'red-bar':(QuestionTab1Arr[6]=='2') ? 'yellow-bar':(QuestionTab1Arr[6]=='3') ? 'blue-bar':(QuestionTab1Arr[6]=='4') ? 'orange-bar' : (QuestionTab1Arr[6]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab1Arr[6]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Professional</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab1Arr[7]=='1')?'red-bar':(QuestionTab1Arr[7]=='2') ? 'yellow-bar':(QuestionTab1Arr[7]=='3') ? 'blue-bar':(QuestionTab1Arr[7]=='4') ? 'orange-bar' : (QuestionTab1Arr[7]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab1Arr[7]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Confident </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab1Arr[8]=='1')?'red-bar':(QuestionTab1Arr[8]=='2') ? 'yellow-bar':(QuestionTab1Arr[8]=='3') ? 'blue-bar':(QuestionTab1Arr[8]=='4') ? 'orange-bar' : (QuestionTab1Arr[8]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab1Arr[8]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Assertive</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab1Arr[9]=='1')?'red-bar':(QuestionTab1Arr[9]=='2') ? 'yellow-bar':(QuestionTab1Arr[9]=='3') ? 'blue-bar':(QuestionTab1Arr[9]=='4') ? 'orange-bar' : (QuestionTab1Arr[9]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab1Arr[9]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Friendly </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab1Arr[10]=='1')?'red-bar':(QuestionTab1Arr[10]=='2') ? 'yellow-bar':(QuestionTab1Arr[10]=='3') ? 'blue-bar':(QuestionTab1Arr[10]=='4') ? 'orange-bar' : (QuestionTab1Arr[10]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab1Arr[10]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Prepared</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab1Arr[11]=='1')?'red-bar':(QuestionTab1Arr[11]=='2') ? 'yellow-bar':(QuestionTab1Arr[11]=='3') ? 'blue-bar':(QuestionTab1Arr[11]=='4') ? 'orange-bar' : (QuestionTab1Arr[11]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab1Arr[11]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Well Rested </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab1Arr[12]=='1')?'red-bar':(QuestionTab1Arr[12]=='2') ? 'yellow-bar':(QuestionTab1Arr[12]=='3') ? 'blue-bar':(QuestionTab1Arr[12]=='4') ? 'orange-bar' : (QuestionTab1Arr[12]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab1Arr[12]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Use of Ums and Ahs</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab1Arr[13]=='1')?'red-bar':(QuestionTab1Arr[13]=='2') ? 'yellow-bar':(QuestionTab1Arr[13]=='3') ? 'blue-bar':(QuestionTab1Arr[13]=='4') ? 'orange-bar' : (QuestionTab1Arr[13]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab1Arr[13]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Vocal Variety</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab1Arr[14]=='1')?'red-bar':(QuestionTab1Arr[14]=='2') ? 'yellow-bar':(QuestionTab1Arr[14]=='3') ? 'blue-bar':(QuestionTab1Arr[14]=='4') ? 'orange-bar' : (QuestionTab1Arr[14]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab1Arr[14]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Energy</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab1Arr[15]=='1')?'red-bar':(QuestionTab1Arr[15]=='2') ? 'yellow-bar':(QuestionTab1Arr[15]=='3') ? 'blue-bar':(QuestionTab1Arr[15]=='4') ? 'orange-bar' : (QuestionTab1Arr[15]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab1Arr[15]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Integrity</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab1Arr[16]=='1')?'red-bar':(QuestionTab1Arr[16]=='2') ? 'yellow-bar':(QuestionTab1Arr[16]=='3') ? 'blue-bar':(QuestionTab1Arr[16]=='4') ? 'orange-bar' : (QuestionTab1Arr[16]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab1Arr[16]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Intellectually Curious</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab1Arr[17]=='1')?'red-bar':(QuestionTab1Arr[17]=='2') ? 'yellow-bar':(QuestionTab1Arr[17]=='3') ? 'blue-bar':(QuestionTab1Arr[17]=='4') ? 'orange-bar' : (QuestionTab1Arr[17]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab1Arr[17]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Creative</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab1Arr[18]=='1')?'red-bar':(QuestionTab1Arr[18]=='2') ? 'yellow-bar':(QuestionTab1Arr[18]=='3') ? 'blue-bar':(QuestionTab1Arr[18]=='4') ? 'orange-bar' : (QuestionTab1Arr[18]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab1Arr[18]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Ambitious</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab1Arr[19]=='1')?'red-bar':(QuestionTab1Arr[19]=='2') ? 'yellow-bar':(QuestionTab1Arr[19]=='3') ? 'blue-bar':(QuestionTab1Arr[19]=='4') ? 'orange-bar' : (QuestionTab1Arr[19]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab1Arr[19]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Inclusive</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab1Arr[20]=='1')?'red-bar':(QuestionTab1Arr[20]=='2') ? 'yellow-bar':(QuestionTab1Arr[20]=='3') ? 'blue-bar':(QuestionTab1Arr[20]=='4') ? 'orange-bar' : (QuestionTab1Arr[20]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab1Arr[20]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Decisive</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab1Arr[21]=='1')?'red-bar':(QuestionTab1Arr[21]=='2') ? 'yellow-bar':(QuestionTab1Arr[21]=='3') ? 'blue-bar':(QuestionTab1Arr[21]=='4') ? 'orange-bar' : (QuestionTab1Arr[21]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab1Arr[21]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Visionary</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab1Arr[22]=='1')?'red-bar':(QuestionTab1Arr[22]=='2') ? 'yellow-bar':(QuestionTab1Arr[22]=='3') ? 'blue-bar':(QuestionTab1Arr[22]=='4') ? 'orange-bar' : (QuestionTab1Arr[22]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab1Arr[22]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Smart</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab1Arr[23]=='1')?'red-bar':(QuestionTab1Arr[23]=='2') ? 'yellow-bar':(QuestionTab1Arr[23]=='3') ? 'blue-bar':(QuestionTab1Arr[23]=='4') ? 'orange-bar' : (QuestionTab1Arr[23]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab1Arr[23]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+            </div>
+              <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
+                <a id="Prevdiv32" class="btn btn-info" value="Prev" (click)="selectTab(0)" style="margin-right:2px;">
+                  <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
+                <a class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                  <i class="fa fa-floppy-o"></i>&nbsp;</a>
+                <a id="Nextdiv33" class="btn btn-info" value="Next" (click)="selectTab(2)" style="margin-right:2px;">Next&nbsp;
+                  <i class="fa fa-arrow-right"></i>&nbsp;</a>
+              </div>
+          </tab>
+          <tab heading="Question 2">
+            <div class="col-md-12 tab-content-container">
+              <h4 class="questionstxt margin-bottom-40">What are the two greatest accomplishments</h4>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Listen</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab2Arr[0]=='1')?'red-bar':(QuestionTab2Arr[0]=='2') ? 'yellow-bar':(QuestionTab2Arr[0]=='3') ? 'blue-bar':(QuestionTab2Arr[0]=='4') ? 'orange-bar' : (QuestionTab2Arr[0]=='5') ? 'green-bar' : ''" >
+                  <nouislider #slider [tooltips]=[true] [config]="someKeyboardConfig" [(ngModel)]="QuestionTab2Arr[0]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Bold</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab2Arr[1]=='1')?'red-bar':(QuestionTab2Arr[1]=='2') ? 'yellow-bar':(QuestionTab2Arr[1]=='3') ? 'blue-bar':(QuestionTab2Arr[1]=='4') ? 'orange-bar' : (QuestionTab2Arr[1]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab2Arr[1]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Brief </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab2Arr[2]=='1')?'red-bar':(QuestionTab2Arr[2]=='2') ? 'yellow-bar':(QuestionTab2Arr[2]=='3') ? 'blue-bar':(QuestionTab2Arr[2]=='4') ? 'orange-bar' : (QuestionTab2Arr[2]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab2Arr[2]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Clear</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab2Arr[3]=='1')?'red-bar':(QuestionTab2Arr[3]=='2') ? 'yellow-bar':(QuestionTab2Arr[3]=='3') ? 'blue-bar':(QuestionTab2Arr[3]=='4') ? 'orange-bar' : (QuestionTab2Arr[3]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab2Arr[3]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>To The Point </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab2Arr[4]=='1')?'red-bar':(QuestionTab2Arr[4]=='2') ? 'yellow-bar':(QuestionTab2Arr[4]=='3') ? 'blue-bar':(QuestionTab2Arr[4]=='4') ? 'orange-bar' : (QuestionTab2Arr[4]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab2Arr[4]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Controlled Breathing</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab2Arr[5]=='1')?'red-bar':(QuestionTab2Arr[5]=='2') ? 'yellow-bar':(QuestionTab2Arr[5]=='3') ? 'blue-bar':(QuestionTab2Arr[5]=='4') ? 'orange-bar' : (QuestionTab2Arr[5]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab2Arr[5]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Passionate </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab2Arr[6]=='1')?'red-bar':(QuestionTab2Arr[6]=='2') ? 'yellow-bar':(QuestionTab2Arr[6]=='3') ? 'blue-bar':(QuestionTab2Arr[6]=='4') ? 'orange-bar' : (QuestionTab2Arr[6]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab2Arr[6]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Professional</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab2Arr[7]=='1')?'red-bar':(QuestionTab2Arr[7]=='2') ? 'yellow-bar':(QuestionTab2Arr[7]=='3') ? 'blue-bar':(QuestionTab2Arr[7]=='4') ? 'orange-bar' : (QuestionTab2Arr[7]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab2Arr[7]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Confident </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab2Arr[8]=='1')?'red-bar':(QuestionTab2Arr[8]=='2') ? 'yellow-bar':(QuestionTab2Arr[8]=='3') ? 'blue-bar':(QuestionTab2Arr[8]=='4') ? 'orange-bar' : (QuestionTab2Arr[8]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab2Arr[8]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Assertive</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab2Arr[9]=='1')?'red-bar':(QuestionTab2Arr[9]=='2') ? 'yellow-bar':(QuestionTab2Arr[9]=='3') ? 'blue-bar':(QuestionTab2Arr[9]=='4') ? 'orange-bar' : (QuestionTab2Arr[9]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab2Arr[9]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Friendly </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab2Arr[10]=='1')?'red-bar':(QuestionTab2Arr[10]=='2') ? 'yellow-bar':(QuestionTab2Arr[10]=='3') ? 'blue-bar':(QuestionTab2Arr[10]=='4') ? 'orange-bar' : (QuestionTab2Arr[10]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab2Arr[10]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Prepared</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab2Arr[11]=='1')?'red-bar':(QuestionTab2Arr[11]=='2') ? 'yellow-bar':(QuestionTab2Arr[11]=='3') ? 'blue-bar':(QuestionTab2Arr[11]=='4') ? 'orange-bar' : (QuestionTab2Arr[11]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab2Arr[11]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Well Rested </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab2Arr[12]=='1')?'red-bar':(QuestionTab2Arr[12]=='2') ? 'yellow-bar':(QuestionTab2Arr[12]=='3') ? 'blue-bar':(QuestionTab2Arr[12]=='4') ? 'orange-bar' : (QuestionTab2Arr[12]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab2Arr[12]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Use of Ums and Ahs</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab2Arr[13]=='1')?'red-bar':(QuestionTab2Arr[13]=='2') ? 'yellow-bar':(QuestionTab2Arr[13]=='3') ? 'blue-bar':(QuestionTab2Arr[13]=='4') ? 'orange-bar' : (QuestionTab2Arr[13]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab2Arr[13]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Vocal Variety</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab2Arr[14]=='1')?'red-bar':(QuestionTab2Arr[14]=='2') ? 'yellow-bar':(QuestionTab2Arr[14]=='3') ? 'blue-bar':(QuestionTab2Arr[14]=='4') ? 'orange-bar' : (QuestionTab2Arr[14]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab2Arr[14]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Energy</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab2Arr[15]=='1')?'red-bar':(QuestionTab2Arr[15]=='2') ? 'yellow-bar':(QuestionTab2Arr[15]=='3') ? 'blue-bar':(QuestionTab2Arr[15]=='4') ? 'orange-bar' : (QuestionTab2Arr[15]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab2Arr[15]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Integrity</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab2Arr[16]=='1')?'red-bar':(QuestionTab2Arr[16]=='2') ? 'yellow-bar':(QuestionTab2Arr[16]=='3') ? 'blue-bar':(QuestionTab2Arr[16]=='4') ? 'orange-bar' : (QuestionTab2Arr[16]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab2Arr[16]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Intellectually Curious</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab2Arr[17]=='1')?'red-bar':(QuestionTab2Arr[17]=='2') ? 'yellow-bar':(QuestionTab2Arr[17]=='3') ? 'blue-bar':(QuestionTab2Arr[17]=='4') ? 'orange-bar' : (QuestionTab2Arr[17]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab2Arr[17]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Creative</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab2Arr[18]=='1')?'red-bar':(QuestionTab2Arr[18]=='2') ? 'yellow-bar':(QuestionTab2Arr[18]=='3') ? 'blue-bar':(QuestionTab2Arr[18]=='4') ? 'orange-bar' : (QuestionTab2Arr[18]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab2Arr[18]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Ambitious</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab2Arr[19]=='1')?'red-bar':(QuestionTab2Arr[19]=='2') ? 'yellow-bar':(QuestionTab2Arr[19]=='3') ? 'blue-bar':(QuestionTab2Arr[19]=='4') ? 'orange-bar' : (QuestionTab2Arr[19]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab2Arr[19]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Inclusive</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab2Arr[20]=='1')?'red-bar':(QuestionTab2Arr[20]=='2') ? 'yellow-bar':(QuestionTab2Arr[20]=='3') ? 'blue-bar':(QuestionTab2Arr[20]=='4') ? 'orange-bar' : (QuestionTab2Arr[20]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab2Arr[20]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Decisive</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab2Arr[21]=='1')?'red-bar':(QuestionTab2Arr[21]=='2') ? 'yellow-bar':(QuestionTab2Arr[21]=='3') ? 'blue-bar':(QuestionTab2Arr[21]=='4') ? 'orange-bar' : (QuestionTab2Arr[21]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab2Arr[21]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Visionary</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab2Arr[22]=='1')?'red-bar':(QuestionTab2Arr[22]=='2') ? 'yellow-bar':(QuestionTab2Arr[22]=='3') ? 'blue-bar':(QuestionTab2Arr[22]=='4') ? 'orange-bar' : (QuestionTab2Arr[22]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab2Arr[22]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Smart</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab2Arr[23]=='1')?'red-bar':(QuestionTab2Arr[23]=='2') ? 'yellow-bar':(QuestionTab2Arr[23]=='3') ? 'blue-bar':(QuestionTab2Arr[23]=='4') ? 'orange-bar' : (QuestionTab2Arr[23]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab2Arr[23]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+            </div>
+              <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
+                <a id="Prevdiv32" class="btn btn-info" value="Prev" (click)="selectTab(0)" style="margin-right:2px;">
+                  <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
+                <a class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                  <i class="fa fa-floppy-o"></i>&nbsp;</a>
+                <a id="Nextdiv33" class="btn btn-info" value="Next" (click)="selectTab(2)" style="margin-right:2px;">Next&nbsp;
+                  <i class="fa fa-arrow-right"></i>&nbsp;</a>
+              </div>
+          </tab>
+          <tab heading="Question 3">
+            <div class="col-md-12 tab-content-container">
+              <h4 class="questionstxt margin-bottom-40">What did you like most and least about your previous jobs</h4>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Listen</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab3Arr[0]=='1')?'red-bar':(QuestionTab3Arr[0]=='2') ? 'yellow-bar':(QuestionTab3Arr[0]=='3') ? 'blue-bar':(QuestionTab3Arr[0]=='4') ? 'orange-bar' : (QuestionTab3Arr[0]=='5') ? 'green-bar' : ''" >
+                  <nouislider #slider [tooltips]=[true] [config]="someKeyboardConfig" [(ngModel)]="QuestionTab3Arr[0]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Bold</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab3Arr[1]=='1')?'red-bar':(QuestionTab3Arr[1]=='2') ? 'yellow-bar':(QuestionTab3Arr[1]=='3') ? 'blue-bar':(QuestionTab3Arr[1]=='4') ? 'orange-bar' : (QuestionTab3Arr[1]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab3Arr[1]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Brief </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab3Arr[2]=='1')?'red-bar':(QuestionTab3Arr[2]=='2') ? 'yellow-bar':(QuestionTab3Arr[2]=='3') ? 'blue-bar':(QuestionTab3Arr[2]=='4') ? 'orange-bar' : (QuestionTab3Arr[2]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab3Arr[2]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Clear</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab3Arr[3]=='1')?'red-bar':(QuestionTab3Arr[3]=='2') ? 'yellow-bar':(QuestionTab3Arr[3]=='3') ? 'blue-bar':(QuestionTab3Arr[3]=='4') ? 'orange-bar' : (QuestionTab3Arr[3]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab3Arr[3]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>To The Point </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab3Arr[4]=='1')?'red-bar':(QuestionTab3Arr[4]=='2') ? 'yellow-bar':(QuestionTab3Arr[4]=='3') ? 'blue-bar':(QuestionTab3Arr[4]=='4') ? 'orange-bar' : (QuestionTab3Arr[4]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab3Arr[4]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Controlled Breathing</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab3Arr[5]=='1')?'red-bar':(QuestionTab3Arr[5]=='2') ? 'yellow-bar':(QuestionTab3Arr[5]=='3') ? 'blue-bar':(QuestionTab3Arr[5]=='4') ? 'orange-bar' : (QuestionTab3Arr[5]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab3Arr[5]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Passionate </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab3Arr[6]=='1')?'red-bar':(QuestionTab3Arr[6]=='2') ? 'yellow-bar':(QuestionTab3Arr[6]=='3') ? 'blue-bar':(QuestionTab3Arr[6]=='4') ? 'orange-bar' : (QuestionTab3Arr[6]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab3Arr[6]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Professional</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab3Arr[7]=='1')?'red-bar':(QuestionTab3Arr[7]=='2') ? 'yellow-bar':(QuestionTab3Arr[7]=='3') ? 'blue-bar':(QuestionTab3Arr[7]=='4') ? 'orange-bar' : (QuestionTab3Arr[7]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab3Arr[7]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Confident </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab3Arr[8]=='1')?'red-bar':(QuestionTab3Arr[8]=='2') ? 'yellow-bar':(QuestionTab3Arr[8]=='3') ? 'blue-bar':(QuestionTab3Arr[8]=='4') ? 'orange-bar' : (QuestionTab3Arr[8]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab3Arr[8]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Assertive</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab3Arr[9]=='1')?'red-bar':(QuestionTab3Arr[9]=='2') ? 'yellow-bar':(QuestionTab3Arr[9]=='3') ? 'blue-bar':(QuestionTab3Arr[9]=='4') ? 'orange-bar' : (QuestionTab3Arr[9]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab3Arr[9]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Friendly </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab3Arr[10]=='1')?'red-bar':(QuestionTab3Arr[10]=='2') ? 'yellow-bar':(QuestionTab3Arr[10]=='3') ? 'blue-bar':(QuestionTab3Arr[10]=='4') ? 'orange-bar' : (QuestionTab3Arr[10]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab3Arr[10]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Prepared</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab3Arr[11]=='1')?'red-bar':(QuestionTab3Arr[11]=='2') ? 'yellow-bar':(QuestionTab3Arr[11]=='3') ? 'blue-bar':(QuestionTab3Arr[11]=='4') ? 'orange-bar' : (QuestionTab3Arr[11]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab3Arr[11]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Well Rested </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab3Arr[12]=='1')?'red-bar':(QuestionTab3Arr[12]=='2') ? 'yellow-bar':(QuestionTab3Arr[12]=='3') ? 'blue-bar':(QuestionTab3Arr[12]=='4') ? 'orange-bar' : (QuestionTab3Arr[12]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab3Arr[12]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Use of Ums and Ahs</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab3Arr[13]=='1')?'red-bar':(QuestionTab3Arr[13]=='2') ? 'yellow-bar':(QuestionTab3Arr[13]=='3') ? 'blue-bar':(QuestionTab3Arr[13]=='4') ? 'orange-bar' : (QuestionTab3Arr[13]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab3Arr[13]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Vocal Variety</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab3Arr[14]=='1')?'red-bar':(QuestionTab3Arr[14]=='2') ? 'yellow-bar':(QuestionTab3Arr[14]=='3') ? 'blue-bar':(QuestionTab3Arr[14]=='4') ? 'orange-bar' : (QuestionTab3Arr[14]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab3Arr[14]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Energy</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab3Arr[15]=='1')?'red-bar':(QuestionTab3Arr[15]=='2') ? 'yellow-bar':(QuestionTab3Arr[15]=='3') ? 'blue-bar':(QuestionTab3Arr[15]=='4') ? 'orange-bar' : (QuestionTab3Arr[15]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab3Arr[15]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Integrity</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab3Arr[16]=='1')?'red-bar':(QuestionTab3Arr[16]=='2') ? 'yellow-bar':(QuestionTab3Arr[16]=='3') ? 'blue-bar':(QuestionTab3Arr[16]=='4') ? 'orange-bar' : (QuestionTab3Arr[16]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab3Arr[16]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Intellectually Curious</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab3Arr[17]=='1')?'red-bar':(QuestionTab3Arr[17]=='2') ? 'yellow-bar':(QuestionTab3Arr[17]=='3') ? 'blue-bar':(QuestionTab3Arr[17]=='4') ? 'orange-bar' : (QuestionTab3Arr[17]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab3Arr[17]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Creative</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab3Arr[18]=='1')?'red-bar':(QuestionTab3Arr[18]=='2') ? 'yellow-bar':(QuestionTab3Arr[18]=='3') ? 'blue-bar':(QuestionTab3Arr[18]=='4') ? 'orange-bar' : (QuestionTab3Arr[18]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab3Arr[18]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Ambitious</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab3Arr[19]=='1')?'red-bar':(QuestionTab3Arr[19]=='2') ? 'yellow-bar':(QuestionTab3Arr[19]=='3') ? 'blue-bar':(QuestionTab3Arr[19]=='4') ? 'orange-bar' : (QuestionTab3Arr[19]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab3Arr[19]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Inclusive</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab3Arr[20]=='1')?'red-bar':(QuestionTab3Arr[20]=='2') ? 'yellow-bar':(QuestionTab3Arr[20]=='3') ? 'blue-bar':(QuestionTab3Arr[20]=='4') ? 'orange-bar' : (QuestionTab3Arr[20]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab3Arr[20]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Decisive</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab3Arr[21]=='1')?'red-bar':(QuestionTab3Arr[21]=='2') ? 'yellow-bar':(QuestionTab3Arr[21]=='3') ? 'blue-bar':(QuestionTab3Arr[21]=='4') ? 'orange-bar' : (QuestionTab3Arr[21]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab3Arr[21]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Visionary</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab3Arr[22]=='1')?'red-bar':(QuestionTab3Arr[22]=='2') ? 'yellow-bar':(QuestionTab3Arr[22]=='3') ? 'blue-bar':(QuestionTab3Arr[22]=='4') ? 'orange-bar' : (QuestionTab3Arr[22]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab3Arr[22]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Smart</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab3Arr[23]=='1')?'red-bar':(QuestionTab3Arr[23]=='2') ? 'yellow-bar':(QuestionTab3Arr[23]=='3') ? 'blue-bar':(QuestionTab3Arr[23]=='4') ? 'orange-bar' : (QuestionTab3Arr[23]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab3Arr[23]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+            </div>
+              <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
+                <a id="Prevdiv32" class="btn btn-info" value="Prev" (click)="selectTab(0)" style="margin-right:2px;">
+                  <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
+                <a class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                  <i class="fa fa-floppy-o"></i>&nbsp;</a>
+                <a id="Nextdiv33" class="btn btn-info" value="Next" (click)="selectTab(2)" style="margin-right:2px;">Next&nbsp;
+                  <i class="fa fa-arrow-right"></i>&nbsp;</a>
+              </div>
+          </tab>
+          <tab heading="Question 4">
+            <div class="col-md-12 tab-content-container">
+                <h4 class="questionstxt margin-bottom-40">Why should an organization hire you</h4>
+                <div class="col-md-12">
+                  <div class="col-md-3 option-label">
+                    <p>Listen</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab4Arr[0]=='1')?'red-bar':(QuestionTab4Arr[0]=='2') ? 'yellow-bar':(QuestionTab4Arr[0]=='3') ? 'blue-bar':(QuestionTab4Arr[0]=='4') ? 'orange-bar' : (QuestionTab4Arr[0]=='5') ? 'green-bar' : ''" >
+                    <nouislider #slider [tooltips]=[true] [config]="someKeyboardConfig" [(ngModel)]="QuestionTab4Arr[0]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                  <div class="col-md-3 option-label">
+                    <p>Bold</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab4Arr[1]=='1')?'red-bar':(QuestionTab4Arr[1]=='2') ? 'yellow-bar':(QuestionTab4Arr[1]=='3') ? 'blue-bar':(QuestionTab4Arr[1]=='4') ? 'orange-bar' : (QuestionTab4Arr[1]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab4Arr[1]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-3 option-label">
+                    <p>Brief </p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab4Arr[2]=='1')?'red-bar':(QuestionTab4Arr[2]=='2') ? 'yellow-bar':(QuestionTab4Arr[2]=='3') ? 'blue-bar':(QuestionTab4Arr[2]=='4') ? 'orange-bar' : (QuestionTab4Arr[2]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab4Arr[2]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                  <div class="col-md-3 option-label">
+                    <p>Clear</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab4Arr[3]=='1')?'red-bar':(QuestionTab4Arr[3]=='2') ? 'yellow-bar':(QuestionTab4Arr[3]=='3') ? 'blue-bar':(QuestionTab4Arr[3]=='4') ? 'orange-bar' : (QuestionTab4Arr[3]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab4Arr[3]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-3 option-label">
+                    <p>To The Point </p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab4Arr[4]=='1')?'red-bar':(QuestionTab4Arr[4]=='2') ? 'yellow-bar':(QuestionTab4Arr[4]=='3') ? 'blue-bar':(QuestionTab4Arr[4]=='4') ? 'orange-bar' : (QuestionTab4Arr[4]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab4Arr[4]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                  <div class="col-md-3 option-label">
+                    <p>Controlled Breathing</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab4Arr[5]=='1')?'red-bar':(QuestionTab4Arr[5]=='2') ? 'yellow-bar':(QuestionTab4Arr[5]=='3') ? 'blue-bar':(QuestionTab4Arr[5]=='4') ? 'orange-bar' : (QuestionTab4Arr[5]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab4Arr[5]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-3 option-label">
+                    <p>Passionate </p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab4Arr[6]=='1')?'red-bar':(QuestionTab4Arr[6]=='2') ? 'yellow-bar':(QuestionTab4Arr[6]=='3') ? 'blue-bar':(QuestionTab4Arr[6]=='4') ? 'orange-bar' : (QuestionTab4Arr[6]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab4Arr[6]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                  <div class="col-md-3 option-label">
+                    <p>Professional</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab4Arr[7]=='1')?'red-bar':(QuestionTab4Arr[7]=='2') ? 'yellow-bar':(QuestionTab4Arr[7]=='3') ? 'blue-bar':(QuestionTab4Arr[7]=='4') ? 'orange-bar' : (QuestionTab4Arr[7]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab4Arr[7]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-3 option-label">
+                    <p>Confident </p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab4Arr[8]=='1')?'red-bar':(QuestionTab4Arr[8]=='2') ? 'yellow-bar':(QuestionTab4Arr[8]=='3') ? 'blue-bar':(QuestionTab4Arr[8]=='4') ? 'orange-bar' : (QuestionTab4Arr[8]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab4Arr[8]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                  <div class="col-md-3 option-label">
+                    <p>Assertive</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab4Arr[9]=='1')?'red-bar':(QuestionTab4Arr[9]=='2') ? 'yellow-bar':(QuestionTab4Arr[9]=='3') ? 'blue-bar':(QuestionTab4Arr[9]=='4') ? 'orange-bar' : (QuestionTab4Arr[9]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab4Arr[9]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-3 option-label">
+                    <p>Friendly </p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab4Arr[10]=='1')?'red-bar':(QuestionTab4Arr[10]=='2') ? 'yellow-bar':(QuestionTab4Arr[10]=='3') ? 'blue-bar':(QuestionTab4Arr[10]=='4') ? 'orange-bar' : (QuestionTab4Arr[10]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab4Arr[10]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                  <div class="col-md-3 option-label">
+                    <p>Prepared</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab4Arr[11]=='1')?'red-bar':(QuestionTab4Arr[11]=='2') ? 'yellow-bar':(QuestionTab4Arr[11]=='3') ? 'blue-bar':(QuestionTab4Arr[11]=='4') ? 'orange-bar' : (QuestionTab4Arr[11]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab4Arr[11]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-3 option-label">
+                    <p>Well Rested </p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab4Arr[12]=='1')?'red-bar':(QuestionTab4Arr[12]=='2') ? 'yellow-bar':(QuestionTab4Arr[12]=='3') ? 'blue-bar':(QuestionTab4Arr[12]=='4') ? 'orange-bar' : (QuestionTab4Arr[12]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab4Arr[12]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                  <div class="col-md-3 option-label">
+                    <p>Use of Ums and Ahs</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab4Arr[13]=='1')?'red-bar':(QuestionTab4Arr[13]=='2') ? 'yellow-bar':(QuestionTab4Arr[13]=='3') ? 'blue-bar':(QuestionTab4Arr[13]=='4') ? 'orange-bar' : (QuestionTab4Arr[13]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab4Arr[13]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-3 option-label">
+                    <p>Vocal Variety</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab4Arr[14]=='1')?'red-bar':(QuestionTab4Arr[14]=='2') ? 'yellow-bar':(QuestionTab4Arr[14]=='3') ? 'blue-bar':(QuestionTab4Arr[14]=='4') ? 'orange-bar' : (QuestionTab4Arr[14]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab4Arr[14]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                  <div class="col-md-3 option-label">
+                    <p>Energy</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab4Arr[15]=='1')?'red-bar':(QuestionTab4Arr[15]=='2') ? 'yellow-bar':(QuestionTab4Arr[15]=='3') ? 'blue-bar':(QuestionTab4Arr[15]=='4') ? 'orange-bar' : (QuestionTab4Arr[15]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab4Arr[15]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-3 option-label">
+                    <p>Integrity</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab4Arr[16]=='1')?'red-bar':(QuestionTab4Arr[16]=='2') ? 'yellow-bar':(QuestionTab4Arr[16]=='3') ? 'blue-bar':(QuestionTab4Arr[16]=='4') ? 'orange-bar' : (QuestionTab4Arr[16]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab4Arr[16]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                  <div class="col-md-3 option-label">
+                    <p>Intellectually Curious</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab4Arr[17]=='1')?'red-bar':(QuestionTab4Arr[17]=='2') ? 'yellow-bar':(QuestionTab4Arr[17]=='3') ? 'blue-bar':(QuestionTab4Arr[17]=='4') ? 'orange-bar' : (QuestionTab4Arr[17]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab4Arr[17]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-3 option-label">
+                    <p>Creative</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab4Arr[18]=='1')?'red-bar':(QuestionTab4Arr[18]=='2') ? 'yellow-bar':(QuestionTab4Arr[18]=='3') ? 'blue-bar':(QuestionTab4Arr[18]=='4') ? 'orange-bar' : (QuestionTab4Arr[18]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab4Arr[18]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                  <div class="col-md-3 option-label">
+                    <p>Ambitious</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab4Arr[19]=='1')?'red-bar':(QuestionTab4Arr[19]=='2') ? 'yellow-bar':(QuestionTab4Arr[19]=='3') ? 'blue-bar':(QuestionTab4Arr[19]=='4') ? 'orange-bar' : (QuestionTab4Arr[19]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab4Arr[19]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-3 option-label">
+                    <p>Inclusive</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab4Arr[20]=='1')?'red-bar':(QuestionTab4Arr[20]=='2') ? 'yellow-bar':(QuestionTab4Arr[20]=='3') ? 'blue-bar':(QuestionTab4Arr[20]=='4') ? 'orange-bar' : (QuestionTab4Arr[20]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab4Arr[20]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                  <div class="col-md-3 option-label">
+                    <p>Decisive</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab4Arr[21]=='1')?'red-bar':(QuestionTab4Arr[21]=='2') ? 'yellow-bar':(QuestionTab4Arr[21]=='3') ? 'blue-bar':(QuestionTab4Arr[21]=='4') ? 'orange-bar' : (QuestionTab4Arr[21]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab4Arr[21]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-3 option-label">
+                    <p>Visionary</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab4Arr[22]=='1')?'red-bar':(QuestionTab4Arr[22]=='2') ? 'yellow-bar':(QuestionTab4Arr[22]=='3') ? 'blue-bar':(QuestionTab4Arr[22]=='4') ? 'orange-bar' : (QuestionTab4Arr[22]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab4Arr[22]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                  <div class="col-md-3 option-label">
+                    <p>Smart</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab4Arr[23]=='1')?'red-bar':(QuestionTab4Arr[23]=='2') ? 'yellow-bar':(QuestionTab4Arr[23]=='3') ? 'blue-bar':(QuestionTab4Arr[23]=='4') ? 'orange-bar' : (QuestionTab4Arr[23]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab1Arr[23]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                </div>
+            </div>
+              <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
+                <a id="Prevdiv32" class="btn btn-info" value="Prev" (click)="selectTab(0)" style="margin-right:2px;">
+                  <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
+                <a class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                  <i class="fa fa-floppy-o"></i>&nbsp;</a>
+                <a id="Nextdiv33" class="btn btn-info" value="Next" (click)="selectTab(2)" style="margin-right:2px;">Next&nbsp;
+                  <i class="fa fa-arrow-right"></i>&nbsp;</a>
+              </div>
+          </tab>
+          <tab heading="Question 5">
+            <div class="col-md-12 tab-content-container">
+                <h4 class="questionstxt margin-bottom-40">What do you feel are the requirements for good leadership</h4>
+                <div class="col-md-12">
+                  <div class="col-md-3 option-label">
+                    <p>Listen</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab5Arr[0]=='1')?'red-bar':(QuestionTab5Arr[0]=='2') ? 'yellow-bar':(QuestionTab5Arr[0]=='3') ? 'blue-bar':(QuestionTab5Arr[0]=='4') ? 'orange-bar' : (QuestionTab5Arr[0]=='5') ? 'green-bar' : ''" >
+                    <nouislider #slider [tooltips]=[true] [config]="someKeyboardConfig" [(ngModel)]="QuestionTab5Arr[0]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                  <div class="col-md-3 option-label">
+                    <p>Bold</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab5Arr[1]=='1')?'red-bar':(QuestionTab5Arr[1]=='2') ? 'yellow-bar':(QuestionTab5Arr[1]=='3') ? 'blue-bar':(QuestionTab5Arr[1]=='4') ? 'orange-bar' : (QuestionTab5Arr[1]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab5Arr[1]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-3 option-label">
+                    <p>Brief </p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab5Arr[2]=='1')?'red-bar':(QuestionTab5Arr[2]=='2') ? 'yellow-bar':(QuestionTab5Arr[2]=='3') ? 'blue-bar':(QuestionTab5Arr[2]=='4') ? 'orange-bar' : (QuestionTab5Arr[2]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab5Arr[2]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                  <div class="col-md-3 option-label">
+                    <p>Clear</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab5Arr[3]=='1')?'red-bar':(QuestionTab5Arr[3]=='2') ? 'yellow-bar':(QuestionTab5Arr[3]=='3') ? 'blue-bar':(QuestionTab5Arr[3]=='4') ? 'orange-bar' : (QuestionTab5Arr[3]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab5Arr[3]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-3 option-label">
+                    <p>To The Point </p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab5Arr[4]=='1')?'red-bar':(QuestionTab5Arr[4]=='2') ? 'yellow-bar':(QuestionTab5Arr[4]=='3') ? 'blue-bar':(QuestionTab5Arr[4]=='4') ? 'orange-bar' : (QuestionTab5Arr[4]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab5Arr[4]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                  <div class="col-md-3 option-label">
+                    <p>Controlled Breathing</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab5Arr[5]=='1')?'red-bar':(QuestionTab5Arr[5]=='2') ? 'yellow-bar':(QuestionTab5Arr[5]=='3') ? 'blue-bar':(QuestionTab5Arr[5]=='4') ? 'orange-bar' : (QuestionTab5Arr[5]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab5Arr[5]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-3 option-label">
+                    <p>Passionate </p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab5Arr[6]=='1')?'red-bar':(QuestionTab5Arr[6]=='2') ? 'yellow-bar':(QuestionTab5Arr[6]=='3') ? 'blue-bar':(QuestionTab5Arr[6]=='4') ? 'orange-bar' : (QuestionTab5Arr[6]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab5Arr[6]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                  <div class="col-md-3 option-label">
+                    <p>Professional</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab5Arr[7]=='1')?'red-bar':(QuestionTab5Arr[7]=='2') ? 'yellow-bar':(QuestionTab5Arr[7]=='3') ? 'blue-bar':(QuestionTab5Arr[7]=='4') ? 'orange-bar' : (QuestionTab5Arr[7]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab5Arr[7]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-3 option-label">
+                    <p>Confident </p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab5Arr[8]=='1')?'red-bar':(QuestionTab5Arr[8]=='2') ? 'yellow-bar':(QuestionTab5Arr[8]=='3') ? 'blue-bar':(QuestionTab5Arr[8]=='4') ? 'orange-bar' : (QuestionTab5Arr[8]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab5Arr[8]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                  <div class="col-md-3 option-label">
+                    <p>Assertive</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab5Arr[9]=='1')?'red-bar':(QuestionTab5Arr[9]=='2') ? 'yellow-bar':(QuestionTab5Arr[9]=='3') ? 'blue-bar':(QuestionTab5Arr[9]=='4') ? 'orange-bar' : (QuestionTab5Arr[9]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab5Arr[9]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-3 option-label">
+                    <p>Friendly </p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab5Arr[10]=='1')?'red-bar':(QuestionTab5Arr[10]=='2') ? 'yellow-bar':(QuestionTab5Arr[10]=='3') ? 'blue-bar':(QuestionTab5Arr[10]=='4') ? 'orange-bar' : (QuestionTab5Arr[10]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab5Arr[10]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                  <div class="col-md-3 option-label">
+                    <p>Prepared</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab5Arr[11]=='1')?'red-bar':(QuestionTab5Arr[11]=='2') ? 'yellow-bar':(QuestionTab5Arr[11]=='3') ? 'blue-bar':(QuestionTab5Arr[11]=='4') ? 'orange-bar' : (QuestionTab5Arr[11]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab5Arr[11]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-3 option-label">
+                    <p>Well Rested </p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab5Arr[12]=='1')?'red-bar':(QuestionTab5Arr[12]=='2') ? 'yellow-bar':(QuestionTab5Arr[12]=='3') ? 'blue-bar':(QuestionTab5Arr[12]=='4') ? 'orange-bar' : (QuestionTab5Arr[12]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab5Arr[12]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                  <div class="col-md-3 option-label">
+                    <p>Use of Ums and Ahs</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab5Arr[13]=='1')?'red-bar':(QuestionTab5Arr[13]=='2') ? 'yellow-bar':(QuestionTab5Arr[13]=='3') ? 'blue-bar':(QuestionTab5Arr[13]=='4') ? 'orange-bar' : (QuestionTab5Arr[13]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab5Arr[13]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-3 option-label">
+                    <p>Vocal Variety</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab5Arr[14]=='1')?'red-bar':(QuestionTab5Arr[14]=='2') ? 'yellow-bar':(QuestionTab5Arr[14]=='3') ? 'blue-bar':(QuestionTab5Arr[14]=='4') ? 'orange-bar' : (QuestionTab5Arr[14]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab5Arr[14]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                  <div class="col-md-3 option-label">
+                    <p>Energy</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab5Arr[15]=='1')?'red-bar':(QuestionTab5Arr[15]=='2') ? 'yellow-bar':(QuestionTab5Arr[15]=='3') ? 'blue-bar':(QuestionTab5Arr[15]=='4') ? 'orange-bar' : (QuestionTab5Arr[15]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab5Arr[15]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-3 option-label">
+                    <p>Integrity</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab5Arr[16]=='1')?'red-bar':(QuestionTab5Arr[16]=='2') ? 'yellow-bar':(QuestionTab5Arr[16]=='3') ? 'blue-bar':(QuestionTab5Arr[16]=='4') ? 'orange-bar' : (QuestionTab5Arr[16]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab5Arr[16]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                  <div class="col-md-3 option-label">
+                    <p>Intellectually Curious</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab5Arr[17]=='1')?'red-bar':(QuestionTab5Arr[17]=='2') ? 'yellow-bar':(QuestionTab5Arr[17]=='3') ? 'blue-bar':(QuestionTab5Arr[17]=='4') ? 'orange-bar' : (QuestionTab5Arr[17]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab5Arr[17]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-3 option-label">
+                    <p>Creative</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab5Arr[18]=='1')?'red-bar':(QuestionTab5Arr[18]=='2') ? 'yellow-bar':(QuestionTab5Arr[18]=='3') ? 'blue-bar':(QuestionTab5Arr[18]=='4') ? 'orange-bar' : (QuestionTab5Arr[18]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab5Arr[18]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                  <div class="col-md-3 option-label">
+                    <p>Ambitious</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab5Arr[19]=='1')?'red-bar':(QuestionTab5Arr[19]=='2') ? 'yellow-bar':(QuestionTab5Arr[19]=='3') ? 'blue-bar':(QuestionTab5Arr[19]=='4') ? 'orange-bar' : (QuestionTab5Arr[19]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab5Arr[19]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-3 option-label">
+                    <p>Inclusive</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab5Arr[20]=='1')?'red-bar':(QuestionTab5Arr[20]=='2') ? 'yellow-bar':(QuestionTab5Arr[20]=='3') ? 'blue-bar':(QuestionTab5Arr[20]=='4') ? 'orange-bar' : (QuestionTab5Arr[20]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab5Arr[20]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                  <div class="col-md-3 option-label">
+                    <p>Decisive</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab5Arr[21]=='1')?'red-bar':(QuestionTab5Arr[21]=='2') ? 'yellow-bar':(QuestionTab5Arr[21]=='3') ? 'blue-bar':(QuestionTab5Arr[21]=='4') ? 'orange-bar' : (QuestionTab5Arr[21]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab5Arr[21]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-3 option-label">
+                    <p>Visionary</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab5Arr[22]=='1')?'red-bar':(QuestionTab5Arr[22]=='2') ? 'yellow-bar':(QuestionTab5Arr[22]=='3') ? 'blue-bar':(QuestionTab5Arr[22]=='4') ? 'orange-bar' : (QuestionTab5Arr[22]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab5Arr[22]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                  <div class="col-md-3 option-label">
+                    <p>Smart</p>
+                  </div>
+                  <div class="col-md-3" [ngClass]="(QuestionTab5Arr[23]=='1')?'red-bar':(QuestionTab5Arr[23]=='2') ? 'yellow-bar':(QuestionTab5Arr[23]=='3') ? 'blue-bar':(QuestionTab5Arr[23]=='4') ? 'orange-bar' : (QuestionTab5Arr[23]=='5') ? 'green-bar' : ''">
+                    <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab5Arr[23]" (ngModelChange)="testChange($event)"></nouislider>
+                  </div>
+                </div>
+            </div>
+              <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
+                <a id="Prevdiv32" class="btn btn-info" value="Prev" (click)="selectTab(0)" style="margin-right:2px;">
+                  <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
+                <a class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                  <i class="fa fa-floppy-o"></i>&nbsp;</a>
+                <a id="Nextdiv33" class="btn btn-info" value="Next" (click)="selectTab(2)" style="margin-right:2px;">Next&nbsp;
+                  <i class="fa fa-arrow-right"></i>&nbsp;</a>
+              </div>
+          </tab>
+          <tab heading="Question 6">
+            <div class="col-md-12 tab-content-container">
+              <h4 class="questionstxt margin-bottom-40">Tell me about the toughest decision you ever had to make</h4>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Listen</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab5Arr[0]=='1')?'red-bar':(QuestionTab6Arr[0]=='2') ? 'yellow-bar':(QuestionTab6Arr[0]=='3') ? 'blue-bar':(QuestionTab6Arr[0]=='4') ? 'orange-bar' : (QuestionTab6Arr[0]=='5') ? 'green-bar' : ''" >
+                  <nouislider #slider [tooltips]=[true] [config]="someKeyboardConfig" [(ngModel)]="QuestionTab6Arr[0]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Bold</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab6Arr[1]=='1')?'red-bar':(QuestionTab6Arr[1]=='2') ? 'yellow-bar':(QuestionTab6Arr[1]=='3') ? 'blue-bar':(QuestionTab6Arr[1]=='4') ? 'orange-bar' : (QuestionTab6Arr[1]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab6Arr[1]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Brief </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab6Arr[2]=='1')?'red-bar':(QuestionTab6Arr[2]=='2') ? 'yellow-bar':(QuestionTab6Arr[2]=='3') ? 'blue-bar':(QuestionTab6Arr[2]=='4') ? 'orange-bar' : (QuestionTab6Arr[2]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab6Arr[2]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Clear</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab6Arr[3]=='1')?'red-bar':(QuestionTab6Arr[3]=='2') ? 'yellow-bar':(QuestionTab6Arr[3]=='3') ? 'blue-bar':(QuestionTab6Arr[3]=='4') ? 'orange-bar' : (QuestionTab6Arr[3]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab6Arr[3]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>To The Point </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab6Arr[4]=='1')?'red-bar':(QuestionTab6Arr[4]=='2') ? 'yellow-bar':(QuestionTab6Arr[4]=='3') ? 'blue-bar':(QuestionTab6Arr[4]=='4') ? 'orange-bar' : (QuestionTab6Arr[4]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab6Arr[4]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Controlled Breathing</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab6Arr[5]=='1')?'red-bar':(QuestionTab6Arr[5]=='2') ? 'yellow-bar':(QuestionTab6Arr[5]=='3') ? 'blue-bar':(QuestionTab6Arr[5]=='4') ? 'orange-bar' : (QuestionTab6Arr[5]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab6Arr[5]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Passionate </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab6Arr[6]=='1')?'red-bar':(QuestionTab6Arr[6]=='2') ? 'yellow-bar':(QuestionTab6Arr[6]=='3') ? 'blue-bar':(QuestionTab6Arr[6]=='4') ? 'orange-bar' : (QuestionTab6Arr[6]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab6Arr[6]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Professional</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab6Arr[7]=='1')?'red-bar':(QuestionTab6Arr[7]=='2') ? 'yellow-bar':(QuestionTab6Arr[7]=='3') ? 'blue-bar':(QuestionTab6Arr[7]=='4') ? 'orange-bar' : (QuestionTab6Arr[7]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab6Arr[7]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Confident </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab6Arr[8]=='1')?'red-bar':(QuestionTab6Arr[8]=='2') ? 'yellow-bar':(QuestionTab6Arr[8]=='3') ? 'blue-bar':(QuestionTab6Arr[8]=='4') ? 'orange-bar' : (QuestionTab6Arr[8]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab6Arr[8]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Assertive</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab6Arr[9]=='1')?'red-bar':(QuestionTab6Arr[9]=='2') ? 'yellow-bar':(QuestionTab6Arr[9]=='3') ? 'blue-bar':(QuestionTab6Arr[9]=='4') ? 'orange-bar' : (QuestionTab6Arr[9]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab6Arr[9]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Friendly </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab6Arr[10]=='1')?'red-bar':(QuestionTab6Arr[10]=='2') ? 'yellow-bar':(QuestionTab6Arr[10]=='3') ? 'blue-bar':(QuestionTab6Arr[10]=='4') ? 'orange-bar' : (QuestionTab6Arr[10]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab6Arr[10]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Prepared</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab6Arr[11]=='1')?'red-bar':(QuestionTab6Arr[11]=='2') ? 'yellow-bar':(QuestionTab6Arr[11]=='3') ? 'blue-bar':(QuestionTab6Arr[11]=='4') ? 'orange-bar' : (QuestionTab6Arr[11]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab6Arr[11]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Well Rested </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab6Arr[12]=='1')?'red-bar':(QuestionTab6Arr[12]=='2') ? 'yellow-bar':(QuestionTab6Arr[12]=='3') ? 'blue-bar':(QuestionTab6Arr[12]=='4') ? 'orange-bar' : (QuestionTab6Arr[12]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab6Arr[12]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Use of Ums and Ahs</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab6Arr[13]=='1')?'red-bar':(QuestionTab6Arr[13]=='2') ? 'yellow-bar':(QuestionTab6Arr[13]=='3') ? 'blue-bar':(QuestionTab6Arr[13]=='4') ? 'orange-bar' : (QuestionTab6Arr[13]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab6Arr[13]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Vocal Variety</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab6Arr[14]=='1')?'red-bar':(QuestionTab6Arr[14]=='2') ? 'yellow-bar':(QuestionTab6Arr[14]=='3') ? 'blue-bar':(QuestionTab6Arr[14]=='4') ? 'orange-bar' : (QuestionTab6Arr[14]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab6Arr[14]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Energy</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab6Arr[15]=='1')?'red-bar':(QuestionTab6Arr[15]=='2') ? 'yellow-bar':(QuestionTab6Arr[15]=='3') ? 'blue-bar':(QuestionTab6Arr[15]=='4') ? 'orange-bar' : (QuestionTab6Arr[15]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab6Arr[15]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Integrity</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab6Arr[16]=='1')?'red-bar':(QuestionTab6Arr[16]=='2') ? 'yellow-bar':(QuestionTab6Arr[16]=='3') ? 'blue-bar':(QuestionTab6Arr[16]=='4') ? 'orange-bar' : (QuestionTab6Arr[16]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab6Arr[16]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Intellectually Curious</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab6Arr[17]=='1')?'red-bar':(QuestionTab6Arr[17]=='2') ? 'yellow-bar':(QuestionTab6Arr[17]=='3') ? 'blue-bar':(QuestionTab6Arr[17]=='4') ? 'orange-bar' : (QuestionTab6Arr[17]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab6Arr[17]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Creative</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab6Arr[18]=='1')?'red-bar':(QuestionTab6Arr[18]=='2') ? 'yellow-bar':(QuestionTab6Arr[18]=='3') ? 'blue-bar':(QuestionTab6Arr[18]=='4') ? 'orange-bar' : (QuestionTab6Arr[18]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab6Arr[18]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Ambitious</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab6Arr[19]=='1')?'red-bar':(QuestionTab6Arr[19]=='2') ? 'yellow-bar':(QuestionTab6Arr[19]=='3') ? 'blue-bar':(QuestionTab6Arr[19]=='4') ? 'orange-bar' : (QuestionTab6Arr[19]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab6Arr[19]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Inclusive</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab6Arr[20]=='1')?'red-bar':(QuestionTab6Arr[20]=='2') ? 'yellow-bar':(QuestionTab6Arr[20]=='3') ? 'blue-bar':(QuestionTab6Arr[20]=='4') ? 'orange-bar' : (QuestionTab6Arr[20]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab6Arr[20]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Decisive</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab6Arr[21]=='1')?'red-bar':(QuestionTab6Arr[21]=='2') ? 'yellow-bar':(QuestionTab6Arr[21]=='3') ? 'blue-bar':(QuestionTab6Arr[21]=='4') ? 'orange-bar' : (QuestionTab6Arr[21]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab6Arr[21]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Visionary</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab6Arr[22]=='1')?'red-bar':(QuestionTab6Arr[22]=='2') ? 'yellow-bar':(QuestionTab6Arr[22]=='3') ? 'blue-bar':(QuestionTab6Arr[22]=='4') ? 'orange-bar' : (QuestionTab6Arr[22]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab6Arr[22]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Smart</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab6Arr[23]=='1')?'red-bar':(QuestionTab6Arr[23]=='2') ? 'yellow-bar':(QuestionTab6Arr[23]=='3') ? 'blue-bar':(QuestionTab6Arr[23]=='4') ? 'orange-bar' : (QuestionTab6Arr[23]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab7Arr[23]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+            </div>
+              <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
+                <a id="Prevdiv32" class="btn btn-info" value="Prev" (click)="selectTab(0)" style="margin-right:2px;">
+                  <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
+                <a class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                  <i class="fa fa-floppy-o"></i>&nbsp;</a>
+                <a id="Nextdiv33" class="btn btn-info" value="Next" (click)="selectTab(2)" style="margin-right:2px;">Next&nbsp;
+                  <i class="fa fa-arrow-right"></i>&nbsp;</a>
+              </div>
+          </tab>
+          <tab heading="Question 7">
+            <div class="col-md-12 tab-content-container">
+              <h4 class="questionstxt margin-bottom-40">How do you resolve personal confrontations</h4>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Listen</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab7Arr[0]=='1')?'red-bar':(QuestionTab7Arr[0]=='2') ? 'yellow-bar':(QuestionTab7Arr[0]=='3') ? 'blue-bar':(QuestionTab7Arr[0]=='4') ? 'orange-bar' : (QuestionTab7Arr[0]=='5') ? 'green-bar' : ''" >
+                  <nouislider #slider [tooltips]=[true] [config]="someKeyboardConfig" [(ngModel)]="QuestionTab7Arr[0]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Bold</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab7Arr[1]=='1')?'red-bar':(QuestionTab7Arr[1]=='2') ? 'yellow-bar':(QuestionTab7Arr[1]=='3') ? 'blue-bar':(QuestionTab7Arr[1]=='4') ? 'orange-bar' : (QuestionTab7Arr[1]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab7Arr[1]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Brief </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab7Arr[2]=='1')?'red-bar':(QuestionTab7Arr[2]=='2') ? 'yellow-bar':(QuestionTab7Arr[2]=='3') ? 'blue-bar':(QuestionTab7Arr[2]=='4') ? 'orange-bar' : (QuestionTab7Arr[2]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab7Arr[2]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Clear</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab7Arr[3]=='1')?'red-bar':(QuestionTab7Arr[3]=='2') ? 'yellow-bar':(QuestionTab7Arr[3]=='3') ? 'blue-bar':(QuestionTab7Arr[3]=='4') ? 'orange-bar' : (QuestionTab7Arr[3]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab7Arr[3]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>To The Point </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab7Arr[4]=='1')?'red-bar':(QuestionTab7Arr[4]=='2') ? 'yellow-bar':(QuestionTab7Arr[4]=='3') ? 'blue-bar':(QuestionTab7Arr[4]=='4') ? 'orange-bar' : (QuestionTab7Arr[4]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab7Arr[4]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Controlled Breathing</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab7Arr[5]=='1')?'red-bar':(QuestionTab7Arr[5]=='2') ? 'yellow-bar':(QuestionTab7Arr[5]=='3') ? 'blue-bar':(QuestionTab7Arr[5]=='4') ? 'orange-bar' : (QuestionTab7Arr[5]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab7Arr[5]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Passionate </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab7Arr[6]=='1')?'red-bar':(QuestionTab7Arr[6]=='2') ? 'yellow-bar':(QuestionTab7Arr[6]=='3') ? 'blue-bar':(QuestionTab7Arr[6]=='4') ? 'orange-bar' : (QuestionTab7Arr[6]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab7Arr[6]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Professional</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab7Arr[7]=='1')?'red-bar':(QuestionTab7Arr[7]=='2') ? 'yellow-bar':(QuestionTab7Arr[7]=='3') ? 'blue-bar':(QuestionTab7Arr[7]=='4') ? 'orange-bar' : (QuestionTab7Arr[7]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab7Arr[7]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Confident </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab7Arr[8]=='1')?'red-bar':(QuestionTab7Arr[8]=='2') ? 'yellow-bar':(QuestionTab7Arr[8]=='3') ? 'blue-bar':(QuestionTab7Arr[8]=='4') ? 'orange-bar' : (QuestionTab7Arr[8]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab7Arr[8]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Assertive</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab7Arr[9]=='1')?'red-bar':(QuestionTab7Arr[9]=='2') ? 'yellow-bar':(QuestionTab7Arr[9]=='3') ? 'blue-bar':(QuestionTab7Arr[9]=='4') ? 'orange-bar' : (QuestionTab7Arr[9]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab7Arr[9]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Friendly </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab7Arr[10]=='1')?'red-bar':(QuestionTab7Arr[10]=='2') ? 'yellow-bar':(QuestionTab7Arr[10]=='3') ? 'blue-bar':(QuestionTab7Arr[10]=='4') ? 'orange-bar' : (QuestionTab7Arr[10]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab7Arr[10]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Prepared</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab7Arr[11]=='1')?'red-bar':(QuestionTab7Arr[11]=='2') ? 'yellow-bar':(QuestionTab7Arr[11]=='3') ? 'blue-bar':(QuestionTab7Arr[11]=='4') ? 'orange-bar' : (QuestionTab7Arr[11]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab7Arr[11]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Well Rested </p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab7Arr[12]=='1')?'red-bar':(QuestionTab7Arr[12]=='2') ? 'yellow-bar':(QuestionTab7Arr[12]=='3') ? 'blue-bar':(QuestionTab7Arr[12]=='4') ? 'orange-bar' : (QuestionTab7Arr[12]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab7Arr[12]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Use of Ums and Ahs</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab7Arr[13]=='1')?'red-bar':(QuestionTab7Arr[13]=='2') ? 'yellow-bar':(QuestionTab7Arr[13]=='3') ? 'blue-bar':(QuestionTab7Arr[13]=='4') ? 'orange-bar' : (QuestionTab7Arr[13]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab7Arr[13]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Vocal Variety</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab7Arr[14]=='1')?'red-bar':(QuestionTab7Arr[14]=='2') ? 'yellow-bar':(QuestionTab7Arr[14]=='3') ? 'blue-bar':(QuestionTab7Arr[14]=='4') ? 'orange-bar' : (QuestionTab7Arr[14]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab7Arr[14]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Energy</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab7Arr[15]=='1')?'red-bar':(QuestionTab7Arr[15]=='2') ? 'yellow-bar':(QuestionTab7Arr[15]=='3') ? 'blue-bar':(QuestionTab7Arr[15]=='4') ? 'orange-bar' : (QuestionTab7Arr[15]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab7Arr[15]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Integrity</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab7Arr[16]=='1')?'red-bar':(QuestionTab7Arr[16]=='2') ? 'yellow-bar':(QuestionTab7Arr[16]=='3') ? 'blue-bar':(QuestionTab7Arr[16]=='4') ? 'orange-bar' : (QuestionTab7Arr[16]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab7Arr[16]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Intellectually Curious</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab7Arr[17]=='1')?'red-bar':(QuestionTab7Arr[17]=='2') ? 'yellow-bar':(QuestionTab7Arr[17]=='3') ? 'blue-bar':(QuestionTab7Arr[17]=='4') ? 'orange-bar' : (QuestionTab7Arr[17]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab7Arr[17]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Creative</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab7Arr[18]=='1')?'red-bar':(QuestionTab7Arr[18]=='2') ? 'yellow-bar':(QuestionTab7Arr[18]=='3') ? 'blue-bar':(QuestionTab7Arr[18]=='4') ? 'orange-bar' : (QuestionTab7Arr[18]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab7Arr[18]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Ambitious</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab7Arr[19]=='1')?'red-bar':(QuestionTab7Arr[19]=='2') ? 'yellow-bar':(QuestionTab7Arr[19]=='3') ? 'blue-bar':(QuestionTab7Arr[19]=='4') ? 'orange-bar' : (QuestionTab7Arr[19]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab7Arr[19]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Inclusive</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab7Arr[20]=='1')?'red-bar':(QuestionTab7Arr[20]=='2') ? 'yellow-bar':(QuestionTab7Arr[20]=='3') ? 'blue-bar':(QuestionTab7Arr[20]=='4') ? 'orange-bar' : (QuestionTab7Arr[20]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab7Arr[20]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Decisive</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab7Arr[21]=='1')?'red-bar':(QuestionTab7Arr[21]=='2') ? 'yellow-bar':(QuestionTab7Arr[21]=='3') ? 'blue-bar':(QuestionTab7Arr[21]=='4') ? 'orange-bar' : (QuestionTab7Arr[21]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab7Arr[21]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Visionary</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab7Arr[22]=='1')?'red-bar':(QuestionTab7Arr[22]=='2') ? 'yellow-bar':(QuestionTab7Arr[22]=='3') ? 'blue-bar':(QuestionTab7Arr[22]=='4') ? 'orange-bar' : (QuestionTab7Arr[22]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab7Arr[22]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Smart</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(QuestionTab7Arr[23]=='1')?'red-bar':(QuestionTab7Arr[23]=='2') ? 'yellow-bar':(QuestionTab7Arr[23]=='3') ? 'blue-bar':(QuestionTab7Arr[23]=='4') ? 'orange-bar' : (QuestionTab7Arr[23]=='5') ? 'green-bar' : ''">
+                  <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="QuestionTab7Arr[23]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+            </div>
+              <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
+                <a id="Prevdiv32" class="btn btn-info" value="Prev" (click)="selectTab(0)" style="margin-right:2px;">
+                  <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
+                <a class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                  <i class="fa fa-floppy-o"></i>&nbsp;</a>
+                <a id="Nextdiv33" class="btn btn-info" value="Next" (click)="selectTab(2)" style="margin-right:2px;">Next&nbsp;
+                  <i class="fa fa-arrow-right"></i>&nbsp;</a>
+              </div>
+          </tab>
+        </tabset>
+      </tab>
+      <tab customClass="eval-main-nav-li">
+        <ng-template tabHeading>
+          <span>
+            <i class="fa fa-thumbs-up" aria-hidden="true"></i>Recommendations</span>
+        </ng-template>
+        <div class="col-md-12 tab-content-container">
+          <div class="col-md-12">
+            <h4 class="questionstxt margin-bottom-40">Recommendation : Items That Need Improvement</h4>
+            <div class="col-md-3 option-label">
+              <p>The client was on time</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(recommendationsArr[0]=='1')?'red-bar':(recommendationsArr[0]=='2') ? 'yellow-bar':(recommendationsArr[0]=='3') ? 'blue-bar':(recommendationsArr[0]=='4') ? 'orange-bar' : (recommendationsArr[0]=='5') ? 'green-bar' : ''">
+              <nouislider [config]="someKeyboardConfig" [(ngModel)]="recommendationsArr[0]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+            <div class="col-md-3 option-label">
+              <p>The Client used a proper landline</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(recommendationsArr[1]=='1')?'red-bar':(recommendationsArr[1]=='2') ? 'yellow-bar':(recommendationsArr[1]=='3') ? 'blue-bar':(recommendationsArr[1]=='4') ? 'orange-bar' : (recommendationsArr[1]=='5') ? 'green-bar' : ''">
+              <nouislider [config]="someKeyboardConfig" [(ngModel)]="recommendationsArr[1]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-3 option-label">
+              <p>The Background was free of noise</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(recommendationsArr[2]=='1')?'red-bar':(recommendationsArr[2]=='2') ? 'yellow-bar':(recommendationsArr[2]=='3') ? 'blue-bar':(recommendationsArr[2]=='4') ? 'orange-bar' : (recommendationsArr[2]=='5') ? 'green-bar' : ''">
+              <nouislider [config]="someKeyboardConfig" [(ngModel)]="recommendationsArr[2]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+            <div class="col-md-3 option-label">
+              <p>The Client was professional</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(recommendationsArr[3]=='1')?'red-bar':(recommendationsArr[3]=='2') ? 'yellow-bar':(recommendationsArr[3]=='3') ? 'blue-bar':(recommendationsArr[3]=='4') ? 'orange-bar' : (recommendationsArr[3]=='5') ? 'green-bar' : ''">
+              <nouislider [config]="someKeyboardConfig" [(ngModel)]="recommendationsArr[3]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-3 option-label">
+              <p>The client used proper English</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(recommendationsArr[4]=='1')?'red-bar':(recommendationsArr[4]=='2') ? 'yellow-bar':(recommendationsArr[4]=='3') ? 'blue-bar':(recommendationsArr[4]=='4') ? 'orange-bar' : (recommendationsArr[4]=='5') ? 'green-bar' : ''">
+              <nouislider [config]="someKeyboardConfig" [(ngModel)]="recommendationsArr[4]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+            <div class="col-md-3 option-label">
+              <p>The client did not monopolize talk time</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(recommendationsArr[5]=='1')?'red-bar':(recommendationsArr[5]=='2') ? 'yellow-bar':(recommendationsArr[5]=='3') ? 'blue-bar':(recommendationsArr[5]=='4') ? 'orange-bar' : (recommendationsArr[5]=='5') ? 'green-bar' : ''">
+              <nouislider [config]="someKeyboardConfig" [(ngModel)]="recommendationsArr[5]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-3 option-label">
+              <p>The client was bold in responses</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(recommendationsArr[6]=='1')?'red-bar':(recommendationsArr[6]=='2') ? 'yellow-bar':(recommendationsArr[6]=='3') ? 'blue-bar':(recommendationsArr[6]=='4') ? 'orange-bar' : (recommendationsArr[6]=='5') ? 'green-bar' : ''">
+              <nouislider [config]="someKeyboardConfig" [(ngModel)]="recommendationsArr[6]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+            <div class="col-md-3 option-label">
+              <p>The Client answered questions clearly</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(recommendationsArr[7]=='1')?'red-bar':(recommendationsArr[7]=='2') ? 'yellow-bar':(recommendationsArr[7]=='3') ? 'blue-bar':(recommendationsArr[7]=='4') ? 'orange-bar' : (recommendationsArr[7]=='5') ? 'green-bar' : ''">
+              <nouislider [config]="someKeyboardConfig" [(ngModel)]="recommendationsArr[7]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-3 option-label">
+              <p>The Client was passionate</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(recommendationsArr[8]=='1')?'red-bar':(recommendationsArr[8]=='2') ? 'yellow-bar':(recommendationsArr[8]=='3') ? 'blue-bar':(recommendationsArr[8]=='4') ? 'orange-bar' : (recommendationsArr[8]=='5') ? 'green-bar' : ''">
+              <nouislider [config]="someKeyboardConfig" [(ngModel)]="recommendationsArr[8]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+            <div class="col-md-3 option-label">
+              <p>The client was professional</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(recommendationsArr[9]=='1')?'red-bar':(recommendationsArr[9]=='2') ? 'yellow-bar':(recommendationsArr[9]=='3') ? 'blue-bar':(recommendationsArr[9]=='4') ? 'orange-bar' : (recommendationsArr[9]=='5') ? 'green-bar' : ''">
+              <nouislider [config]="someKeyboardConfig" [(ngModel)]="recommendationsArr[9]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-3 option-label">
+              <p>The client was confident</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(recommendationsArr[10]=='1')?'red-bar':(recommendationsArr[10]=='2') ? 'yellow-bar':(recommendationsArr[10]=='3') ? 'blue-bar':(recommendationsArr[10]=='4') ? 'orange-bar' : (recommendationsArr[10]=='5') ? 'green-bar' : ''">
+              <nouislider [config]="someKeyboardConfig" [(ngModel)]="recommendationsArr[10]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+            <div class="col-md-3 option-label">
+              <p>The client was assertive</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(recommendationsArr[11]=='1')?'red-bar':(recommendationsArr[11]=='2') ? 'yellow-bar':(recommendationsArr[11]=='3') ? 'blue-bar':(recommendationsArr[11]=='4') ? 'orange-bar' : (recommendationsArr[11]=='5') ? 'green-bar' : ''">
+              <nouislider [config]="someKeyboardConfig" [(ngModel)]="recommendationsArr[11]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-3 option-label">
+              <p>The Client was friendly</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(recommendationsArr[12]=='1')?'red-bar':(recommendationsArr[12]=='2') ? 'yellow-bar':(recommendationsArr[12]=='3') ? 'blue-bar':(recommendationsArr[12]=='4') ? 'orange-bar' : (recommendationsArr[12]=='5') ? 'green-bar' : ''">
+              <nouislider [config]="someKeyboardConfig" [(ngModel)]="recommendationsArr[12]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+            <div class="col-md-3 option-label">
+              <p>The client was prepared</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(recommendationsArr[13]=='1')?'red-bar':(recommendationsArr[13]=='2') ? 'yellow-bar':(recommendationsArr[13]=='3') ? 'blue-bar':(recommendationsArr[13]=='4') ? 'orange-bar' : (recommendationsArr[13]=='5') ? 'green-bar' : ''">
+              <nouislider [config]="someKeyboardConfig" [(ngModel)]="recommendationsArr[13]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-3 option-label">
+              <p>The client was well rested</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(recommendationsArr[14]=='1')?'red-bar':(recommendationsArr[14]=='2') ? 'yellow-bar':(recommendationsArr[14]=='3') ? 'blue-bar':(recommendationsArr[14]=='4') ? 'orange-bar' : (recommendationsArr[14]=='5') ? 'green-bar' : ''">
+              <nouislider [config]="someKeyboardConfig" [(ngModel)]="recommendationsArr[14]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+            <div class="col-md-3 option-label">
+              <p>The client ommitted ums and ahs</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(recommendationsArr[15]=='1')?'red-bar':(recommendationsArr[15]=='2') ? 'yellow-bar':(recommendationsArr[15]=='3') ? 'blue-bar':(recommendationsArr[15]=='4') ? 'orange-bar' : (recommendationsArr[15]=='5') ? 'green-bar' : ''">
+              <nouislider [config]="someKeyboardConfig" [(ngModel)]="recommendationsArr[15]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-3 option-label">
+              <p>The client was vocal variety</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(recommendationsArr[16]=='1')?'red-bar':(recommendationsArr[16]=='2') ? 'yellow-bar':(recommendationsArr[16]=='3') ? 'blue-bar':(recommendationsArr[16]=='4') ? 'orange-bar' : (recommendationsArr[16]=='5') ? 'green-bar' : ''">
+              <nouislider [config]="someKeyboardConfig" [(ngModel)]="recommendationsArr[16]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+            <div class="col-md-3 option-label">
+              <p>The client was energetic</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(recommendationsArr[17]=='1')?'red-bar':(recommendationsArr[17]=='2') ? 'yellow-bar':(recommendationsArr[17]=='3') ? 'blue-bar':(recommendationsArr[17]=='4') ? 'orange-bar' : (recommendationsArr[17]=='5') ? 'green-bar' : ''">
+              <nouislider [config]="someKeyboardConfig" [(ngModel)]="recommendationsArr[17]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-3 option-label">
+              <p>The client was not overly aggressive</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(recommendationsArr[18]=='1')?'red-bar':(recommendationsArr[18]=='2') ? 'yellow-bar':(recommendationsArr[18]=='3') ? 'blue-bar':(recommendationsArr[18]=='4') ? 'orange-bar' : (recommendationsArr[18]=='5') ? 'green-bar' : ''">
+              <nouislider [config]="someKeyboardConfig" [(ngModel)]="recommendationsArr[18]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+            <div class="col-md-3 option-label">
+              <p>The client accent was reduced</p>
+            </div>
+            <div class="col-md-3" [ngClass]="(recommendationsArr[19]=='1')?'red-bar':(recommendationsArr[19]=='2') ? 'yellow-bar':(recommendationsArr[19]=='3') ? 'blue-bar':(recommendationsArr[19]=='4') ? 'orange-bar' : (recommendationsArr[19]=='5') ? 'green-bar' : ''">
+              <nouislider [config]="someKeyboardConfig" [(ngModel)]="recommendationsArr[19]" (ngModelChange)="testChange($event)"></nouislider>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
+          <a id="Prevdiv32" class="btn btn-info" value="Prev" (click)="selectTab(1)" style="margin-right:2px;">
+            <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
+          <a class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+            <i class="fa fa-floppy-o"></i>&nbsp;</a>
+          <a id="Nextdiv33" class="btn btn-info" value="Next" (click)="selectTab(3)" style="margin-right:2px;">Next&nbsp;
+            <i class="fa fa-arrow-right"></i>&nbsp;</a>
+        </div>
+      </tab>
+      <tab customClass="eval-main-nav-li">
+        <ng-template tabHeading>
+          <span>
+            <i class="fa fa-eye" aria-hidden="true"></i>Feedback</span>
+        </ng-template>
+        <tabset [vertical]="true" type="pills" id="test1">
+          <tab heading="Feedback 1">
+            <div class="col-md-12 tab-content-container">
+              <h4 class="questionstxt margin-bottom-40">Phone Interview Feedback : Strengths</h4>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Resilience</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab1Arr[0]=='1')?'red-bar':(feedbackTab1Arr[0]=='2') ? 'yellow-bar':(feedbackTab1Arr[0]=='3') ? 'blue-bar':(feedbackTab1Arr[0]=='4') ? 'orange-bar' : (feedbackTab1Arr[0]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab1Arr[0]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Strong phone presence</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab1Arr[1]=='1')?'red-bar':(feedbackTab1Arr[1]=='2') ? 'yellow-bar':(feedbackTab1Arr[1]=='3') ? 'blue-bar':(feedbackTab1Arr[1]=='4') ? 'orange-bar' : (feedbackTab1Arr[1]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab1Arr[1]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Energy</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab1Arr[2]=='1')?'red-bar':(feedbackTab1Arr[2]=='2') ? 'yellow-bar':(feedbackTab1Arr[2]=='3') ? 'blue-bar':(feedbackTab1Arr[2]=='4') ? 'orange-bar' : (feedbackTab1Arr[2]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab1Arr[2]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Energy</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab1Arr[3]=='1')?'red-bar':(feedbackTab1Arr[3]=='2') ? 'yellow-bar':(feedbackTab1Arr[3]=='3') ? 'blue-bar':(feedbackTab1Arr[3]=='4') ? 'orange-bar' : (feedbackTab1Arr[3]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab1Arr[3]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Sense of humor</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab1Arr[4]=='1')?'red-bar':(feedbackTab1Arr[4]=='2') ? 'yellow-bar':(feedbackTab1Arr[4]=='3') ? 'blue-bar':(feedbackTab1Arr[4]=='4') ? 'orange-bar' : (feedbackTab1Arr[4]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab1Arr[4]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Likeability</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab1Arr[5]=='1')?'red-bar':(feedbackTab1Arr[5]=='2') ? 'yellow-bar':(feedbackTab1Arr[5]=='3') ? 'blue-bar':(feedbackTab1Arr[5]=='4') ? 'orange-bar' : (feedbackTab1Arr[5]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab1Arr[5]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Flexible</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab1Arr[6]=='1')?'red-bar':(feedbackTab1Arr[6]=='2') ? 'yellow-bar':(feedbackTab1Arr[6]=='3') ? 'blue-bar':(feedbackTab1Arr[6]=='4') ? 'orange-bar' : (feedbackTab1Arr[6]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab1Arr[6]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Personality</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab1Arr[7]=='1')?'red-bar':(feedbackTab1Arr[7]=='2') ? 'yellow-bar':(feedbackTab1Arr[7]=='3') ? 'blue-bar':(feedbackTab1Arr[7]=='4') ? 'orange-bar' : (feedbackTab1Arr[7]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab1Arr[7]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Professional</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab1Arr[8]=='1')?'red-bar':(feedbackTab1Arr[8]=='2') ? 'yellow-bar':(feedbackTab1Arr[8]=='3') ? 'blue-bar':(feedbackTab1Arr[8]=='4') ? 'orange-bar' : (feedbackTab1Arr[8]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab1Arr[8]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Focused</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab1Arr[9]=='1')?'red-bar':(feedbackTab1Arr[9]=='2') ? 'yellow-bar':(feedbackTab1Arr[9]=='3') ? 'blue-bar':(feedbackTab1Arr[9]=='4') ? 'orange-bar' : (feedbackTab1Arr[9]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab1Arr[9]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Able to see 'around the corner'</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab1Arr[10]=='1')?'red-bar':(feedbackTab1Arr[10]=='2') ? 'yellow-bar':(feedbackTab1Arr[10]=='3') ? 'blue-bar':(feedbackTab1Arr[10]=='4') ? 'orange-bar' : (feedbackTab1Arr[10]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab1Arr[10]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Determination</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab1Arr[11]=='1')?'red-bar':(feedbackTab1Arr[11]=='2') ? 'yellow-bar':(feedbackTab1Arr[11]=='3') ? 'blue-bar':(feedbackTab1Arr[11]=='4') ? 'orange-bar' : (feedbackTab1Arr[11]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab1Arr[11]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Intelligent</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab1Arr[12]=='1')?'red-bar':(feedbackTab1Arr[12]=='2') ? 'yellow-bar':(feedbackTab1Arr[12]=='3') ? 'blue-bar':(feedbackTab1Arr[12]=='4') ? 'orange-bar' : (feedbackTab1Arr[12]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab1Arr[12]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Shows enthusiasm</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab1Arr[13]=='1')?'red-bar':(feedbackTab1Arr[13]=='2') ? 'yellow-bar':(feedbackTab1Arr[13]=='3') ? 'blue-bar':(feedbackTab1Arr[13]=='4') ? 'orange-bar' : (feedbackTab1Arr[13]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab1Arr[13]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
+              <a id="Prevdiv32" class="btn btn-info" value="Prev" (click)="selectTab(2)" style="margin-right:2px;">
+                <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
+              <a class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                <i class="fa fa-floppy-o"></i>&nbsp;</a>
+            </div>
+          </tab>
+          <tab heading="Feedback 2">
+            <div class="col-md-12 tab-content-container">
+              <h4 class="questionstxt margin-bottom-40">Phone Interview Feedback : Weaknesses</h4>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Sounds streesed and anxious</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab2Arr[0]=='1')?'red-bar':(feedbackTab2Arr[0]=='2') ? 'yellow-bar':(feedbackTab2Arr[0]=='3') ? 'blue-bar':(feedbackTab2Arr[0]=='4') ? 'orange-bar' : (feedbackTab2Arr[0]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab2Arr[0]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Does not address questions</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab2Arr[1]=='1')?'red-bar':(feedbackTab2Arr[1]=='2') ? 'yellow-bar':(feedbackTab2Arr[1]=='3') ? 'blue-bar':(feedbackTab2Arr[1]=='4') ? 'orange-bar' : (feedbackTab2Arr[1]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab2Arr[1]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Non-descript phone personality</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab2Arr[2]=='1')?'red-bar':(feedbackTab2Arr[2]=='2') ? 'yellow-bar':(feedbackTab2Arr[2]=='3') ? 'blue-bar':(feedbackTab2Arr[2]=='4') ? 'orange-bar' : (feedbackTab2Arr[2]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab2Arr[2]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Unable to make relavant small talk</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab2Arr[3]=='1')?'red-bar':(feedbackTab2Arr[3]=='2') ? 'yellow-bar':(feedbackTab2Arr[3]=='3') ? 'blue-bar':(feedbackTab2Arr[3]=='4') ? 'orange-bar' : (feedbackTab2Arr[3]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab2Arr[3]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Too rigid</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab2Arr[4]=='1')?'red-bar':(feedbackTab2Arr[4]=='2') ? 'yellow-bar':(feedbackTab2Arr[4]=='3') ? 'blue-bar':(feedbackTab2Arr[4]=='4') ? 'orange-bar' : (feedbackTab2Arr[4]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab2Arr[4]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>A team player</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab2Arr[5]=='1')?'red-bar':(feedbackTab2Arr[5]=='2') ? 'yellow-bar':(feedbackTab2Arr[5]=='3') ? 'blue-bar':(feedbackTab2Arr[5]=='4') ? 'orange-bar' : (feedbackTab2Arr[5]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab2Arr[5]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Gives mundane, 'stock' answers</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab2Arr[6]=='1')?'red-bar':(feedbackTab2Arr[6]=='2') ? 'yellow-bar':(feedbackTab2Arr[6]=='3') ? 'blue-bar':(feedbackTab2Arr[6]=='4') ? 'orange-bar' : (feedbackTab2Arr[6]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab2Arr[6]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Not Prepared</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab2Arr[7]=='1')?'red-bar':(feedbackTab2Arr[7]=='2') ? 'yellow-bar':(feedbackTab2Arr[7]=='3') ? 'blue-bar':(feedbackTab2Arr[7]=='4') ? 'orange-bar' : (feedbackTab2Arr[7]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab2Arr[7]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Lacks intensity</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab2Arr[8]=='1')?'red-bar':(feedbackTab2Arr[8]=='2') ? 'yellow-bar':(feedbackTab2Arr[8]=='3') ? 'blue-bar':(feedbackTab2Arr[8]=='4') ? 'orange-bar' : (feedbackTab2Arr[8]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab2Arr[8]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Hostile</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab2Arr[9]=='1')?'red-bar':(feedbackTab2Arr[9]=='2') ? 'yellow-bar':(feedbackTab2Arr[9]=='3') ? 'blue-bar':(feedbackTab2Arr[9]=='4') ? 'orange-bar' : (feedbackTab2Arr[9]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab2Arr[9]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Not Personal</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab2Arr[10]=='1')?'red-bar':(feedbackTab2Arr[10]=='2') ? 'yellow-bar':(feedbackTab2Arr[10]=='3') ? 'blue-bar':(feedbackTab2Arr[10]=='4') ? 'orange-bar' : (feedbackTab2Arr[10]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab2Arr[10]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
+              <a id="Prevdiv32" class="btn btn-info" value="Prev" (click)="selectTab(2)" style="margin-right:2px;">
+                <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
+              <a class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                <i class="fa fa-floppy-o"></i>&nbsp;</a>
+            </div>
+          </tab>
+          <tab heading="Feedback 3">
+            <div class="col-md-12 tab-content-container">
+              <h4 class="questionstxt margin-bottom-40">Overall Phone Interview Rating</h4>
+              <div class="col-md-12">
+                <div class="col-md-3 option-label">
+                  <p>Phone Interview Skills Rating</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab3Arr[0]=='1')?'red-bar':(feedbackTab3Arr[0]=='2') ? 'yellow-bar':(feedbackTab3Arr[0]=='3') ? 'blue-bar':(feedbackTab3Arr[0]=='4') ? 'orange-bar' : (feedbackTab3Arr[0]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab3Arr[0]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+                <div class="col-md-3 option-label">
+                  <p>Probability of Being Recommended To The Hiring Manager</p>
+                </div>
+                <div class="col-md-3" [ngClass]="(feedbackTab3Arr[1]=='1')?'red-bar':(feedbackTab3Arr[1]=='2') ? 'yellow-bar':(feedbackTab3Arr[1]=='3') ? 'blue-bar':(feedbackTab3Arr[1]=='4') ? 'orange-bar' : (feedbackTab3Arr[1]=='5') ? 'green-bar' : ''">
+                  <nouislider [config]="someKeyboardConfig" [(ngModel)]="feedbackTab2Arr[1]" (ngModelChange)="testChange($event)"></nouislider>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
+              <a id="Prevdiv33" class="btn btn-info" value="Prev" (click)="selectTab(2)" style="margin-right:2px;">
+                <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
+              <a class="btn btn-success" value="Next" style="margin-right:2px;">Finish&nbsp;
+                <i class="fa fa-floppy-o"></i>&nbsp;</a>
+              <a class="btn btn-success" value="Next" style="margin-right:2px;">Finish &amp; Email &nbsp;
+                <i class="fa fa-envelope"></i>&nbsp;</a>
+            </div>
+          </tab>
+        </tabset>
+      </tab>
+    </tabset>
+  </div>
+</div>
