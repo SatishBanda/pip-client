@@ -1,0 +1,126 @@
+.red-bar .noUi-connect{
+    background: red;
+  }
+  
+  .yellow-bar .noUi-connect{
+    background: yellow;
+  }
+  .blue-bar .noUi-connect{
+    background: blue;
+  }
+  .orange-bar .noUi-connect{
+    background: orange;
+  }
+  .green-bar .noUi-connect{
+    background: green;
+  }
+   .evaluation-tabs .nav-pills>li.eval-main-nav-li {
+      position: relative;
+      overflow: visible;
+      border-right: 15px solid transparent;
+      border-left: 15px solid transparent;
+    }
+  
+    .evaluation-tabs .nav-pills>li.eval-main-nav-li+li {
+      margin-left: 0;
+    }
+  
+    .evaluation-tabs .nav-pills>li.eval-main-nav-li:first-child {
+      border-left: 0;
+    }
+  
+   .evaluation-tabs .nav-pills>li.eval-main-nav-li:first-child a {
+      border-radius: 5px 0 0 5px;
+    }
+  
+    .evaluation-tabs .nav-pills>li.eval-main-nav-li:last-child {
+      border-right: 0;
+    }
+  
+    .evaluation-tabs .nav-pills>li.eval-main-nav-li:last-child a {
+      border-radius: 0 5px 5px 0;
+    }
+  
+    .evaluation-tabs .nav-pills>li.eval-main-nav-li a {
+      border-radius: 0;
+      background-color: #eee;
+    }
+  
+    .evaluation-tabs .nav-pills>li.eval-main-nav-li:not(:last-child) a:after {
+      position: absolute;
+      content: "";
+      top: 0px;
+      right: -20px;
+      width: 0px;
+      height: 0px;
+      border-style: solid;
+      border-width: 20px 0 20px 20px;
+      border-color: transparent transparent transparent #eee;
+      z-index: 150;
+    }
+  
+   .evaluation-tabs .nav-pills>li.eval-main-nav-li:not(:first-child) a:before {
+      position: absolute;
+      content: "";
+      top: 0px;
+      left: -20px;
+      width: 0px;
+      height: 0px;
+      border-style: solid;
+      border-width: 20px 0 20px 20px;
+      border-color: #eee #eee #eee transparent;
+      z-index: 150;
+    }
+  
+    .evaluation-tabs .nav-pills>li.eval-main-nav-li:hover:not(:last-child) a:after {
+      border-color: transparent transparent transparent #aaa;
+    }
+  
+    .evaluation-tabs .nav-pills>li.eval-main-nav-li:hover:not(:first-child) a:before {
+      border-color: #aaa #aaa #aaa transparent;
+    }
+  
+    .evaluation-tabs .nav-pills>li.eval-main-nav-li:hover a {
+      background-color: #aaa;
+      color: #fff;
+    }
+  
+   .evaluation-tabs  .nav-pills>li.eval-main-nav-li.active:not(:last-child) a:after {
+      border-color: transparent transparent transparent #428bca;
+    }
+  
+    .evaluation-tabs .nav-pills>li.eval-main-nav-li.active:not(:first-child) a:before {
+      border-color: #428bca #428bca #428bca transparent;
+    }
+  
+    .evaluation-tabs .nav-pills>li.eval-main-nav-li.active a {
+      background-color: #428bca;
+    }
+  
+   .eval-main-nav-li .nav-stacked>li+li{
+      margin: 0px !important;
+    }
+  
+    .eval-main-nav-li .nav-stacked li{
+      border-bottom: 1px solid #ddd;
+    }
+  
+   .eval-main-nav-li .nav-stacked li:first-child{
+      border-top: 1px solid #ddd;
+    }
+  
+    .eval-main-nav-li ul.nav-stacked{
+      border: 1px solid #ddd;
+      margin: 0px;
+      padding: 0px;
+      border-radius: 6px;
+    }
+  
+   .evaluation-tabs .tab-content-container{
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+   }
+  
+   .ng2-nouislider{
+    margin-bottom: 32px !important
+   }

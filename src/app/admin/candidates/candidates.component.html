@@ -44,9 +44,9 @@
               [mfRowsOnPage]="rowsOnPage">
               <thead>
                 <tr class="tr-blue-grid-head">
-                  <th style="width: 10%">
+                 <!-- <th style="width: 10%">
                     <mfDefaultSorter by="candidate_id">Candidate ID</mfDefaultSorter>
-                  </th>
+                  </th>-->
                   <th style="width: 15%">
                     <mfDefaultSorter by="name">Name</mfDefaultSorter>
                   </th>
@@ -73,19 +73,19 @@
               </thead>
               <tbody>
                 <tr *ngFor="let item of candidatesTblData.data; let rowIndex=index">
-                  <td>{{item.user_id}}</td>
+                  <!--<td>{{item.user_id}}</td>-->
                   <td>{{item.name}}</td>
                   <td>{{item.username}}</td>
                   <td>{{item.mobile}}</td>
                   <td class="text-center">
-                    <a title="Click to view" style="cursor:pointer" [routerLink]="['/admin/evaluation']" target="_blank">{{(item.evaluationStatus == 1) ? "Start" : "Resume"}}</a>
+                    <a title="Click to start evaluation" style="cursor:pointer" (click) = "redirectToEvaluation(item.user_id)" >{{(item.evaluationStatus == 1) ? "Start" : "Resume"}}</a>
                   </td>
                   <td class="text-center">
                     <a (click)="showCandidateEvaluationHistory(item)" title="Click to view" style="cursor:pointer">{{item.evaluationHistoryCount}}</a>
                   </td>
 
                   <td class="text-center">
-                    <a style="cursor:pointer">{{item.status == 1 ? 'Active' : 'In Active'}}</a>
+                    <a (click)="changeCandidateStatus(item)" style="cursor:pointer">{{item.status == 1 ? 'Active' : 'In Active'}}</a>
                   </td>
                   <td class="text-center">
                     <a (click)="updateCandidate(item)" title="Click to edit details">
@@ -129,7 +129,7 @@
           <b>{{candidateTitle}}</b>
         </h4>
       </div>
-      <form [formGroup]="candidateUserForm" (ngSubmit)="onCandidateUserSubmit()">
+      <form [formGroup]="candidateUserForm">
         <div class="modal-body" style="padding:27px;">
 
           <div class="row">
@@ -220,10 +220,10 @@
         </div>
         <div class="modal-footer footer-background">
           <button type="button" class="btn btn-default pull-right" (click)="closeCandidateModal()">Close</button>
-          <button (click)="onCandidateUserSubmit(evaluate)" style="margin-right: 5px" type="submit" class="btn btn-success pull-right"
+          <button (click)="onCandidateUserSubmit('add')" style="margin-right: 5px" type="button" class="btn btn-success pull-right"
             [disabled]="!candidateUserForm.valid || candidateUserSubmitted == true">
             <i *ngIf="candidateUserSubmitted" class="fa fa-circle-o-notch fa-spin fa-fw"></i>Add & Evaluate Later</button>
-          <button (click)="onCandidateUserSubmit(add)" style="margin-right: 5px" type="submit" class="btn btn-success pull-right" [disabled]="!candidateUserForm.valid || candidateUserSubmitted == true">
+          <button (click)="onCandidateUserSubmit('evaluate')" style="margin-right: 5px" type="button" class="btn btn-success pull-right" [disabled]="!candidateUserForm.valid || candidateUserSubmitted == true">
             <i *ngIf="candidateUserSubmitted" class="fa fa-circle-o-notch fa-spin fa-fw"></i>Add & Start Evaluation</button>
 
         </div>

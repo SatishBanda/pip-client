@@ -1,0 +1,67 @@
+<div class="col-sm-12 nopadding">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10 nopadding">
+        <h3 class="page-title">
+            Evaluation
+            <small>
+            </small>
+        </h3>
+    </div>
+</div>
+<div class="col-sm-12 nopadding">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10 nopadding">
+        <div class="row form-group">
+            <div class="col-xs-12">
+                <ul class="nav nav-pills nav-wizard" id="myNav">
+                    <!--<li id="navStep1" class="li-nav active" step="#step-1" value="1">
+                        <a>
+                            <p class="list-group-item-text">
+                                <i class="fa fa-user" aria-hidden="true"></i> &nbsp;Introduction</p>
+                        </a>
+                    </li>-->
+
+                    <li id="navStep1" align="center" aria-expanded="true" class="li-nav col-md-2 check-changed" [routerLinkActive]="['active']"
+                        #rla1="routerLinkActive" [routerLink]="['/admin/candidates/',candidate,'evaluation']">
+                        <p class="list-group-item-text font-white margin-0">Introduction</p>
+                    </li>
+                    <li id="navStep1" align="center" aria-expanded="true" class="li-nav col-md-2 check-changed" [routerLinkActive]="['active']"
+                        #rla2="routerLinkActive" [routerLink]="['/admin/candidates/',candidate,'evaluation','questions']">
+                        <p class="list-group-item-text font-white margin-0">Question</p>
+                    </li>
+
+                    <li id="navStep1" align="center" aria-expanded="true" class="li-nav col-md-2 check-changed" [routerLinkActive]="['active']"
+                        #rla3="routerLinkActive" [routerLink]="['/admin/candidates/',candidate,'evaluation','recommendations']">
+                        <p class="list-group-item-text font-white margin-0">Recommendations</p>
+                    </li>
+
+                    <li id="navStep1" align="center" aria-expanded="true" class="li-nav col-md-2 check-changed" [routerLinkActive]="['active']"
+                        #rla4="routerLinkActive" [routerLink]="['/admin/candidates/',candidate,'evaluation','feedback']">
+                        <p class="list-group-item-text font-white margin-0">Feedback</p>
+                    </li>
+
+                    <!--<li id="navStep2" class="li-nav" step="#step-2" value="2">
+                        <a>
+                            <p class="list-group-item-text">
+                                <i class="fa fa-question-circle" aria-hidden="true"></i>&nbsp;Questions</p>
+                        </a>
+                    </li> 
+                    <li id="navStep3" class="li-nav" step="#step-3" value="3">
+                        <a>
+                            <p class="list-group-item-text">
+                                <i class="fa fa-thumbs-up" aria-hidden="true"></i>&nbsp;Recommendations</p>
+                        </a>
+                    </li>
+                    <li id="navStep4" class="li-nav" step="#step-4" value="4">
+                        <a>
+
+                            <p class="list-group-item-text">
+                                <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;Feedback</p>
+                        </a>
+                    </li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>

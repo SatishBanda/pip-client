@@ -33,7 +33,7 @@ export class CandidateUserService {
             this._apiUrl + '/create-candidate', data,
             {
                 headers: this._globalService.getHeaders()
-            }).map(response => response.json())
+            }).map(response => response.json().data)
             .catch(this._globalService.handleError);
     }
 
@@ -54,9 +54,10 @@ export class CandidateUserService {
      * 
      * @param company_id 
      */
-    public companyStatusChange(company_id): Observable<any> {
+    public changeCandidateStatus(company_id): Observable<any> {
+
         return this._http.put(
-            this._apiUrl + '/change-company-status/' + company_id,
+            this._apiUrl + '/change-candidate-status/' + company_id, company_id,
             { headers: this._globalService.getHeaders() }
         ).map(response => response.json())
             .catch(this._globalService.handleError);

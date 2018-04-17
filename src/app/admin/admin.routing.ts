@@ -33,7 +33,14 @@ const routes: Routes = [
     {
         path: 'evaluation',
         component: EvaluationComponent
-    }
+    },
+
+    {
+        path: 'candidates/:candidate/evaluation',
+        loadChildren: 'app/admin/candidate-evaluation/evaluation.module#EvaluationModule',
+        data: {preload: true}
+    },
+
 ];
 
 @NgModule({
