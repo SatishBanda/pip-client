@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { ModalDirective } from "ngx-bootstrap";
 import { GlobalService } from '../../../services/global.service';
@@ -6,7 +6,8 @@ import { GlobalService } from '../../../services/global.service';
 @Component({
     selector: 'evaluation-header',
     templateUrl: './evaluation-header.component.html',
-    styleUrls: ['./evaluation-header.component.css'],
+    styleUrls: ['./evaluation-header.component.css'],    
+    encapsulation: ViewEncapsulation.None,
 })
 export class EvaluationHeaderComponent implements OnInit {
     companyData: {
