@@ -24,7 +24,7 @@ export class EvaluationComponent implements OnInit {
   someValue = 0;
   someKeyboardConfig: any = {
     connect: [true, false],
-    start: 10,
+    start: 1,
     keyboard: true,  // same as [keyboard]="true"
     step: 1, // number of page steps, defaults to 10
     range: {
@@ -33,15 +33,28 @@ export class EvaluationComponent implements OnInit {
     }
   }
 
+  public rating1Text = "Very Dissatisfied";
+  public rating2Text = "Neutral";
+  public rating3Text = "Good";
+  public rating4Text = "Satisfied";
+  public rating5Text = "Very Satisfied";
+  public rating0Text = "None";
+
+  public rating1Color = "red-bar";
+  public rating2Color = "yellow-bar";
+  public rating3Color = "blue-bar";
+  public rating4Color = "orange-bar";
+  public rating5Color = "green-bar";
+
   selectTab(tab_id: number) {
     this.evalTabs.tabs[tab_id].active = true;
   }
 
   ngOnInit() {
-    document.getElementById('test').querySelector('ul').className = "nav nav-stacked flex-column nav-pills col-md-3";
-    document.getElementById('test').querySelector('div.tab-content').className = "tab-content col-md-9";
-    document.getElementById('test1').querySelector('ul').className = "nav nav-stacked flex-column nav-pills col-md-3";
-    document.getElementById('test1').querySelector('div.tab-content').className = "tab-content col-md-9";
+    document.getElementById('test').querySelector('ul').className = "nav nav-stacked flex-column nav-pills col-md-1";
+    document.getElementById('test').querySelector('div.tab-content').className = "tab-content col-md-11";
+    document.getElementById('test1').querySelector('ul').className = "nav nav-stacked flex-column nav-pills col-md-1";
+    document.getElementById('test1').querySelector('div.tab-content').className = "tab-content col-md-11";
   }
 
   myOnChange(e, ee) {
