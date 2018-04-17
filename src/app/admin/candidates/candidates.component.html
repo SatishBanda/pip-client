@@ -17,7 +17,7 @@
 
       <div class="col-sm-12 nopadding  margin-top-10">
         <div class="col-sm-12 padding-right-0 margin-top-5">
-          <a class="btn btn-success pull-right" style="width: 183px;" (click)="candidatesModal.show()" title="Click to add new Questionnaire">
+          <a class="btn btn-success pull-right" style="width: 183px;" (click)="createCompanyUser()" title="Click to add new Questionnaire">
             <i class="fa fa-plus"></i>&nbsp;Add Candidate
           </a>
         </div>
@@ -40,7 +40,7 @@
                 </div>
               </div>
             </div>
-            <table class="table table-hover table-bordered table-striped" [mfData]="candidatesTableData" #candidatesTblData="mfDataTable"
+            <table class="table table-hover table-bordered table-striped" [mfData]="candidatesData" #candidatesTblData="mfDataTable"
               [mfRowsOnPage]="rowsOnPage">
               <thead>
                 <tr class="tr-blue-grid-head">
@@ -62,7 +62,7 @@
                   <th style="width: 10%" class="text-center">
                     <mfDefaultSorter by="">History</mfDefaultSorter>
                   </th>
-                  
+
                   <th style="width: 15%" class="text-center">
                     <mfDefaultSorter by="">Status</mfDefaultSorter>
                   </th>
@@ -73,25 +73,25 @@
               </thead>
               <tbody>
                 <tr *ngFor="let item of candidatesTblData.data; let rowIndex=index">
-                  <td>{{item.candidate_id}}</td>
+                  <td>{{item.user_id}}</td>
                   <td>{{item.name}}</td>
-                  <td>{{item.email}}</td>
-                  <td>{{item.phone}}</td>
+                  <td>{{item.username}}</td>
+                  <td>{{item.mobile}}</td>
                   <td class="text-center">
-                    <a title="Click to view" style="cursor:pointer" [routerLink]="['/admin/evaluation']" target="_blank">{{(rowIndex % 2 == 0)? "Start" : "Resume"}}</a>
+                    <a title="Click to view" style="cursor:pointer" [routerLink]="['/admin/evaluation']" target="_blank">{{(item.evaluationStatus == 1) ? "Start" : "Resume"}}</a>
                   </td>
                   <td class="text-center">
-                    <a title="Click to view" style="cursor:pointer">{{rowIndex+2}}</a>
+                    <a (click)="showCandidateEvaluationHistory(item)" title="Click to view" style="cursor:pointer">{{item.evaluationHistoryCount}}</a>
                   </td>
-                 
+
                   <td class="text-center">
-                    <a style="cursor:pointer">Active</a>
+                    <a style="cursor:pointer">{{item.status == 1 ? 'Active' : 'In Active'}}</a>
                   </td>
                   <td class="text-center">
-                    <a title="Click to edit details">
+                    <a (click)="updateCandidate(item)" title="Click to edit details">
                       <i class="fa fa-pencil-square-o"></i>
                     </a>
-                    <a title="Click to delete details">
+                    <a (click)="deleteCandidate(item)" title="Click to delete details">
                       <i class="fa fa-trash red"></i>
                     </a>
                   </td>
@@ -100,7 +100,7 @@
               <tfoot>
                 <tr>
                   <td colspan="5" class="no-pagination-border padding-0">
-                    <p class="pagination-summary-text">showing {{candidatesTblData.data.length}} of {{candidatesTableData.length}} records</p>
+                    <p class="pagination-summary-text">showing {{candidatesTblData.data.length}} of {{candidatesData.length}} records</p>
                   </td>
                   <td colspan="4" class="no-pagination-border padding-0">
                     <mfBootstrapPaginator></mfBootstrapPaginator>
@@ -116,63 +116,201 @@
   </div>
 </div>
 <!-- Modal -->
+
+
 <div id="myModal" class="modal fade" bsModal #candidatesModal="bs-modal" [config]="{backdrop: 'static'}" role="dialog" aria-labelledby="mySmallModalLabel"
   aria-hidden="true">
   <div class="modal-dialog">
-    <!-- Modal content-->
     <div class="modal-content">
-      <div class="modal-header">
-        <button (click)="candidatesModal.hide()" type="button" class="close" >&times;</button>
-        <h4 class="modal-title">
-          <b>Add Candidate</b>
+
+      <div class="modal-header modal-header-color">
+        <button type="button" class="close close-modal modal-opacity close-modal-blue" (click)="closeCandidateModal()" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">
+          <b>{{candidateTitle}}</b>
         </h4>
       </div>
-      <div class="modal-body" style="padding:27px;">
-        <div class="row">
-          <div class="col-sm-12 nopadding">
-            <div class="col-sm-3">
-              <label>First Name&nbsp;:</label>
+      <form [formGroup]="candidateUserForm" (ngSubmit)="onCandidateUserSubmit()">
+        <div class="modal-body" style="padding:27px;">
+
+          <div class="row">
+
+            <div class="col-sm-12 nopadding">
+              <div class="col-sm-3">
+                <label class="form-control-label">First Name :
+                  <span class="red">*</span>
+                </label>
+              </div>
+              <div class="col-sm-7">
+                <div class="form-group required" [ngClass]="{'has-danger': !isCandidateUserValid('first_name')}">
+                  <input type="text" class="form-control" [formControl]="candidateUserForm.controls['first_name']" [(ngModel)]="candidateUser.first_name"
+                    [ngClass]="{'form-control-danger': !isCandidateUserValid('first_name')}" maxlength="34">
+                  <span class="help-block help-block-error" *ngIf="!candidateUserFormErrors.first_name.valid">{{candidateUserFormErrors.first_name.message}}</span>
+                </div>
+              </div>
             </div>
-            <div class="col-sm-7">
-              <input type="text" class="form-control" placeholder="Enter First Name" />
+
+            <div class="col-sm-12 nopadding margin-top-10">
+              <div class="col-sm-3">
+                <label class="form-control-label">Last Name :
+                  <span class="red">*</span>
+                </label>
+              </div>
+              <div class="col-sm-7">
+                <div class="form-group required" [ngClass]="{'has-danger': !isCandidateUserValid('last_name')}">
+                  <input type="text" id="candidateuser-last_name" class="form-control" [formControl]="candidateUserForm.controls['last_name']"
+                    [(ngModel)]="candidateUser.last_name" [ngClass]="{'form-control-danger': !isCandidateUserValid('last_name')}"
+                    maxlength="34">
+                  <span class="help-block help-block-error" *ngIf="!candidateUserFormErrors.last_name.valid">{{candidateUserFormErrors.last_name.message}}</span>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="col-sm-12 nopadding margin-top-10">
-            <div class="col-sm-3">
-              <label>Last Name&nbsp;:</label>
+
+
+            <div class="col-sm-12 nopadding margin-top-10">
+              <div class="col-sm-3">
+                <label class="form-control-label" for="companyuser-email">Email :
+                  <span class="red">*</span>
+                </label>
+              </div>
+              <div class="col-sm-7">
+                <div class="form-group field-companyuser-email" [ngClass]="{'has-danger': !isCandidateUserValid('username')}">
+                  <input type="text" id="adminusers-email" class="form-control" aria-required="true" [formControl]="candidateUserForm.controls['username']"
+                    [(ngModel)]="candidateUser.username" [ngClass]="{'form-control-danger': !isCandidateUserValid('username')}"
+                    maxlength="50">
+                  <span class="help-block help-block-error" *ngIf="!candidateUserFormErrors.username.valid">{{candidateUserFormErrors.username.message}}</span>
+                </div>
+              </div>
             </div>
-            <div class="col-sm-7">
-              <input type="text" class="form-control" placeholder="Enter Last Name" />
+
+            <div class="col-sm-12 nopadding margin-top-10">
+              <div class="col-sm-3">
+                <label class="form-control-label">Phone :
+                  <span class="red">*</span>
+                </label>
+              </div>
+              <div class="col-sm-7">
+                <div class="form-group field-companyuser-phone required" [ngClass]="{'has-danger': !isCandidateUserValid('mobile')}">
+                  <input type="text" [textMask]="{mask: phoneNumberMask,guide: false, modelClean: true}" id="companyuser-phone" class="form-control"
+                    [formControl]="candidateUserForm.controls['mobile']" [(ngModel)]="candidateUser.mobile" [ngClass]="{'form-control-danger': !isCandidateUserValid('mobile')}"
+                    aria-required="true" placeholder="(___) ___-____" maxlength="34">
+                  <span class="help-block help-block-error" *ngIf="!candidateUserFormErrors.mobile.valid">{{candidateUserFormErrors.mobile.message}}</span>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="col-sm-12 nopadding margin-top-10">
-            <div class="col-sm-3">
-              <label>Email&nbsp;:</label>
-            </div>
-            <div class="col-sm-7">
-              <input type="text" class="form-control" placeholder="Enter Email ID" />
-            </div>
-          </div>
-          <div class="col-sm-12 nopadding margin-top-10">
-            <div class="col-sm-3">
-              <label>Phone&nbsp;:</label>
-            </div>
-            <div class="col-sm-7">
-              <input type="text" class="form-control" placeholder="Enter Phone Number" />
+
+
+            <div class="col-sm-12 nopadding margin-top-10">
+              <div class="col-sm-3">
+                <label class="form-control-label">Status
+                  <span class="red">*</span>
+                </label>
+              </div>
+              <div class="col-sm-7">
+                <div class="form-group field-adminusers-status required" [ngClass]="{'has-danger': !isCandidateUserValid('status')}">
+                  <select class="form-control" [formControl]="candidateUserForm.controls['status']" [(ngModel)]="candidateUser.status" [ngClass]="{'form-control-danger': !isCandidateUserValid('status')}">
+                    <option disabled value='null'>Select</option>
+                    <option [value]='1'>Active</option>
+                    <option [value]='0'>Inactive</option>
+                  </select>
+                  <span class="help-block help-block-error" *ngIf="!candidateUserFormErrors.status.valid">{{candidateUserFormErrors.status.message}}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <a class="btn btn-default pull-right" (click)="candidatesModal.hide()">
-          <span style="color:#000;">Close</span>
-        </a>
-        <a class="btn btn-success pull-right" (click)="candidatesModal.hide()" style="margin-right:5px;">Add & Start Evaluation</a>
-        <a class="btn btn-success pull-right" (click)="candidatesModal.hide()" style="margin-right:5px;">Add & Evaluate Later</a>
-      </div>
+        <div class="modal-footer footer-background">
+          <button type="button" class="btn btn-default pull-right" (click)="closeCandidateModal()">Close</button>
+          <button (click)="onCandidateUserSubmit(evaluate)" style="margin-right: 5px" type="submit" class="btn btn-success pull-right"
+            [disabled]="!candidateUserForm.valid || candidateUserSubmitted == true">
+            <i *ngIf="candidateUserSubmitted" class="fa fa-circle-o-notch fa-spin fa-fw"></i>Add & Evaluate Later</button>
+          <button (click)="onCandidateUserSubmit(add)" style="margin-right: 5px" type="submit" class="btn btn-success pull-right" [disabled]="!candidateUserForm.valid || candidateUserSubmitted == true">
+            <i *ngIf="candidateUserSubmitted" class="fa fa-circle-o-notch fa-spin fa-fw"></i>Add & Start Evaluation</button>
+
+        </div>
+      </form>
     </div>
+
   </div>
 </div>
+
+
+
+<div id="myModal" class="modal fade" bsModal #candidatesHistoryModal="bs-modal" [config]="{backdrop: 'static'}" role="dialog"
+  aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+
+      <div class="modal-header modal-header-color">
+        <button type="button" class="close close-modal modal-opacity close-modal-blue" (click)="candidatesHistoryModal.hide()" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">
+          <b>{{candidateEvaluationTitle}}</b>
+        </h4>
+      </div>
+
+      <div class="modal-body" >
+            <div class="form-inline">
+              <div class="form-group pull-right padding-right-0 padding-10">
+                <label for="email">
+                  <b>Search:</b>
+                </label>
+                <input class="form-control mr-left-5" [(ngModel)]="filterQuery" />
+              </div>
+            </div>
+            <table class="table table-hover table-bordered table-striped" [mfData]="candidateEvaluationHistoryData" #candidatesEvaHis="mfDataTable"
+              [mfRowsOnPage]="rowsOnPage">
+              <thead>
+                <tr class="tr-blue-grid-head">
+                  <th style="width: 10%">
+                    <mfDefaultSorter by="candidate_id">Evaluation Date & Time</mfDefaultSorter>
+                  </th>
+                  <th style="width: 15%">
+                    <mfDefaultSorter by="name">Evaluated By</mfDefaultSorter>
+                  </th>
+                  <th style="width: 15%">
+                    <mfDefaultSorter by="email">Detail</mfDefaultSorter>
+                  </th>
+                  <th style="width: 10%">
+                    <mfDefaultSorter by="phone">Report</mfDefaultSorter>
+                  </th>
+                  <th style="width: 10%" class="text-center">
+                    <mfDefaultSorter by="">Email</mfDefaultSorter>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let history of candidatesEvaHis.data; let rowIndex=index">
+                  <td>{{history.created_at}}</td>
+                  <td>{{history.evaluatorName}}</td>
+                  <td>
+                    <a title="Click to view Details" style="cursor:pointer"  target="_blank">View</a>
+                  </td>
+                  <td>
+                    <a title="Click to download report" style="cursor:pointer"  target="_blank"><i class="fa fa-download"></i></a>
+                  </td>
+                  <td>
+                    <a title="Click to email" style="cursor:pointer" target="_blank"><i class="fa fa-envelope"></i></a>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="9" class="no-pagination-border padding-0">
+                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+      </div>
+      <div class="modal-footer footer-background">
+        <button type="button" class="btn btn-default pull-right" (click)="candidatesHistoryModal.hide()">Close</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
 
 <div id="evaluationmodal" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -433,3 +571,4 @@
     </div>
   </div>
 </div>
+<app-delete-confirmation #deleteModal (confirmed)="okDelete()"></app-delete-confirmation>
