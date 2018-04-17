@@ -1,19 +1,41 @@
 .red-bar .noUi-connect{
-  background: red;
+  background: #EC2914;
 }
 
 .yellow-bar .noUi-connect{
-  background: yellow;
+  background: #FAD405;
 }
 .blue-bar .noUi-connect{
   background: blue;
 }
 .orange-bar .noUi-connect{
-  background: orange;
+  background: #FFAE02;
 }
 .green-bar .noUi-connect{
-  background: green;
+  background: #08C149;
 }
+
+.rating-text-label{
+  padding: 7px 7px;
+  float: right;
+}
+
+.tab-content-container p{
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.evaluation-tabs .label.label-default{
+  background: #A7A7A7 !important;
+}
+
+.evaluation-tabs .nav-stacked>li >a{
+    font-size: 13px !important;
+    padding: 12px 5px !important;
+    text-align: center !important;
+    border-radius: 0px !important;
+}
+
  .evaluation-tabs .nav-pills>li.eval-main-nav-li {
     position: relative;
     overflow: visible;
