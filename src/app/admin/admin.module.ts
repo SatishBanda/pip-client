@@ -10,7 +10,7 @@ import { ChartModule } from 'angular2-highcharts';
 import { HighchartsChartComponent } from 'highcharts-angular';
 import { DataTableModule } from "angular2-datatable";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ModalModule } from 'ngx-bootstrap';
+import { ModalModule, RatingModule } from 'ngx-bootstrap';
 import { EvaluationComponent } from './evaluation/evaluation.component';
 
 import { TextMaskModule } from "angular2-text-mask/dist/angular2TextMask";
@@ -18,7 +18,8 @@ import { PartialViews } from '../_partial-views/partial-views.module';
 
 import { TabsModule } from 'ngx-bootstrap';
 import { NouisliderModule } from 'ng2-nouislider';
-
+import { EvaluationService } from '../services/evaluation.service';
+import { StarRatingModule } from 'angular-star-rating';
 
 @NgModule({
   imports: [
@@ -32,8 +33,8 @@ import { NouisliderModule } from 'ng2-nouislider';
     PartialViews,
     TabsModule.forRoot(),
     FormsModule,
-    NouisliderModule
-
+    NouisliderModule,
+    RatingModule
     //ChartModule.forRoot(require('highcharts'))
   ],
   declarations: [
@@ -43,6 +44,8 @@ import { NouisliderModule } from 'ng2-nouislider';
     SettingsComponent,
     HighchartsChartComponent,
     EvaluationComponent
-  ]
+  ],
+  providers: [EvaluationService],
+  
 })
 export class AdminModule { }
