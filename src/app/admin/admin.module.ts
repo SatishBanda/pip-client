@@ -20,7 +20,6 @@ import { TabsModule } from 'ngx-bootstrap';
 import { NouisliderModule } from 'ng2-nouislider';
 import { EvaluationService } from '../services/evaluation.service';
 
-import { StarRatingModule } from 'angular-star-rating';
 
 
 @NgModule({
