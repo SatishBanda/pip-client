@@ -1,0 +1,47 @@
+<div class="col-sm-12 nopadding">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10 nopadding">
+        <h3 class="page-title">
+            Evaluation
+            <small>
+            </small>
+        </h3>
+    </div>
+</div>
+<div class="col-sm-12 nopadding">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10 nopadding">
+        <div class="row form-group evaluation-tabs">
+            <div class="col-xs-12">
+                <ul class="nav nav-pills nav-wizard" id="myNav">
+                    <!--<li id="navStep1" class="li-nav active" step="#step-1" value="1">
+                        <a>
+                            <p class="list-group-item-text">
+                                <i class="fa fa-user" aria-hidden="true"></i> &nbsp;Introduction</p>
+                        </a>
+                    </li>-->
+
+                    <li  align="center" aria-expanded="true" class="li-nav col-md-2 check-changed" [routerLinkActive]="['active']"
+                       >
+                        <a   [routerLink]="['/admin/candidates/',candidate,'evaluation','introduction']" class="list-group-item-text font-white margin-0">Introduction</a>
+                    </li>
+                    <li align="center" aria-expanded="true" class="li-nav col-md-2 check-changed" [routerLinkActive]="['active']"
+                     >
+                        <a   [routerLink]="['/admin/candidates/',candidate,'evaluation','questions']" class="list-group-item-text font-white margin-0">Question</a>
+                    </li>
+
+                    <li  align="center" aria-expanded="true" class="li-nav col-md-2 check-changed" [routerLinkActive]="['active']"
+                      >
+                        <a [routerLink]="['/admin/candidates/',candidate,'evaluation','recommendations']" class="list-group-item-text font-white margin-0">Recommendations</a>
+                    </li>
+
+                    <li align="center" aria-expanded="true" class="li-nav col-md-2 check-changed" [routerLinkActive]="['active']"
+                  >
+                        <a  [routerLink]="['/admin/candidates/',candidate,'evaluation','feedback']" class="list-group-item-text font-white margin-0">Feedback</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
