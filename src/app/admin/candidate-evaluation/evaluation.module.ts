@@ -4,7 +4,7 @@ import { ChartModule } from 'angular2-highcharts';
 import { HighchartsChartComponent } from 'highcharts-angular';
 import { DataTableModule } from "angular2-datatable";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ModalModule } from 'ngx-bootstrap';
+import { ModalModule, RatingModule } from 'ngx-bootstrap';
 import { TextMaskModule } from "angular2-text-mask/dist/angular2TextMask";
 import { TabsModule } from 'ngx-bootstrap';
 import { NouisliderModule } from 'ng2-nouislider';
@@ -15,6 +15,7 @@ import { EvaluationHeaderComponent } from './evaluation-header/evaluation-header
 import { QuestionsComponent } from './questions/questions.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { RecommendationsComponent } from './recommendations/recommendations.component';
+import { EvaluationService } from '../../services/evaluation.service';
 
 
 @NgModule({
@@ -29,11 +30,13 @@ import { RecommendationsComponent } from './recommendations/recommendations.comp
     PartialViews,
     TabsModule.forRoot(),
     FormsModule,
-    NouisliderModule
+    NouisliderModule,
+    RatingModule
   ],
   declarations: [
     IntroductionComponent,EvaluationHeaderComponent,QuestionsComponent,FeedbackComponent,RecommendationsComponent
   ],
+  providers: [EvaluationService],
   exports:[EvaluationHeaderComponent]
 })
 export class EvaluationModule { }

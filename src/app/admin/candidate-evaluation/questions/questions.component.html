@@ -1,2 +1,245 @@
 <evaluation-header></evaluation-header>
-working fine
+
+<div class="col-sm-10 col-sm-offset-1 padding-0">
+    <div class="col-sm-12 padding-0 eval-tab-container">
+        <tabset [vertical]="true" type="pills" id="test">
+            <tab heading="Question 1">
+                <div class="col-md-12 tab-content-container">
+                    <h4 class="questionstxt margin-bottom-40">What aspects of your training and education have helped you most on the job/school ?</h4>
+
+                    <div class="row">
+                        <div class="col-md-6" *ngFor="let subCategory of questions1Arr">
+                            <div class="row " style="background: #ddd;padding: 10px 10px;">
+                                <div class="col-sm-8 col-xs-8">
+                                    <p>{{subCategory.questionText}}</p>
+                                </div>
+                                <div class="col-sm-4 col-xs-4">
+                                    <span class="label label-default rating-text-label">{{(subCategory['questionValue']=='1')? rating1Text :(subCategory['questionValue']=='2')
+                                        ? rating2Text :(subCategory['questionValue']=='3') ? rating3Text :(subCategory['questionValue']=='4')
+                                        ? rating4Text : (subCategory['questionValue']=='5') ? rating5Text : rating0Text}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-xs-12" [ngClass]="(subCategory['questionValue']=='1') ?rating1Color : (subCategory['questionValue']=='2') ? rating2Color:(subCategory['questionValue']=='3') ? rating3Color:(subCategory['questionValue']=='4') ? rating4Color : (subCategory['questionValue']=='5') ? rating5Color : ''">
+                                <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="subCategory['questionValue']"></nouislider>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
+                    <a id="Prevdiv32" class="btn btn-info" value="Prev"  [routerLink]="['/admin/candidates/',candidate,'evaluation','introduction']"  style="margin-right:2px;">
+                        <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
+                    <a class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                        <i class="fa fa-floppy-o"></i>&nbsp;</a>
+                    <a id="Nextdiv33" class="btn btn-info" value="Next"  [routerLink]="['/admin/candidates/',candidate,'evaluation','recommendations']"  style="margin-right:2px;">Next&nbsp;
+                        <i class="fa fa-arrow-right"></i>&nbsp;</a>
+                </div>
+            </tab>
+            <tab heading="Question 2">
+                <div class="col-md-12 tab-content-container">
+                    <h4 class="questionstxt margin-bottom-40">What are the two greatest accomplishments ?</h4>
+
+                    <div class="row">
+                        <div class="col-md-6" *ngFor="let subCategory of questions2Arr">
+                            <div class="row " style="background: #ddd;padding: 10px 10px;">
+                                <div class="col-sm-8 col-xs-8">
+                                    <p>{{subCategory.questionText}}</p>
+                                </div>
+                                <div class="col-sm-4 col-xs-4">
+                                    <span class="label label-default rating-text-label">{{(subCategory['questionValue']=='1')? rating1Text :(subCategory['questionValue']=='2')
+                                        ? rating2Text :(subCategory['questionValue']=='3') ? rating3Text :(subCategory['questionValue']=='4')
+                                        ? rating4Text : (subCategory['questionValue']=='5') ? rating5Text : rating0Text}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-xs-12" [ngClass]="(subCategory['questionValue']=='1') ?rating1Color : (subCategory['questionValue']=='2') ? rating2Color:(subCategory['questionValue']=='3') ? rating3Color:(subCategory['questionValue']=='4') ? rating4Color : (subCategory['questionValue']=='5') ? rating5Color : ''">
+                                <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="subCategory['questionValue']" ></nouislider>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
+                    <a id="Prevdiv32" class="btn btn-info" value="Prev"  [routerLink]="['/admin/candidates/',candidate,'evaluation','introduction']"  style="margin-right:2px;">
+                        <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
+                    <a class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                        <i class="fa fa-floppy-o"></i>&nbsp;</a>
+                    <a id="Nextdiv33" class="btn btn-info" value="Next"  [routerLink]="['/admin/candidates/',candidate,'evaluation','recommendations']"  style="margin-right:2px;">Next&nbsp;
+                        <i class="fa fa-arrow-right"></i>&nbsp;</a>
+                </div>
+            </tab>
+            <tab heading="Question 3">
+                <div class="col-md-12 tab-content-container">
+                    <h4 class="questionstxt margin-bottom-40">What did you like most and least about your previous jobs ?</h4>
+
+
+                    <div class="row">
+                        <div class="col-md-6" *ngFor="let subCategory of questions3Arr">
+                            <div class="row " style="background: #ddd;padding: 10px 10px;">
+                                <div class="col-sm-8 col-xs-8">
+                                    <p>{{subCategory.questionText}}</p>
+                                </div>
+                                <div class="col-sm-4 col-xs-4">
+                                    <span class="label label-default rating-text-label">{{(subCategory['questionValue']=='1')? rating1Text :(subCategory['questionValue']=='2')
+                                        ? rating2Text :(subCategory['questionValue']=='3') ? rating3Text :(subCategory['questionValue']=='4')
+                                        ? rating4Text : (subCategory['questionValue']=='5') ? rating5Text : rating0Text}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-xs-12" [ngClass]="(subCategory['questionValue']=='1') ?rating1Color : (subCategory['questionValue']=='2') ? rating2Color:(subCategory['questionValue']=='3') ? rating3Color:(subCategory['questionValue']=='4') ? rating4Color : (subCategory['questionValue']=='5') ? rating5Color : ''">
+                                <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="subCategory['questionValue']" ></nouislider>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
+                    <a id="Prevdiv32" class="btn btn-info" value="Prev"  [routerLink]="['/admin/candidates/',candidate,'evaluation','introduction']"  style="margin-right:2px;">
+                        <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
+                    <a class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                        <i class="fa fa-floppy-o"></i>&nbsp;</a>
+                    <a id="Nextdiv33" class="btn btn-info" value="Next"  [routerLink]="['/admin/candidates/',candidate,'evaluation','recommendations']"  style="margin-right:2px;">Next&nbsp;
+                        <i class="fa fa-arrow-right"></i>&nbsp;</a>
+                </div>
+            </tab>
+            <tab heading="Question 4">
+                <div class="col-md-12 tab-content-container">
+                    <h4 class="questionstxt margin-bottom-40">Why should an organization hire you ?</h4>
+
+                    <div class="row">
+                        <div class="col-md-6" *ngFor="let subCategory of questions4Arr">
+                            <div class="row " style="background: #ddd;padding: 10px 10px;">
+                                <div class="col-sm-8 col-xs-8">
+                                    <p>{{subCategory.questionText}}</p>
+                                </div>
+                                <div class="col-sm-4 col-xs-4">
+                                    <span class="label label-default rating-text-label">{{(subCategory['questionValue']=='1')? rating1Text :(subCategory['questionValue']=='2')
+                                        ? rating2Text :(subCategory['questionValue']=='3') ? rating3Text :(subCategory['questionValue']=='4')
+                                        ? rating4Text : (subCategory['questionValue']=='5') ? rating5Text : rating0Text}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-xs-12" [ngClass]="(subCategory['questionValue']=='1') ?rating1Color : (subCategory['questionValue']=='2') ? rating2Color:(subCategory['questionValue']=='3') ? rating3Color:(subCategory['questionValue']=='4') ? rating4Color : (subCategory['questionValue']=='5') ? rating5Color : ''">
+                                <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="subCategory['questionValue']" ></nouislider>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
+                    <a id="Prevdiv32" class="btn btn-info" value="Prev"  [routerLink]="['/admin/candidates/',candidate,'evaluation','introduction']"  style="margin-right:2px;">
+                        <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
+                    <a class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                        <i class="fa fa-floppy-o"></i>&nbsp;</a>
+                    <a id="Nextdiv33" class="btn btn-info" value="Next"  [routerLink]="['/admin/candidates/',candidate,'evaluation','recommendations']"  style="margin-right:2px;">Next&nbsp;
+                        <i class="fa fa-arrow-right"></i>&nbsp;</a>
+                </div>
+            </tab>
+            <tab heading="Question 5">
+                <div class="col-md-12 tab-content-container">
+                    <h4 class="questionstxt margin-bottom-40">What do you feel are the requirements for good leadership ?</h4>
+
+                    <div class="row">
+                        <div class="col-md-6" *ngFor="let subCategory of questions5Arr">
+                            <div class="row " style="background: #ddd;padding: 10px 10px;">
+                                <div class="col-sm-8 col-xs-8">
+                                    <p>{{subCategory.questionText}}</p>
+                                </div>
+                                <div class="col-sm-4 col-xs-4">
+                                    <span class="label label-default rating-text-label">{{(subCategory['questionValue']=='1')? rating1Text :(subCategory['questionValue']=='2')
+                                        ? rating2Text :(subCategory['questionValue']=='3') ? rating3Text :(subCategory['questionValue']=='4')
+                                        ? rating4Text : (subCategory['questionValue']=='5') ? rating5Text : rating0Text}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-xs-12" [ngClass]="(subCategory['questionValue']=='1') ?rating1Color : (subCategory['questionValue']=='2') ? rating2Color:(subCategory['questionValue']=='3') ? rating3Color:(subCategory['questionValue']=='4') ? rating4Color : (subCategory['questionValue']=='5') ? rating5Color : ''">
+                                <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="subCategory['questionValue']" ></nouislider>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
+                    <a id="Prevdiv32" class="btn btn-info" value="Prev"  [routerLink]="['/admin/candidates/',candidate,'evaluation','introduction']"  style="margin-right:2px;">
+                        <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
+                    <a class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                        <i class="fa fa-floppy-o"></i>&nbsp;</a>
+                    <a id="Nextdiv33" class="btn btn-info" value="Next"  [routerLink]="['/admin/candidates/',candidate,'evaluation','recommendations']"  style="margin-right:2px;">Next&nbsp;
+                        <i class="fa fa-arrow-right"></i>&nbsp;</a>
+                </div>
+            </tab>
+            <tab heading="Question 6">
+                <div class="col-md-12 tab-content-container">
+                    <h4 class="questionstxt margin-bottom-40">Tell me about the toughest decision you ever had to make ?</h4>
+
+
+                    <div class="row">
+                        <div class="col-md-6" *ngFor="let subCategory of questions6Arr">
+                            <div class="row " style="background: #ddd;padding: 10px 10px;">
+                                <div class="col-sm-8 col-xs-8">
+                                    <p>{{subCategory.questionText}}</p>
+                                </div>
+                                <div class="col-sm-4 col-xs-4">
+                                    <span class="label label-default rating-text-label">{{(subCategory['questionValue']=='1')? rating1Text :(subCategory['questionValue']=='2')
+                                        ? rating2Text :(subCategory['questionValue']=='3') ? rating3Text :(subCategory['questionValue']=='4')
+                                        ? rating4Text : (subCategory['questionValue']=='5') ? rating5Text : rating0Text}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-xs-12" [ngClass]="(subCategory['questionValue']=='1') ?rating1Color : (subCategory['questionValue']=='2') ? rating2Color:(subCategory['questionValue']=='3') ? rating3Color:(subCategory['questionValue']=='4') ? rating4Color : (subCategory['questionValue']=='5') ? rating5Color : ''">
+                                <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="subCategory['questionValue']" ></nouislider>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
+                    <a id="Prevdiv32" class="btn btn-info" value="Prev"  [routerLink]="['/admin/candidates/',candidate,'evaluation','introduction']"  style="margin-right:2px;">
+                        <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
+                    <a class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                        <i class="fa fa-floppy-o"></i>&nbsp;</a>
+                    <a id="Nextdiv33" class="btn btn-info" value="Next"  [routerLink]="['/admin/candidates/',candidate,'evaluation','recommendations']"  style="margin-right:2px;">Next&nbsp;
+                        <i class="fa fa-arrow-right"></i>&nbsp;</a>
+                </div>
+            </tab>
+            <tab heading="Question 7">
+                <div class="col-md-12 tab-content-container">
+                    <h4 class="questionstxt margin-bottom-40">How do you resolve personal confrontations ?</h4>
+
+                    <div class="row">
+                        <div class="col-md-6" *ngFor="let subCategory of questions7Arr">
+                            <div class="row " style="background: #ddd;padding: 10px 10px;">
+                                <div class="col-sm-8 col-xs-8">
+                                    <p>{{subCategory.questionText}}</p>
+                                </div>
+                                <div class="col-sm-4 col-xs-4">
+                                    <span class="label label-default rating-text-label">{{(subCategory['questionValue']=='1')? rating1Text :(subCategory['questionValue']=='2')
+                                        ? rating2Text :(subCategory['questionValue']=='3') ? rating3Text :(subCategory['questionValue']=='4')
+                                        ? rating4Text : (subCategory['questionValue']=='5') ? rating5Text : rating0Text}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-xs-12" [ngClass]="(subCategory['questionValue']=='1') ?rating1Color : (subCategory['questionValue']=='2') ? rating2Color:(subCategory['questionValue']=='3') ? rating3Color:(subCategory['questionValue']=='4') ? rating4Color : (subCategory['questionValue']=='5') ? rating5Color : ''">
+                                <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="subCategory['questionValue']" ></nouislider>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
+                    <a id="Prevdiv32" class="btn btn-info" value="Prev" [routerLink]="['/admin/candidates/',candidate,'evaluation','introduction']" style="margin-right:2px;">
+                        <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
+                    <a class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                        <i class="fa fa-floppy-o"></i>&nbsp;</a>
+                    <a id="Nextdiv33" class="btn btn-info" value="Next" [routerLink]="['/admin/candidates/',candidate,'evaluation','recommendations']" style="margin-right:2px;">Next&nbsp;
+                        <i class="fa fa-arrow-right"></i>&nbsp;</a>
+                </div>
+            </tab>
+        </tabset>
+    </div>
+</div>

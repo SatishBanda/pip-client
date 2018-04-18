@@ -18,6 +18,7 @@ import { PartialViews } from '../_partial-views/partial-views.module';
 
 import { TabsModule } from 'ngx-bootstrap';
 import { NouisliderModule } from 'ng2-nouislider';
+import { EvaluationService } from '../services/evaluation.service';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { NouisliderModule } from 'ng2-nouislider';
     SettingsComponent,
     HighchartsChartComponent,
     EvaluationComponent
-  ]
+  ],
+  providers: [EvaluationService]
 })
 export class AdminModule { }

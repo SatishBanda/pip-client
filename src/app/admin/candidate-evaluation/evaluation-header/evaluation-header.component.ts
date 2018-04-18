@@ -13,6 +13,11 @@ export class EvaluationHeaderComponent implements OnInit {
     companyData: {
 
     };
+    introStarsCount=4;
+    questionsStarsCount=3;
+    RecommendationStarsCount=2;
+    overallStarsCount=1;
+
     candidate: string;
     constructor(public route: ActivatedRoute,
         public router: Router,

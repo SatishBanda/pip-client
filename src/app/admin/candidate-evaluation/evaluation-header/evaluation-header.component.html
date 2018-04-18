@@ -9,8 +9,7 @@
     </div>
 </div>
 <div class="col-sm-12 nopadding">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-10 nopadding">
+    <div class="col-sm-10 col-sm-offset-1 nopadding">
         <div class="row form-group evaluation-tabs">
             <div class="col-xs-12">
                 <ul class="nav nav-pills nav-wizard" id="myNav">
@@ -21,23 +20,60 @@
                         </a>
                     </li>-->
 
-                    <li  align="center" aria-expanded="true" class="li-nav col-md-2 check-changed" [routerLinkActive]="['active']"
-                       >
-                        <a   [routerLink]="['/admin/candidates/',candidate,'evaluation','introduction']" class="list-group-item-text font-white margin-0">Introduction</a>
+                    <li align="center" aria-expanded="true" class="li-nav  check-changed" [routerLinkActive]="['active']">
+                        <a [routerLink]="['/admin/candidates/',candidate,'evaluation','introduction']" class="list-group-item-text font-white margin-0">
+                            <i aria-hidden="true" class="fa fa-user"></i> Introduction</a>
+
+                        <div class="border-ddd overall-rating-block">
+                            <p class="overall-rating-text">Overall performance</p>
+                            <span>
+                                <rating [(ngModel)]="introStarsCount" [max]="5" iconClass="fa-star" fullIcon="★" emptyIcon="☆" [readonly]="true" [disabled]="false"
+                                    [required]="true">
+                                </rating>
+                                <span class="overall-rating-number"> 4</span>
+                            </span>
+                        </div>
                     </li>
-                    <li align="center" aria-expanded="true" class="li-nav col-md-2 check-changed" [routerLinkActive]="['active']"
-                     >
-                        <a   [routerLink]="['/admin/candidates/',candidate,'evaluation','questions']" class="list-group-item-text font-white margin-0">Question</a>
+                    <li align="center" aria-expanded="true" class="li-nav  check-changed" [routerLinkActive]="['active']">
+                        <a [routerLink]="['/admin/candidates/',candidate,'evaluation','questions']" class="list-group-item-text font-white margin-0">
+                            <i aria-hidden="true" class="fa fa-question-circle"></i> Question</a>
+                        <div class="border-ddd overall-rating-block">
+                            <p class="overall-rating-text">Overall performance</p>
+                            <span>
+                                <rating [(ngModel)]="questionsStarsCount" [max]="5" iconClass="fa-star" fullIcon="★" emptyIcon="☆" [readonly]="true" [disabled]="false"
+                                    [required]="true">
+                                </rating>
+                                <span class="overall-rating-number"> 3</span>
+                            </span>
+                        </div>
                     </li>
 
-                    <li  align="center" aria-expanded="true" class="li-nav col-md-2 check-changed" [routerLinkActive]="['active']"
-                      >
-                        <a [routerLink]="['/admin/candidates/',candidate,'evaluation','recommendations']" class="list-group-item-text font-white margin-0">Recommendations</a>
+                    <li align="center" aria-expanded="true" class="li-nav  check-changed" [routerLinkActive]="['active']">
+                        <a [routerLink]="['/admin/candidates/',candidate,'evaluation','recommendations']" class="list-group-item-text font-white margin-0">
+                            <i aria-hidden="true" class="fa fa-thumbs-up"></i> Recommendations</a>
+                        <div class="border-ddd overall-rating-block">
+                            <p class="overall-rating-text">Overall performance</p>
+                            <span>
+                                <rating [(ngModel)]="RecommendationStarsCount" [max]="5" iconClass="fa-star" fullIcon="★" emptyIcon="☆" [readonly]="true" [disabled]="false"
+                                    [required]="true">
+                                </rating>
+                                <span class="overall-rating-number"> 2</span>
+                            </span>
+                        </div>
                     </li>
 
-                    <li align="center" aria-expanded="true" class="li-nav col-md-2 check-changed" [routerLinkActive]="['active']"
-                  >
-                        <a  [routerLink]="['/admin/candidates/',candidate,'evaluation','feedback']" class="list-group-item-text font-white margin-0">Feedback</a>
+                    <li align="center" aria-expanded="true" class="li-nav  check-changed" [routerLinkActive]="['active']">
+                        <a [routerLink]="['/admin/candidates/',candidate,'evaluation','feedback']" class="list-group-item-text font-white margin-0">
+                            <i aria-hidden="true" class="fa fa-eye"></i> Feedback</a>
+                        <div class="border-ddd overall-rating-block">
+                            <p class="overall-rating-text">Overall performance</p>
+                            <span>
+                                <rating [(ngModel)]="overallStarsCount" [max]="5" iconClass="fa-star" fullIcon="★" emptyIcon="☆" [readonly]="true" [disabled]="false"
+                                    [required]="true">
+                                </rating>
+                                <span class="overall-rating-number"> 1</span>
+                            </span>
+                        </div>
                     </li>
                 </ul>
             </div>
