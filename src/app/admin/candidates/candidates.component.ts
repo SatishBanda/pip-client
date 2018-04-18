@@ -227,15 +227,20 @@ export class CandidatesComponent implements OnInit {
   /**
    * 
    */
-  onCandidateUserSubmit() {
+  onCandidateUserSubmit(type: string) {
     this.candidateUserSubmitted = true;
     this.candidateUserService.saveCandidateUser(this.candidateUser).subscribe(
       result => {
-        if (result.success) {
+        if (result.status) {
           this.closeCandidateModal();
           this.candidateUserSubmitted = false;
           this.toastrService.success('Candidate saved successfully.');
-          this.getCandidatesList();
+          if (type == 'evaluate') {
+            this.redirectToEvaluation(result.userInformation.user_id);
+          } else {
+            this.getCandidatesList();
+          }
+
         } else {
           this.candidateUserSubmitted = false;
         }
@@ -293,15 +298,26 @@ export class CandidatesComponent implements OnInit {
     }
   }
 
-  public companyStatusChange(id) {
-    this.candidateUserService.companyStatusChange(id).subscribe(
+  public changeCandidateStatus(candidate: CandidateUser) {
+    this.candidateUserService.changeCandidateStatus(candidate.user_id).subscribe(
       result => {
         if (result.success) {
           this.toastrService.success('Status Updated Succesfully.');
+          this.getCandidatesList()
+        } else {
+          this.toastrService.error('Error in status update.');
         }
       },
       error => {
         //this._errorMessage = error.data;
       });
+  }
+  /**
+   * 
+   * @param candiate 
+   */
+  redirectToEvaluation(user_id) {
+    let url: string = 'admin/candidates/' + this.globalService.encode(user_id) + '/evaluation';
+    this.router.navigate([url]);
   }
 }
