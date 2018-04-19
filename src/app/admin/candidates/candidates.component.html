@@ -78,7 +78,7 @@
                   <td>{{item.username}}</td>
                   <td>{{item.mobile}}</td>
                   <td class="text-center">
-                    <a title="Click to start evaluation" style="cursor:pointer" (click) = "redirectToEvaluation(item.user_id)" >{{(item.evaluationStatus == 1) ? "Start" : "Resume"}}</a>
+                    <a title="Click to start evaluation" style="cursor:pointer" (click) = "redirectToEvaluation(item.user_id)" >{{(item.evaluationStatus == 1) ? "Resume" : "Start"}}</a>
                   </td>
                   <td class="text-center">
                     <a (click)="showCandidateEvaluationHistory(item)" title="Click to view" style="cursor:pointer">{{item.evaluationHistoryCount}}</a>

@@ -83,4 +83,25 @@ export class QuestionsComponent implements OnInit {
     this.questions6Arr = result.subcategories_7;
     this.questions7Arr = result.subcategories_8;
   }
+
+  submitEvaluation(questionData) {
+    let data = {
+      "candidateId": this.globalService.decode(this.candidate),
+      "questions": questionData,
+      "step": 2
+    }
+    this.evalService.saveEvaluation(data).subscribe(
+      (result) => {
+        if (result.status) {
+          this.toasterService.success("Saved successfully");
+        } else {
+          this.toasterService.error("Error in saving please try again later.");
+        }
+      },
+      error => {
+        this.toasterService.error("Error in saving please try again later.");
+      }
+    );
+  }
+
 }

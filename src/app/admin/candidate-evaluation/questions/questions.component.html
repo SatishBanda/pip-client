@@ -29,7 +29,7 @@
                 <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
                     <a id="Prevdiv32" class="btn btn-info" value="Prev"  [routerLink]="['/admin/candidates/',candidate,'evaluation','introduction']"  style="margin-right:2px;">
                         <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
-                    <a class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                    <a (click) = "submitEvaluation(questions1Arr)"  class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
                         <i class="fa fa-floppy-o"></i>&nbsp;</a>
                     <a id="Nextdiv33" class="btn btn-info" value="Next"  [routerLink]="['/admin/candidates/',candidate,'evaluation','recommendations']"  style="margin-right:2px;">Next&nbsp;
                         <i class="fa fa-arrow-right"></i>&nbsp;</a>
@@ -60,7 +60,7 @@
                 <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
                     <a id="Prevdiv32" class="btn btn-info" value="Prev"  [routerLink]="['/admin/candidates/',candidate,'evaluation','introduction']"  style="margin-right:2px;">
                         <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
-                    <a class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                    <a (click) = "submitEvaluation(questions2Arr)"  class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
                         <i class="fa fa-floppy-o"></i>&nbsp;</a>
                     <a id="Nextdiv33" class="btn btn-info" value="Next"  [routerLink]="['/admin/candidates/',candidate,'evaluation','recommendations']"  style="margin-right:2px;">Next&nbsp;
                         <i class="fa fa-arrow-right"></i>&nbsp;</a>
@@ -93,7 +93,7 @@
                 <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
                     <a id="Prevdiv32" class="btn btn-info" value="Prev"  [routerLink]="['/admin/candidates/',candidate,'evaluation','introduction']"  style="margin-right:2px;">
                         <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
-                    <a class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                    <a (click) = "submitEvaluation(questions3Arr)" class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
                         <i class="fa fa-floppy-o"></i>&nbsp;</a>
                     <a id="Nextdiv33" class="btn btn-info" value="Next"  [routerLink]="['/admin/candidates/',candidate,'evaluation','recommendations']"  style="margin-right:2px;">Next&nbsp;
                         <i class="fa fa-arrow-right"></i>&nbsp;</a>
@@ -124,7 +124,7 @@
                 <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
                     <a id="Prevdiv32" class="btn btn-info" value="Prev"  [routerLink]="['/admin/candidates/',candidate,'evaluation','introduction']"  style="margin-right:2px;">
                         <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
-                    <a class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                    <a (click) = "submitEvaluation(questions4Arr)"  class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
                         <i class="fa fa-floppy-o"></i>&nbsp;</a>
                     <a id="Nextdiv33" class="btn btn-info" value="Next"  [routerLink]="['/admin/candidates/',candidate,'evaluation','recommendations']"  style="margin-right:2px;">Next&nbsp;
                         <i class="fa fa-arrow-right"></i>&nbsp;</a>
@@ -155,7 +155,7 @@
                 <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
                     <a id="Prevdiv32" class="btn btn-info" value="Prev"  [routerLink]="['/admin/candidates/',candidate,'evaluation','introduction']"  style="margin-right:2px;">
                         <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
-                    <a class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                    <a (click) = "submitEvaluation(questions5Arr)" class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
                         <i class="fa fa-floppy-o"></i>&nbsp;</a>
                     <a id="Nextdiv33" class="btn btn-info" value="Next"  [routerLink]="['/admin/candidates/',candidate,'evaluation','recommendations']"  style="margin-right:2px;">Next&nbsp;
                         <i class="fa fa-arrow-right"></i>&nbsp;</a>
@@ -188,7 +188,7 @@
                 <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
                     <a id="Prevdiv32" class="btn btn-info" value="Prev"  [routerLink]="['/admin/candidates/',candidate,'evaluation','introduction']"  style="margin-right:2px;">
                         <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
-                    <a class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                    <a (click) = "submitEvaluation(questions6Arr)" class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
                         <i class="fa fa-floppy-o"></i>&nbsp;</a>
                     <a id="Nextdiv33" class="btn btn-info" value="Next"  [routerLink]="['/admin/candidates/',candidate,'evaluation','recommendations']"  style="margin-right:2px;">Next&nbsp;
                         <i class="fa fa-arrow-right"></i>&nbsp;</a>
@@ -219,7 +219,7 @@
                 <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
                     <a id="Prevdiv32" class="btn btn-info" value="Prev" [routerLink]="['/admin/candidates/',candidate,'evaluation','introduction']" style="margin-right:2px;">
                         <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
-                    <a class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                    <a (click) = "submitEvaluation(questions7Arr)" class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
                         <i class="fa fa-floppy-o"></i>&nbsp;</a>
                     <a id="Nextdiv33" class="btn btn-info" value="Next" [routerLink]="['/admin/candidates/',candidate,'evaluation','recommendations']" style="margin-right:2px;">Next&nbsp;
                         <i class="fa fa-arrow-right"></i>&nbsp;</a>

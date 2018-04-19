@@ -79,4 +79,25 @@ export class RecommendationsComponent implements OnInit {
     );*/
   }
 
+  
+  submitEvaluation(questionData) {
+    let data = {
+      "candidateId": this.globalService.decode(this.candidate),
+      "questions": questionData,
+      "step": 3
+    }
+    this.evalService.saveEvaluation(data).subscribe(
+      (result) => {
+        if (result.status) {
+          this.toasterService.success("Saved successfully");
+        } else {
+          this.toasterService.error("Error in saving please try again later.");
+        }
+      },
+      error => {
+        this.toasterService.error("Error in saving please try again later.");
+      }
+    );
+  }
+
 }
