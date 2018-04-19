@@ -19,16 +19,16 @@ export class FeedbackComponent implements OnInit {
   feedback2Arr: any;
   feedback1Arr: any;
 
-  public rating1Text = "Very Dissatisfied";
-  public rating2Text = "Neutral";
-  public rating3Text = "Good";
+  public rating1Text = "Low";
+  public rating2Text = "Medium";
+  public rating3Text = "High";
   public rating4Text = "Satisfied";
   public rating5Text = "Very Satisfied";
   public rating0Text = "None";
 
   public rating1Color = "red-bar";
-  public rating2Color = "yellow-bar";
-  public rating3Color = "blue-bar";
+  public rating2Color = "orange-bar";
+  public rating3Color = "green-bar";
   public rating4Color = "orange-bar";
   public rating5Color = "green-bar";
 
@@ -42,7 +42,7 @@ export class FeedbackComponent implements OnInit {
     step: 1, // number of page steps, defaults to 10
     range: {
       min: 0,
-      max: 5
+      max: 3
     }
   }
 
