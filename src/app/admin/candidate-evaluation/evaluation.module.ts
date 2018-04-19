@@ -16,6 +16,7 @@ import { QuestionsComponent } from './questions/questions.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { RecommendationsComponent } from './recommendations/recommendations.component';
 import { EvaluationService } from '../../services/evaluation.service';
+import { EvaluationResolver } from '../../services/candidate-evaluation.resolver';
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import { EvaluationService } from '../../services/evaluation.service';
   declarations: [
     IntroductionComponent,EvaluationHeaderComponent,QuestionsComponent,FeedbackComponent,RecommendationsComponent
   ],
-  providers: [EvaluationService],
-  exports:[EvaluationHeaderComponent]
+  providers: [EvaluationService,EvaluationResolver],
+  exports:[EvaluationHeaderComponent,]
 })
 export class EvaluationModule { }

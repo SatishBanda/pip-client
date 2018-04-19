@@ -59,8 +59,9 @@ export class IntroductionComponent implements OnInit {
 
 
   getLabelsData() {
-    let testData = { "candidateId": 8, "evaluationType": "start" };
-    this.evalService.getQuestionLabels(testData).subscribe(
+    let labelsData = this.route.snapshot;
+    this.subCategories1Arr = labelsData.data["data"].questions.subcategories_1;
+   /* this.evalService.getQuestionLabels(testData).subscribe(
       (result) => {
         if (result.status) {
           this.subCategories1Arr = result.questions.subcategories_1;
@@ -69,7 +70,7 @@ export class IntroductionComponent implements OnInit {
       error => {
         this.toasterService.error("Error in fetching settings details");
       }
-    );
+    );*/
   }
 
 }

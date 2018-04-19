@@ -67,7 +67,15 @@ export class FeedbackComponent implements OnInit {
 
 
   getLabelsData() {
-    let testData = { "candidateId": 8, "evaluationType": "start" };
+
+    let labelsData = this.route.snapshot;
+    let result = labelsData.data["data"].questions;
+    
+    this.feedback1Arr = result.subcategories_10;
+    this.feedback2Arr = result.subcategories_11;
+    this.feedback3Arr = result.subcategories_12;
+
+    /*let testData = { "candidateId": 8, "evaluationType": "start" };
     this.evalService.getQuestionLabels(testData).subscribe(
       (result) => {
         if (result.status) {
@@ -79,6 +87,6 @@ export class FeedbackComponent implements OnInit {
       error => {
         this.toasterService.error("Error in fetching settings details");
       }
-    );
+    );*/
   }
 }
