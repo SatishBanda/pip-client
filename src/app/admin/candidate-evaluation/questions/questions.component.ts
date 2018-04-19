@@ -72,22 +72,15 @@ export class QuestionsComponent implements OnInit {
 
 
   getLabelsData() {
-    let testData = { "candidateId": 8, "evaluationType": "start" };
-    this.evalService.getQuestionLabels(testData).subscribe(
-      (result) => {
-        if (result.status) {
-          this.questions1Arr = result.questions.subcategories_2;
-          this.questions2Arr = result.questions.subcategories_3;
-          this.questions3Arr = result.questions.subcategories_4;
-          this.questions4Arr = result.questions.subcategories_5;
-          this.questions5Arr = result.questions.subcategories_6;
-          this.questions6Arr = result.questions.subcategories_7;
-          this.questions7Arr = result.questions.subcategories_8;
-        }
-      },
-      error => {
-        this.toasterService.error("Error in fetching settings details");
-      }
-    );
+
+    let labelsData = this.route.snapshot;
+    let result = labelsData.data["data"].questions;
+    this.questions1Arr = result.subcategories_2;
+    this.questions2Arr = result.subcategories_3;
+    this.questions3Arr = result.subcategories_4;
+    this.questions4Arr = result.subcategories_5;
+    this.questions5Arr = result.subcategories_6;
+    this.questions6Arr = result.subcategories_7;
+    this.questions7Arr = result.subcategories_8;
   }
 }

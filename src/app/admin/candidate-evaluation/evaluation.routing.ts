@@ -4,35 +4,45 @@ import { IntroductionComponent } from './introduction/introduction.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { RecommendationsComponent } from './recommendations/recommendations.component';
+import { EvaluationResolver } from '../../services/candidate-evaluation.resolver';
 
 const routes: Routes = [
     {
         path: '',
         redirectTo: 'introduction',
-        pathMatch: 'full'
+        pathMatch: 'full',
+        resolve: {
+            data: EvaluationResolver,
+        }
     },
     {
         path: 'introduction',
-        component: IntroductionComponent
+        component: IntroductionComponent,
+        resolve: {
+            data: EvaluationResolver,
+        }
     },
     {
         path: 'questions',
-        component: QuestionsComponent
+        component: QuestionsComponent,
+        resolve: {
+            data: EvaluationResolver,
+        }
     },
     {
         path: 'feedback',
-        component: FeedbackComponent
+        component: FeedbackComponent,
+        resolve: {
+            data: EvaluationResolver,
+        }
     },
     {
         path: 'recommendations',
-        component: RecommendationsComponent
+        component: RecommendationsComponent,
+        resolve: {
+            data: EvaluationResolver,
+        }
     },
-   /* {
-        path: ':candidate/evaluation',
-        loadChildren: 'app/admin/evaluation/evaluation.module#EvaluationModule',
-        data: {preload: true}
-    },*/
-
 ];
 
 @NgModule({

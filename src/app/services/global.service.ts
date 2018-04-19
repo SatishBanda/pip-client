@@ -15,19 +15,14 @@ export class GlobalService {
     public apiRoot: string;
     public setting: any = {};
     public emailRegx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    public years = ["2016", "2017"];
     URL_STRING = '00eeaa';
-    public productTypes: any[] = [
-        { id: 1, service: 'Full Service' },
-        { id: 2, service: 'Self Service' },
-        { id: 3, service: 'Enhanced' }
-    ];
+   
 
     constructor() {
          this.apiHost = 'http://18.236.68.236/v1';
          this.apiRoot = 'http://18.236.68.236/';
-       // this.apiHost = 'http://pip.localhost/v1';
-       // this.apiRoot = 'http://pip.localhost/';
+        //this.apiHost = 'http://pip.localhost/v1';
+        //this.apiRoot = 'http://pip.localhost/';
     }
 
     public getHeaders(): any {
@@ -69,23 +64,8 @@ export class GlobalService {
         return localStorage.getItem('usertype');
     }
 
-    public getCompany(): any {
-        return localStorage.getItem('company');
-    }
-    /**
-     * 
-     */
-    public getProducts(): any {
-        let products = JSON.parse(localStorage.getItem('productsAndClients'));
-        return products['products'];
-    }
-    /**
-     * 
-     */
-    public getBrand(): any {
-        let products = JSON.parse(localStorage.getItem('productsAndClients'));
-        return products['brand'];
-    }
+ 
+    
 
     /**
      * Encodes and returns
