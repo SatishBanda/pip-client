@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { GlobalService } from '../../../services/global.service';
 import { EvaluationService } from '../../../services/evaluation.service';
+import { tick } from '@angular/core/testing';
 
 @Component({
   templateUrl: './introduction.component.html',
@@ -61,16 +62,35 @@ export class IntroductionComponent implements OnInit {
   getLabelsData() {
     let labelsData = this.route.snapshot;
     this.subCategories1Arr = labelsData.data["data"].questions.subcategories_1;
-   /* this.evalService.getQuestionLabels(testData).subscribe(
+    /* this.evalService.getQuestionLabels(testData).subscribe(
+       (result) => {
+         if (result.status) {
+           this.subCategories1Arr = result.questions.subcategories_1;
+         }
+       },
+       error => {
+         this.toasterService.error("Error in fetching settings details");
+       }
+     );*/
+  }
+
+  submitEvaluation() {
+    let data = {
+      "candidateId": this.globalService.decode(this.candidate),
+      "questions": this.subCategories1Arr,
+      "step": 1
+    }
+    this.evalService.saveEvaluation(data).subscribe(
       (result) => {
         if (result.status) {
-          this.subCategories1Arr = result.questions.subcategories_1;
+            this.toasterService.success("Saved successfully");
+        }else{
+          this.toasterService.error("Error in saving please try again later.");
         }
       },
       error => {
-        this.toasterService.error("Error in fetching settings details");
+        this.toasterService.error("Error in saving please try again later.");
       }
-    );*/
+    );
   }
-
 }

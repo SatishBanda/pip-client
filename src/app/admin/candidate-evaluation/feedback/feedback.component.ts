@@ -70,7 +70,7 @@ export class FeedbackComponent implements OnInit {
 
     let labelsData = this.route.snapshot;
     let result = labelsData.data["data"].questions;
-    
+
     this.feedback1Arr = result.subcategories_10;
     this.feedback2Arr = result.subcategories_11;
     this.feedback3Arr = result.subcategories_12;
@@ -89,4 +89,29 @@ export class FeedbackComponent implements OnInit {
       }
     );*/
   }
+
+
+  submitEvaluation(questionData, type) {
+    let data = {
+      "candidateId": this.globalService.decode(this.candidate),
+      "questions": questionData,
+      "step": 4,
+      'type': type
+    }
+    this.evalService.saveEvaluation(data).subscribe(
+      (result) => {
+        if (result.status) {
+          this.toasterService.success("Saved successfully");
+          let url: string = 'admin/candidates';
+          this.router.navigate([url]);
+        } else {
+          this.toasterService.error("Error in saving please try again later.");
+        }
+      },
+      error => {
+        this.toasterService.error("Error in saving please try again later.");
+      }
+    );
+  }
+
 }
