@@ -88,6 +88,7 @@ tr.tr-blue-grid-head a{
     width: 19px !important;
     height: 23px !important;
     right: -6px !important;
+    background: #ddd !important;
 }
 
 .tab-content-container{
@@ -98,10 +99,12 @@ tr.tr-blue-grid-head a{
     position: absolute;
     left: 6px !important;
     top: 3px !important;
+    background: #fff !important;
 }
 .noUi-handle:after{
     left: 10px !important;
     top: 3px !important;
+    background: #fff !important;
 }
 
 
@@ -121,7 +124,7 @@ tr.tr-blue-grid-head a{
 .rating-text-label{
     padding: 7px 7px;
     float: right;
-    background: #A7A7A7 !important;
+    background: #428bca  !important;
 }
 
 .evaluation-container p,.eval-tab-container p {
@@ -129,3 +132,44 @@ tr.tr-blue-grid-head a{
     font-weight: 600;
 }
 
+.left-sider-container{
+    padding-right:30px !important;
+    border-right:1px solid #ddd;
+}
+
+.right-sider-container{
+    padding-left:30px !important;
+}
+
+@media screen and (max-width: 990px) {
+    .labels-container {
+        margin-bottom:60px;
+    }
+    .left-sider-container{
+        padding-right:0px !important;
+        border-right:0px solid #ddd;
+    }
+    
+    .right-sider-container{
+        padding-left:0px !important;
+    }
+}
+
+.labels-container .row{
+    background: #eee;
+    padding: 10px 10px;
+}
+
+.noUi-marker-horizontal.noUi-marker-normal{
+    display: none;
+}
+
+.labels-container .noUi-pips.noUi-pips-horizontal{
+        padding: 0px !important; 
+       height: 80px !important; 
+       top: 100% !important; 
+}
+
+.labels-container .noUi-value-horizontal.noUi-value-large{
+display: none;
+}

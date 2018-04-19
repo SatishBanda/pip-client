@@ -3,8 +3,9 @@
 <div class="col-sm-10 col-sm-offset-1 padding-0">
     <div class="col-sm-12 padding-8 evaluation-container">
         <h4 class="questionstxt margin-bottom-40">Recommendation : Items That Need Improvement</h4>
-        <div class="col-md-6 padding-0" *ngFor="let subCategory of recommendationsArr">
-            <div class="row " style="background: #ddd;padding: 10px 10px;">
+        <div class="col-md-6 padding-0 labels-container" [class.left-sider-container]="isEven" [class.right-sider-container]="isOdd" 
+        *ngFor="let subCategory of recommendationsArr;let i=index; let isOdd=odd;let isEven=even;">
+            <div class="row ">
                 <div class="col-sm-8 col-xs-8">
                     <p>{{subCategory.questionText}}</p>
                 </div>

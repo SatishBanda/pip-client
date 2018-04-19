@@ -3,13 +3,15 @@
 <div class="col-sm-10 col-sm-offset-1 padding-0">
   <div class="col-sm-12 padding-8 evaluation-container">
     <h4 class="questionstxt margin-bottom-40">Introduction : Client Rating</h4>
-    <div class="col-md-6 padding-0 labels-container" *ngFor="let subCategory of subCategories1Arr">
-      <div class="row " style="background: #ddd;padding: 10px 10px;">
+    <div class="col-md-6 padding-0 labels-container" [class.left-sider-container]="isEven" 
+    [class.right-sider-container]="isOdd" *ngFor="let subCategory of subCategories1Arr;let i=index; let isOdd=odd;
+    let isEven=even;">
+      <div class="row ">
         <div class="col-sm-8 col-xs-8">
           <p>{{subCategory.questionText}}</p>
         </div>
         <div class="col-sm-4 col-xs-4">
-          <span class="label label-default rating-text-label">{{(subCategory['questionValue']=='1')? rating1Text :(subCategory['questionValue']=='2') ? rating2Text :(subCategory['questionValue']=='3')
+          <span class="label label-primary rating-text-label">{{(subCategory['questionValue']=='1')? rating1Text :(subCategory['questionValue']=='2') ? rating2Text :(subCategory['questionValue']=='3')
             ? rating3Text :(subCategory['questionValue']=='4') ? rating4Text : (subCategory['questionValue']=='5') ? rating5Text
             : rating0Text}}
           </span>

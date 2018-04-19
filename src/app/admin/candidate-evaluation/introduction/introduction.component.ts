@@ -32,7 +32,7 @@ export class IntroductionComponent implements OnInit {
   someValue = 0;
   someKeyboardConfig: any = {
     connect: [true, false],
-    start: 10,
+    start: 1,
     keyboard: true,  // same as [keyboard]="true"
     step: 1, // number of page steps, defaults to 10
     range: {
