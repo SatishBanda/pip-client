@@ -7,9 +7,9 @@
                 <div class="col-md-12 tab-content-container">
                     <h4 class="questionstxt margin-bottom-40">What aspects of your training and education have helped you most on the job/school ?</h4>
 
-                    <div class="row">
-                        <div class="col-md-6" *ngFor="let subCategory of questions1Arr">
-                            <div class="row " style="background: #ddd;padding: 10px 10px;">
+                        <div class="col-md-6 padding-0 labels-container" [class.left-sider-container]="isEven" [class.right-sider-container]="isOdd" 
+                         *ngFor="let subCategory of questions1Arr;let i=index; let isOdd=odd;let isEven=even;">
+                            <div class="row ">
                                 <div class="col-sm-8 col-xs-8">
                                     <p>{{subCategory.questionText}}</p>
                                 </div>
@@ -24,8 +24,6 @@
                                 <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="subCategory['questionValue']"></nouislider>
                             </div>
                         </div>
-                    </div>
-
 
                 </div>
                 <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
@@ -41,9 +39,8 @@
                 <div class="col-md-12 tab-content-container">
                     <h4 class="questionstxt margin-bottom-40">What are the two greatest accomplishments ?</h4>
 
-                    <div class="row">
-                        <div class="col-md-6" *ngFor="let subCategory of questions2Arr">
-                            <div class="row " style="background: #ddd;padding: 10px 10px;">
+                        <div class="col-md-6 padding-0 labels-container" [class.left-sider-container]="isEven" [class.right-sider-container]="isOdd" *ngFor="let subCategory of questions2Arr ;let i=index; let isOdd=odd;let isEven=even;">
+                            <div class="row ">
                                 <div class="col-sm-8 col-xs-8">
                                     <p>{{subCategory.questionText}}</p>
                                 </div>
@@ -58,7 +55,6 @@
                                 <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="subCategory['questionValue']" ></nouislider>
                             </div>
                         </div>
-                    </div>
 
                 </div>
                 <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
@@ -75,9 +71,8 @@
                     <h4 class="questionstxt margin-bottom-40">What did you like most and least about your previous jobs ?</h4>
 
 
-                    <div class="row">
-                        <div class="col-md-6" *ngFor="let subCategory of questions3Arr">
-                            <div class="row " style="background: #ddd;padding: 10px 10px;">
+                        <div class="col-md-6 padding-0 labels-container" [class.left-sider-container]="isEven" [class.right-sider-container]="isOdd" *ngFor="let subCategory of questions3Arr ;let i=index; let isOdd=odd;let isEven=even;">
+                            <div class="row ">
                                 <div class="col-sm-8 col-xs-8">
                                     <p>{{subCategory.questionText}}</p>
                                 </div>
@@ -92,7 +87,6 @@
                                 <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="subCategory['questionValue']" ></nouislider>
                             </div>
                         </div>
-                    </div>
 
 
                 </div>
@@ -109,9 +103,8 @@
                 <div class="col-md-12 tab-content-container">
                     <h4 class="questionstxt margin-bottom-40">Why should an organization hire you ?</h4>
 
-                    <div class="row">
-                        <div class="col-md-6" *ngFor="let subCategory of questions4Arr">
-                            <div class="row " style="background: #ddd;padding: 10px 10px;">
+                        <div class="col-md-6 padding-0 labels-container" [class.left-sider-container]="isEven" [class.right-sider-container]="isOdd" *ngFor="let subCategory of questions4Arr ;let i=index; let isOdd=odd;let isEven=even;">
+                            <div class="row ">
                                 <div class="col-sm-8 col-xs-8">
                                     <p>{{subCategory.questionText}}</p>
                                 </div>
@@ -126,7 +119,6 @@
                                 <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="subCategory['questionValue']" ></nouislider>
                             </div>
                         </div>
-                    </div>
 
                 </div>
                 <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
@@ -142,9 +134,8 @@
                 <div class="col-md-12 tab-content-container">
                     <h4 class="questionstxt margin-bottom-40">What do you feel are the requirements for good leadership ?</h4>
 
-                    <div class="row">
-                        <div class="col-md-6" *ngFor="let subCategory of questions5Arr">
-                            <div class="row " style="background: #ddd;padding: 10px 10px;">
+                        <div class="col-md-6 padding-0 labels-container" [class.left-sider-container]="isEven" [class.right-sider-container]="isOdd" *ngFor="let subCategory of questions5Arr ;let i=index; let isOdd=odd;let isEven=even;">
+                            <div class="row ">
                                 <div class="col-sm-8 col-xs-8">
                                     <p>{{subCategory.questionText}}</p>
                                 </div>
@@ -159,8 +150,6 @@
                                 <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="subCategory['questionValue']" ></nouislider>
                             </div>
                         </div>
-                    </div>
-
 
                 </div>
                 <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
@@ -177,9 +166,8 @@
                     <h4 class="questionstxt margin-bottom-40">Tell me about the toughest decision you ever had to make ?</h4>
 
 
-                    <div class="row">
-                        <div class="col-md-6" *ngFor="let subCategory of questions6Arr">
-                            <div class="row " style="background: #ddd;padding: 10px 10px;">
+                        <div class="col-md-6 padding-0 labels-container" [class.left-sider-container]="isEven" [class.right-sider-container]="isOdd" *ngFor="let subCategory of questions6Arr ;let i=index; let isOdd=odd;let isEven=even;">
+                            <div class="row ">
                                 <div class="col-sm-8 col-xs-8">
                                     <p>{{subCategory.questionText}}</p>
                                 </div>
@@ -194,7 +182,6 @@
                                 <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="subCategory['questionValue']" ></nouislider>
                             </div>
                         </div>
-                    </div>
                 </div>
 
 
@@ -211,9 +198,8 @@
                 <div class="col-md-12 tab-content-container">
                     <h4 class="questionstxt margin-bottom-40">How do you resolve personal confrontations ?</h4>
 
-                    <div class="row">
-                        <div class="col-md-6" *ngFor="let subCategory of questions7Arr">
-                            <div class="row " style="background: #ddd;padding: 10px 10px;">
+                        <div class="col-md-6 padding-0 labels-container" [class.left-sider-container]="isEven" [class.right-sider-container]="isOdd" *ngFor="let subCategory of questions7Arr ;let i=index; let isOdd=odd;let isEven=even;">
+                            <div class="row ">
                                 <div class="col-sm-8 col-xs-8">
                                     <p>{{subCategory.questionText}}</p>
                                 </div>
@@ -228,7 +214,6 @@
                                 <nouislider #slider [config]="someKeyboardConfig" [(ngModel)]="subCategory['questionValue']" ></nouislider>
                             </div>
                         </div>
-                    </div>
 
                 </div>
                 <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
