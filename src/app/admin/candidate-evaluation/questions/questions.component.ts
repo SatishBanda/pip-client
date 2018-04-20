@@ -82,6 +82,8 @@ export class QuestionsComponent implements OnInit {
     this.questions5Arr = result.subcategories_6;
     this.questions6Arr = result.subcategories_7;
     this.questions7Arr = result.subcategories_8;
+    this.evalService.calculateOverAllRating(result);
+
   }
 
   submitEvaluation(questionData) {
@@ -90,18 +92,50 @@ export class QuestionsComponent implements OnInit {
       "questions": questionData,
       "step": 2
     }
-    this.evalService.saveEvaluation(data).subscribe(
-      (result) => {
-        if (result.status) {
-          this.toasterService.success("Saved successfully");
-        } else {
+    let result = this.evalService.validateQuestions(questionData);
+    if (result) {
+      this.evalService.saveEvaluation(data).subscribe(
+        (result) => {
+          if (result.status) {
+            this.toasterService.success("Saved successfully");
+
+            let sum = 0;
+            this.questions1Arr.forEach(element => {
+              sum += parseInt(element.questionValue);
+            });
+            this.questions2Arr.forEach(element => {
+              sum += parseInt(element.questionValue);
+            });
+            this.questions3Arr.forEach(element => {
+              sum += parseInt(element.questionValue);
+            });
+            this.questions4Arr.forEach(element => {
+              sum += parseInt(element.questionValue);
+            });
+            this.questions6Arr.forEach(element => {
+              sum += parseInt(element.questionValue);
+            });
+            this.questions7Arr.forEach(element => {
+              sum += parseInt(element.questionValue);
+            });
+            this.questions5Arr.forEach(element => {
+              sum += parseInt(element.questionValue);
+            });
+
+            this.evalService.questionsRating = (sum / (this.questions1Arr.length * 7)).toFixed(2);
+
+          } else {
+            this.toasterService.error("Error in saving please try again later.");
+          }
+        },
+        error => {
           this.toasterService.error("Error in saving please try again later.");
         }
-      },
-      error => {
-        this.toasterService.error("Error in saving please try again later.");
-      }
-    );
+      );
+    } else {
+      this.toasterService.error("Please answer all the questions to save.");
+    }
+
   }
 
 }

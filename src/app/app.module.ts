@@ -38,7 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TabsModule.forRoot(),
     ModalModule.forRoot(),
     AccordionModule.forRoot(),
-    ToastrModule.forRoot({ timeOut: 2000 }),
+    ToastrModule.forRoot({ timeOut: 3000 }),
     CookieModule.forRoot(),
     BrowserAnimationsModule
   ],

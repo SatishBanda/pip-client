@@ -44,7 +44,7 @@
               [mfRowsOnPage]="rowsOnPage">
               <thead>
                 <tr class="tr-blue-grid-head">
-                 <!-- <th style="width: 10%">
+                  <!-- <th style="width: 10%">
                     <mfDefaultSorter by="candidate_id">Candidate ID</mfDefaultSorter>
                   </th>-->
                   <th style="width: 15%">
@@ -78,7 +78,7 @@
                   <td>{{item.username}}</td>
                   <td>{{item.mobile}}</td>
                   <td class="text-center">
-                    <a title="Click to start evaluation" style="cursor:pointer" (click) = "redirectToEvaluation(item.user_id)" >{{(item.evaluationStatus == 1) ? "Resume" : "Start"}}</a>
+                    <a title="Click to start evaluation" style="cursor:pointer" (click)="redirectToEvaluation(item.user_id)">{{(item.evaluationStatus == 1) ? "Resume" : "Start"}}</a>
                   </td>
                   <td class="text-center">
                     <a (click)="showCandidateEvaluationHistory(item)" title="Click to view" style="cursor:pointer">{{item.evaluationHistoryCount}}</a>
@@ -222,9 +222,10 @@
           <button type="button" class="btn btn-default pull-right" (click)="closeCandidateModal()">Close</button>
           <button (click)="onCandidateUserSubmit('add')" style="margin-right: 5px" type="button" class="btn btn-success pull-right"
             [disabled]="!candidateUserForm.valid || candidateUserSubmitted == true">
-            <i *ngIf="candidateUserSubmitted" class="fa fa-circle-o-notch fa-spin fa-fw"></i>Add & Evaluate Later</button>
-          <button (click)="onCandidateUserSubmit('evaluate')" style="margin-right: 5px" type="button" class="btn btn-success pull-right" [disabled]="!candidateUserForm.valid || candidateUserSubmitted == true">
-            <i *ngIf="candidateUserSubmitted" class="fa fa-circle-o-notch fa-spin fa-fw"></i>Add & Start Evaluation</button>
+            Add & Evaluate Later</button>
+          <button (click)="onCandidateUserSubmit('evaluate')" style="margin-right: 5px" type="button" class="btn btn-success pull-right"
+            [disabled]="!candidateUserForm.valid || candidateUserSubmitted == true">
+            Add & Start Evaluation</button>
 
         </div>
       </form>
@@ -248,59 +249,63 @@
         </h4>
       </div>
 
-      <div class="modal-body" >
-            <div class="form-inline">
-              <div class="form-group pull-right padding-right-0 padding-10">
-                <label for="email">
-                  <b>Search:</b>
-                </label>
-                <input class="form-control mr-left-5" [(ngModel)]="filterQuery" />
-              </div>
-            </div>
-            <table class="table table-hover table-bordered table-striped" [mfData]="candidateEvaluationHistoryData" #candidatesEvaHis="mfDataTable"
-              [mfRowsOnPage]="rowsOnPage">
-              <thead>
-                <tr class="tr-blue-grid-head">
-                  <th style="width: 10%">
-                    <mfDefaultSorter by="candidate_id">Evaluation Date & Time</mfDefaultSorter>
-                  </th>
-                  <th style="width: 15%">
-                    <mfDefaultSorter by="name">Evaluated By</mfDefaultSorter>
-                  </th>
-                  <th style="width: 15%">
-                    <mfDefaultSorter by="email">Detail</mfDefaultSorter>
-                  </th>
-                  <th style="width: 10%">
-                    <mfDefaultSorter by="phone">Report</mfDefaultSorter>
-                  </th>
-                  <th style="width: 10%" class="text-center">
-                    <mfDefaultSorter by="">Email</mfDefaultSorter>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let history of candidatesEvaHis.data; let rowIndex=index">
-                  <td>{{history.created_at}}</td>
-                  <td>{{history.evaluatorName}}</td>
-                  <td>
-                    <a title="Click to view Details" style="cursor:pointer"  target="_blank">View</a>
-                  </td>
-                  <td>
-                    <a title="Click to download report" style="cursor:pointer"  target="_blank"><i class="fa fa-download"></i></a>
-                  </td>
-                  <td>
-                    <a title="Click to email" style="cursor:pointer" target="_blank"><i class="fa fa-envelope"></i></a>
-                  </td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td colspan="9" class="no-pagination-border padding-0">
-                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
+      <div class="modal-body">
+        <div class="form-inline">
+          <div class="form-group pull-right padding-right-0 padding-10">
+            <label for="email">
+              <b>Search:</b>
+            </label>
+            <input class="form-control mr-left-5" [(ngModel)]="filterQuery" />
+          </div>
+        </div>
+        <table class="table table-hover table-bordered table-striped" [mfData]="candidateEvaluationHistoryData" #candidatesEvaHis="mfDataTable"
+          [mfRowsOnPage]="rowsOnPage">
+          <thead>
+            <tr class="tr-blue-grid-head">
+              <th style="width: 10%">
+                <mfDefaultSorter by="candidate_id">Evaluation Date & Time</mfDefaultSorter>
+              </th>
+              <th style="width: 15%">
+                <mfDefaultSorter by="name">Evaluated By</mfDefaultSorter>
+              </th>
+              <th style="width: 15%">
+                <mfDefaultSorter by="email">Detail</mfDefaultSorter>
+              </th>
+              <th style="width: 10%">
+                <mfDefaultSorter by="phone">Report</mfDefaultSorter>
+              </th>
+              <th style="width: 10%" class="text-center">
+                <mfDefaultSorter by="">Email</mfDefaultSorter>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let history of candidatesEvaHis.data; let rowIndex=index">
+              <td>{{history.created_at}}</td>
+              <td>{{history.evaluatorName}}</td>
+              <td>
+                <a title="Click to view Details" style="cursor:pointer" target="_blank">View</a>
+              </td>
+              <td>
+                <a title="Click to download report" style="cursor:pointer" target="_blank">
+                  <i class="fa fa-download"></i>
+                </a>
+              </td>
+              <td>
+                <a title="Click to email" style="cursor:pointer" target="_blank">
+                  <i class="fa fa-envelope"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="9" class="no-pagination-border padding-0">
+                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
       </div>
       <div class="modal-footer footer-background">
         <button type="button" class="btn btn-default pull-right" (click)="candidatesHistoryModal.hide()">Close</button>
