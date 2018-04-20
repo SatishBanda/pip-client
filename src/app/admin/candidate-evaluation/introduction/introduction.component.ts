@@ -31,6 +31,7 @@ export class IntroductionComponent implements OnInit {
 
   subCategories1Arr: any;
   someValue = 0;
+
   someKeyboardConfig: any = {
     connect: [true, false],
     start: 1,
@@ -41,7 +42,6 @@ export class IntroductionComponent implements OnInit {
       max: 5
     }
   }
-
 
   constructor(
     public evalService: EvaluationService,
@@ -60,18 +60,11 @@ export class IntroductionComponent implements OnInit {
 
 
   getLabelsData() {
+
     let labelsData = this.route.snapshot;
+    this.evalService.calculateOverAllRating(labelsData.data["data"].questions);
     this.subCategories1Arr = labelsData.data["data"].questions.subcategories_1;
-    /* this.evalService.getQuestionLabels(testData).subscribe(
-       (result) => {
-         if (result.status) {
-           this.subCategories1Arr = result.questions.subcategories_1;
-         }
-       },
-       error => {
-         this.toasterService.error("Error in fetching settings details");
-       }
-     );*/
+
   }
 
   submitEvaluation() {
@@ -80,17 +73,29 @@ export class IntroductionComponent implements OnInit {
       "questions": this.subCategories1Arr,
       "step": 1
     }
-    this.evalService.saveEvaluation(data).subscribe(
-      (result) => {
-        if (result.status) {
+    let result = this.evalService.validateQuestions(this.subCategories1Arr);
+    if (result) {
+      this.evalService.saveEvaluation(data).subscribe(
+        (result) => {
+          if (result.status) {
             this.toasterService.success("Saved successfully");
-        }else{
+
+            let sum = 0;
+            this.subCategories1Arr.forEach(element => {
+              sum += parseInt(element.questionValue);
+            });
+            this.evalService.introductionRating = (sum / this.subCategories1Arr.length).toFixed(2);
+
+          } else {
+            this.toasterService.error("Error in saving please try again later.");
+          }
+        },
+        error => {
           this.toasterService.error("Error in saving please try again later.");
         }
-      },
-      error => {
-        this.toasterService.error("Error in saving please try again later.");
-      }
-    );
+      );
+    } else {
+      this.toasterService.error("Please answer all the questions to save.");
+    }
   }
 }

@@ -64,40 +64,42 @@ export class RecommendationsComponent implements OnInit {
     let labelsData = this.route.snapshot;
     let result = labelsData.data["data"].questions;
     this.recommendationsArr = result.subcategories_9;
-    
-
-   /* let testData = { "candidateId": 8, "evaluationType": "start" };
-    this.evalService.getQuestionLabels(testData).subscribe(
-      (result) => {
-        if (result.status) {
-          this.recommendationsArr = result.questions.subcategories_9;
-        }
-      },
-      error => {
-        this.toasterService.error("Error in fetching settings details");
-      }
-    );*/
+    this.evalService.calculateOverAllRating(result);
   }
 
-  
+
   submitEvaluation(questionData) {
     let data = {
       "candidateId": this.globalService.decode(this.candidate),
       "questions": questionData,
       "step": 3
     }
-    this.evalService.saveEvaluation(data).subscribe(
-      (result) => {
-        if (result.status) {
-          this.toasterService.success("Saved successfully");
-        } else {
+    let result = this.evalService.validateQuestions(questionData);
+    if (result) {
+      this.evalService.saveEvaluation(data).subscribe(
+        (result) => {
+          if (result.status) {
+            this.toasterService.success("Saved successfully");
+
+
+            let sum = 0;
+            this.recommendationsArr.forEach(element => {
+              sum += parseInt(element.questionValue);
+            });
+            this.evalService.recommendationsRating = (sum / this.recommendationsArr.length).toFixed(2);
+
+          } else {
+            this.toasterService.error("Error in saving please try again later.");
+          }
+        },
+        error => {
           this.toasterService.error("Error in saving please try again later.");
         }
-      },
-      error => {
-        this.toasterService.error("Error in saving please try again later.");
-      }
-    );
+      );
+    } else {
+      this.toasterService.error("Please answer all the questions to save.");
+    }
+
   }
 
 }

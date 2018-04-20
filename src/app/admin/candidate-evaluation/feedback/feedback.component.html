@@ -29,7 +29,7 @@
                     <a id="Prevdiv32" class="btn btn-info" value="Prev" [routerLink]="['/admin/candidates/',candidate,'evaluation','recommendations']"
                         style="margin-right:2px;">
                         <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
-                    <a (click)="submitEvaluation(feedback1Arr)" class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                    <a (click)="submitEvaluation(feedback1Arr,'save')" class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
                         <i class="fa fa-floppy-o"></i>&nbsp;</a>
                 </div>
             </tab>
@@ -60,7 +60,7 @@
                     <a id="Prevdiv32" class="btn btn-info" value="Prev" [routerLink]="['/admin/candidates/',candidate,'evaluation','recommendations']"
                         style="margin-right:2px;">
                         <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
-                    <a (click)="submitEvaluation(feedback2Arr)" class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                    <a (click)="submitEvaluation(feedback2Arr,'save')" class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
                         <i class="fa fa-floppy-o"></i>&nbsp;</a>
                 </div>
             </tab>
@@ -93,9 +93,11 @@
                     <a id="Prevdiv32" class="btn btn-info" value="Prev" [routerLink]="['/admin/candidates/',candidate,'evaluation','recommendations']"
                         style="margin-right:2px;">
                         <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
-                    <a (click)="submitEvaluation(feedback1Arr,'save')" class="btn btn-success" value="Next" style="margin-right:2px;">Finish&nbsp;
+                    <a (click)="submitEvaluation(feedback3Arr,'save')" class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
                         <i class="fa fa-floppy-o"></i>&nbsp;</a>
-                    <a (click)="submitEvaluation(feedback1Arr,'email')" class="btn btn-success" value="Next" style="margin-right:2px;">Finish & Email&nbsp;
+                    <a (click)="submitEvaluation(feedback3Arr,'finish')" class="btn btn-success" value="Next" style="margin-right:2px;">Finish&nbsp;
+                        <i class="fa fa-floppy-o"></i>&nbsp;</a>
+                    <a (click)="submitEvaluation(feedback3Arr,'email')" class="btn btn-success" value="Next" style="margin-right:2px;">Finish & Email&nbsp;
                         <i class="fa fa-envelope"></i>&nbsp;</a>
                 </div>
             </tab>

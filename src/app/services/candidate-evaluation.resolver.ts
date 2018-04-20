@@ -25,7 +25,8 @@ export class EvaluationResolver implements Resolve<any> {
             "candidateId": this.candidate,
             "evaluationType": "start"
         }
-        return this.evaluationService.getQuestionLabels(data);
+        
+        return this.evaluationService.getQuestionLabels(data);;
     }
 
 }

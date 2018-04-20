@@ -75,19 +75,8 @@ export class FeedbackComponent implements OnInit {
     this.feedback2Arr = result.subcategories_11;
     this.feedback3Arr = result.subcategories_12;
 
-    /*let testData = { "candidateId": 8, "evaluationType": "start" };
-    this.evalService.getQuestionLabels(testData).subscribe(
-      (result) => {
-        if (result.status) {
-          this.feedback1Arr = result.questions.subcategories_10;
-          this.feedback2Arr = result.questions.subcategories_11;
-          this.feedback3Arr = result.questions.subcategories_12;
-        }
-      },
-      error => {
-        this.toasterService.error("Error in fetching settings details");
-      }
-    );*/
+    this.evalService.calculateOverAllRating(result);
+
   }
 
 
@@ -98,20 +87,44 @@ export class FeedbackComponent implements OnInit {
       "step": 4,
       'type': type
     }
-    this.evalService.saveEvaluation(data).subscribe(
-      (result) => {
-        if (result.status) {
-          this.toasterService.success("Saved successfully");
-          let url: string = 'admin/candidates';
-          this.router.navigate([url]);
-        } else {
+    let result = this.evalService.validateQuestions(questionData);
+    if (result) {
+      this.evalService.saveEvaluation(data).subscribe(
+        (result) => {
+          if (result.status) {
+            this.toasterService.success("Saved successfully");
+            if (type == 'save') {
+              let sum = 0;
+              this.feedback1Arr.forEach(element => {
+                sum += parseInt(element.questionValue);
+              });
+
+              this.feedback2Arr.forEach(element => {
+                sum += parseInt(element.questionValue);
+              });
+
+              this.feedback3Arr.forEach(element => {
+                sum += parseInt(element.questionValue);
+              });
+              let length = this.feedback1Arr.length + parseInt(this.feedback2Arr.length) + parseInt(this.feedback3Arr.length);
+              this.evalService.feedbackRating = (sum /length).toFixed(2);
+            } else {
+              let url: string = 'admin/candidates';
+              this.router.navigate([url]);
+            }
+
+          } else {
+            this.toasterService.error("Error in saving please try again later.");
+          }
+        },
+        error => {
           this.toasterService.error("Error in saving please try again later.");
         }
-      },
-      error => {
-        this.toasterService.error("Error in saving please try again later.");
-      }
-    );
+      );
+    } else {
+      this.toasterService.error("Please answer all the questions to save.");
+    }
+
   }
 
 }
