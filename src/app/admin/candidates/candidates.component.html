@@ -40,7 +40,7 @@
                 </div>
               </div>
             </div>
-            <table class="table table-hover table-bordered table-striped" [mfData]="candidatesData" #candidatesTblData="mfDataTable"
+            <table class="table table-hover table-bordered table-striped" [mfData]="candidatesData | candidateDataFilter : filterQuery" #candidatesTblData="mfDataTable"
               [mfRowsOnPage]="rowsOnPage">
               <thead>
                 <tr class="tr-blue-grid-head">
@@ -255,10 +255,10 @@
             <label for="email">
               <b>Search:</b>
             </label>
-            <input class="form-control mr-left-5" [(ngModel)]="filterQuery" />
+            <input class="form-control mr-left-5" [(ngModel)]="evalHistoryFilterQuery" />
           </div>
         </div>
-        <table class="table table-hover table-bordered table-striped" [mfData]="candidateEvaluationHistoryData" #candidatesEvaHis="mfDataTable"
+        <table class="table table-hover table-bordered table-striped" [mfData]="candidateEvaluationHistoryData | dataFilter : evalHistoryFilterQuery" #candidatesEvaHis="mfDataTable"
           [mfRowsOnPage]="rowsOnPage">
           <thead>
             <tr class="tr-blue-grid-head">

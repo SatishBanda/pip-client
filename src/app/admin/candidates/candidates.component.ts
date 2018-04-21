@@ -16,6 +16,8 @@ import { CandidateUserService } from '../../services/candidate-user.service';
 })
 export class CandidatesComponent implements OnInit {
 
+  evalHistoryFilterQuery: string;
+  candidateEvaluationHistoryData: any;
   minDate = new Date(2010, 0, 1);
   maxDate = new Date(2050, 12, 31);
   colorTheme = 'theme-blue';
@@ -36,7 +38,6 @@ export class CandidatesComponent implements OnInit {
   public sortBy = "";
   public candidateTitle: string = '';
   public candidateEvaluationTitle: string = '';
-  public candidateEvaluationHistoryData: any;
   public selectedCandidate: any;
 
   public mask = [/\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/]
@@ -115,10 +116,12 @@ export class CandidatesComponent implements OnInit {
   }
 
   public showCandidateEvaluationHistory(candidate) {
+    this.evalHistoryFilterQuery = "";
     this.candidateEvaluationTitle = candidate.name + ': Evaluation History';
     this.candidateEvaluationHistoryData = candidate.evaluationHistory;
     this.candidatesHistoryModal.show();
   }
+
   public okDelete() {
     this.candidateUserService.deleteCandidate(this.selectedCandidate)
       .subscribe((result) => {
@@ -206,6 +209,7 @@ export class CandidatesComponent implements OnInit {
       last_name: '',
       status: '',
       mobile: '',
+      username: ''
       //phone_extension: '',
     }
     return user;
@@ -286,7 +290,7 @@ export class CandidatesComponent implements OnInit {
       this.candidateUserFormErrors[key].message = message;
     }
   }
-  
+
   setFormErrorsOnChange(form, formErrors, data?: any) {
     if (!form) { return; }
     for (let field in formErrors) {
