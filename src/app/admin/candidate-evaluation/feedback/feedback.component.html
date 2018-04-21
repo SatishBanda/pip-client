@@ -1,7 +1,7 @@
 <evaluation-header></evaluation-header>
 <div class="col-sm-10 col-sm-offset-1 padding-0">
     <div class="col-sm-12 padding-0 eval-tab-container">
-        <tabset [vertical]="true" type="pills" id="test1">
+        <tabset #evalTabs [vertical]="true" type="pills" id="test1">
             <tab heading="Strengths">
                 <div class="col-md-12 tab-content-container">
                     <h4 class="questionstxt margin-bottom-40">Phone Interview Feedback : Strengths</h4>
@@ -29,8 +29,9 @@
                     <a id="Prevdiv32" class="btn btn-info" value="Prev" [routerLink]="['/admin/candidates/',candidate,'evaluation','recommendations']"
                         style="margin-right:2px;">
                         <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
-                    <a (click)="submitEvaluation(feedback1Arr,'save')" class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
-                        <i class="fa fa-floppy-o"></i>&nbsp;</a>
+                    <a (click)="submitEvaluation(feedback1Arr,'save','1')" class="btn btn-success" value="Next" style="margin-right:2px;">
+                        <i class="fa fa-floppy-o"></i>&nbsp;Save&nbsp; & Next
+                    </a>
                 </div>
             </tab>
             <tab heading="Weaknesses">
@@ -57,11 +58,11 @@
 
                 </div>
                 <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
-                    <a id="Prevdiv32" class="btn btn-info" value="Prev" [routerLink]="['/admin/candidates/',candidate,'evaluation','recommendations']"
-                        style="margin-right:2px;">
+                    <a (click)="selectTab(0)" seid="Prevdiv32" class="btn btn-info" value="Prev" style="margin-right:2px;">
                         <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
-                    <a (click)="submitEvaluation(feedback2Arr,'save')" class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
-                        <i class="fa fa-floppy-o"></i>&nbsp;</a>
+                    <a (click)="submitEvaluation(feedback2Arr,'save','2')" class="btn btn-success" value="Next" style="margin-right:2px;">
+                        <i class="fa fa-floppy-o"></i>&nbsp;Save&nbsp; & Next
+                    </a>
                 </div>
             </tab>
             <tab heading="Overall">
@@ -90,10 +91,10 @@
 
                 </div>
                 <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
-                    <a id="Prevdiv32" class="btn btn-info" value="Prev" [routerLink]="['/admin/candidates/',candidate,'evaluation','recommendations']"
+                    <a (click) = "selectTab(1)" id="Prevdiv32" class="btn btn-info" value="Prev" 
                         style="margin-right:2px;">
                         <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
-                    <a (click)="submitEvaluation(feedback3Arr,'save')" class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                    <a (click)="submitEvaluation(feedback3Arr,'save','nextSection')" class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
                         <i class="fa fa-floppy-o"></i>&nbsp;</a>
                     <a (click)="submitEvaluation(feedback3Arr,'finish')" class="btn btn-success" value="Next" style="margin-right:2px;">Finish&nbsp;
                         <i class="fa fa-floppy-o"></i>&nbsp;</a>
