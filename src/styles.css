@@ -173,6 +173,47 @@ tr.tr-blue-grid-head a{
 .labels-container .noUi-value-horizontal.noUi-value-large{
 display: none;
 }
+
+.modal-header-color {
+    background-color: #428bca !important;
+}
+
+.close-modal-blue {
+    border-radius: 20px;
+    background-color: #428bca;
+    color: #fff;
+    text-shadow: none;
+    font-weight: 100;
+    border: 2px solid #fff;
+    opacity: 1!important;
+}
+.close-modal {
+    outline: none !important;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    line-height: 30px;
+    text-align: center;
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;  
+    color: #fff;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .2;
+}
+
+.mce-tinymce .mce-branding{
+    display: none !important;
+}
+
+.text-right{
+    text-align: right !important;
+}
+
+.modal-title{
+    font-weight: 600;
+}
 .color-red{
     color: red !important;
 }
