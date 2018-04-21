@@ -56,6 +56,7 @@ export class RecommendationsComponent implements OnInit {
 
   ngOnInit() {
     this.getLabelsData();
+    this.evalService.recommendationError = false;
   }
 
 

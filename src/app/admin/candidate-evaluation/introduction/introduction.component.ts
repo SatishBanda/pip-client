@@ -56,6 +56,7 @@ export class IntroductionComponent implements OnInit {
 
   ngOnInit() {
     this.getLabelsData();
+    this.evalService.introductionError = false;
   }
 
 
@@ -86,7 +87,7 @@ export class IntroductionComponent implements OnInit {
             });
             this.evalService.introductionRating = (sum / this.subCategories1Arr.length).toFixed(2);
             let url: string = 'admin/candidates/' + this.candidate + '/evaluation/questions';
-            this.router.navigate([url]);
+            //this.router.navigate([url]);
 
           } else {
             this.toasterService.error("Error in saving please try again later.");

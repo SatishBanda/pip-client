@@ -3,8 +3,8 @@
 <div class="col-sm-10 col-sm-offset-1 padding-0">
     <div class="col-sm-12 padding-8 evaluation-container">
         <h4 class="questionstxt margin-bottom-40">Recommendation : Items That Need Improvement</h4>
-        <div class="col-md-6 padding-0 labels-container" [class.left-sider-container]="isEven" [class.right-sider-container]="isOdd" 
-        *ngFor="let subCategory of recommendationsArr;let i=index; let isOdd=odd;let isEven=even;">
+        <div class="col-md-6 padding-0 labels-container" [class.left-sider-container]="isEven" [class.right-sider-container]="isOdd"
+            *ngFor="let subCategory of recommendationsArr;let i=index; let isOdd=odd;let isEven=even;">
             <div class="row ">
                 <div class="col-sm-8 col-xs-8">
                     <p>{{subCategory.questionText}}</p>
@@ -26,10 +26,10 @@
         <a id="Prevdiv32" class="btn btn-info" value="Prev" [routerLink]="['/admin/candidates/',candidate,'evaluation','questions']"
             style="margin-right:2px;">
             <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
-        <a (click) = "submitEvaluation(recommendationsArr)" class="btn btn-success" value="Next" style="margin-right:2px;"><i class="fa fa-floppy-o"></i>&nbsp;Save&nbsp; & Next
-            </a>
-       <!-- <a id="Nextdiv33" class="btn btn-info" value="Next" [routerLink]="['/admin/candidates/',candidate,'evaluation','feedback']"
+        <a (click)="submitEvaluation(recommendationsArr)" class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+            <i class="fa fa-floppy-o"></i>&nbsp;</a>
+        <a id="Nextdiv33" class="btn btn-info" value="Next" [routerLink]="['/admin/candidates/',candidate,'evaluation','feedback']"
             style="margin-right:2px;">Next&nbsp;
-            <i class="fa fa-arrow-right"></i>&nbsp;</a> -->
+            <i class="fa fa-arrow-right"></i>&nbsp;</a>
     </div>
 </div>

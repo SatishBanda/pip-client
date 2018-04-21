@@ -41,4 +41,6 @@ import { TinymceModule } from 'angular2-tinymce';
   providers: [EvaluationService,EvaluationResolver],
   exports:[EvaluationHeaderComponent,]
 })
-export class EvaluationModule { }
+export class EvaluationModule { 
+  
+}

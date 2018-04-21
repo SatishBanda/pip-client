@@ -179,6 +179,14 @@ export class EvaluationService {
             };
         });
     }
+
+    public sendEmail(data): Observable<any> {
+        return this._http.post(
+            this._apiUrl + '/send-final-email', data,
+            { headers: this._globalService.getHeaders() }
+        ).map(response => response.json().data)
+            .catch(this._globalService.handleError);
+    }
 }
 
 

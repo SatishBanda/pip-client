@@ -66,6 +66,7 @@ export class QuestionsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.evalService.questionError = false;
     this.getLabelsData();
     document.getElementById('test').querySelector('ul').className = "nav nav-stacked flex-column nav-pills col-md-1";
     document.getElementById('test').querySelector('div.tab-content').className = "tab-content col-md-11";
@@ -125,12 +126,12 @@ export class QuestionsComponent implements OnInit {
 
             this.evalService.questionsRating = (sum / (this.questions1Arr.length * 7)).toFixed(2);
 
-            if (nextTab == 'nextSection') {
+            /*if (nextTab == 'nextSection') {
               let url: string = 'admin/candidates/' + this.candidate + '/evaluation/recommendations';
               this.router.navigate([url]);
             } else {
               this.selectTab(nextTab)
-            }
+            }*/
 
           } else {
             this.toasterService.error("Error in saving please try again later.");

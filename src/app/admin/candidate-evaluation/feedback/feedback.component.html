@@ -30,8 +30,10 @@
                         style="margin-right:2px;">
                         <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
                     <a (click)="submitEvaluation(feedback1Arr,'save','1')" class="btn btn-success" value="Next" style="margin-right:2px;">
-                        <i class="fa fa-floppy-o"></i>&nbsp;Save&nbsp; & Next
-                    </a>
+                        Save&nbsp;
+                        <i class="fa fa-floppy-o"></i>&nbsp; </a>
+                    <a (click)="selectTab('1')" id="Nextdiv33" class="btn btn-info" value="Next" style="margin-right:2px;">Next&nbsp;
+                        <i class="fa fa-arrow-right"></i>&nbsp;</a>
                 </div>
             </tab>
             <tab heading="Weaknesses">
@@ -61,8 +63,10 @@
                     <a (click)="selectTab(0)" seid="Prevdiv32" class="btn btn-info" value="Prev" style="margin-right:2px;">
                         <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
                     <a (click)="submitEvaluation(feedback2Arr,'save','2')" class="btn btn-success" value="Next" style="margin-right:2px;">
-                        <i class="fa fa-floppy-o"></i>&nbsp;Save&nbsp; & Next
-                    </a>
+                        Save&nbsp;
+                        <i class="fa fa-floppy-o"></i>&nbsp; </a>
+                    <a (click)="selectTab('2')" id="Nextdiv33" class="btn btn-info" value="Next" style="margin-right:2px;">Next&nbsp;
+                        <i class="fa fa-arrow-right"></i>&nbsp;</a>
                 </div>
             </tab>
             <tab heading="Overall">
@@ -91,10 +95,9 @@
 
                 </div>
                 <div class="col-sm-12 nopadding margin-top-15 margin-bottom-20 text-right">
-                    <a (click) = "selectTab(1)" id="Prevdiv32" class="btn btn-info" value="Prev" 
-                        style="margin-right:2px;">
+                    <a (click)="selectTab(1)" id="Prevdiv32" class="btn btn-info" value="Prev" style="margin-right:2px;">
                         <i class="fa fa-arrow-left"></i>&nbsp;Prev</a>
-                    <a (click)="submitEvaluation(feedback3Arr,'save','nextSection')" class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
+                    <a (click)="submitEvaluation(feedback3Arr,'save','2')" class="btn btn-success" value="Next" style="margin-right:2px;">Save&nbsp;
                         <i class="fa fa-floppy-o"></i>&nbsp;</a>
                     <a (click)="submitEvaluation(feedback3Arr,'finish')" class="btn btn-success" value="Next" style="margin-right:2px;">Finish&nbsp;
                         <i class="fa fa-floppy-o"></i>&nbsp;</a>
@@ -106,7 +109,7 @@
     </div>
 </div>
 
-!-- Add modal start-->
+<!-- Add modal start-->
 <div class="modal fade" bsModal #finishMailModal="bs-modal" [config]="{backdrop: 'static'}" role="dialog" aria-labelledby="mySmallModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" style="width: 66%;">
@@ -129,7 +132,7 @@
                             <div class="col-sm-10">
                                 <div class="form-group required" [ngClass]="{'has-danger': !isComposeFormValid('to')}">
                                     <input type="text" class="form-control" [formControl]="finishEmailComposeForm.controls['to']" [(ngModel)]="mailCompose.to"
-                                        [ngClass]="{'form-control-danger': !isComposeFormValid('to')}" maxlength="34">
+                                        readonly [ngClass]="{'form-control-danger': !isComposeFormValid('to')}" maxlength="34">
                                     <span class="help-block help-block-error" *ngIf="!finishEmailComposeFormErrors.to.valid">{{finishEmailComposeFormErrors.to.message}}</span>
                                 </div>
                             </div>
@@ -198,9 +201,14 @@
                     </div>
                 </div>
                 <div class="modal-footer footer-background text-right">
-                    <button type="button" class="btn btn-success" (click)="closeModal()">
+                    <!--<button type="button" class="btn btn-success" (click)="closeModal()">
+                        <i class="fa fa-mail-forward">&nbsp;Send</i>
+                    </button>-->
+
+                    <button (click)="sendFinishEmail()" style="margin-right: 5px" type="button" class="btn btn-success" [disabled]="!finishEmailComposeForm.valid || composeFormSubmitted == true">
                         <i class="fa fa-mail-forward">&nbsp;Send</i>
                     </button>
+
                     <button type="button" class="btn btn-default" (click)="closeModal()">Close</button>
                 </div>
             </form>

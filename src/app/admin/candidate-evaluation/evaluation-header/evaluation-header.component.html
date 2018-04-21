@@ -14,7 +14,7 @@
             <div class="col-xs-12">
                 <ul class="nav nav-pills nav-wizard" id="myNav">
                     <li align="center" aria-expanded="true" class="li-nav  check-changed" [routerLinkActive]="['active']">
-                        <a [routerLink]="['/admin/candidates/',candidate,'evaluation','introduction']" [ngClass] = "(evalService.introductionError) ? 'list-group-item-text font-white margin-0 color-red' : 'list-group-item-text font-white margin-0 '">
+                        <a [routerLink]="['/admin/candidates/',candidate,'evaluation','introduction']" [ngClass]="(evalService.introductionError) ? 'list-group-item-text font-white margin-0 color-red' : 'list-group-item-text font-white margin-0 '">
                             <i aria-hidden="true" class="fa fa-user"></i> Introduction</a>
                         <div class="">
                             <span>
@@ -26,7 +26,7 @@
                         </div>
                     </li>
                     <li align="center" aria-expanded="true" class="li-nav  check-changed" [routerLinkActive]="['active']">
-                        <a [routerLink]="['/admin/candidates/',candidate,'evaluation','questions']" [ngClass] = "(evalService.questionError) ? 'list-group-item-text font-white margin-0 color-red' : 'list-group-item-text font-white margin-0 '">
+                        <a [routerLink]="['/admin/candidates/',candidate,'evaluation','questions']" [ngClass]="(evalService.questionError) ? 'list-group-item-text font-white margin-0 color-red' : 'list-group-item-text font-white margin-0 '">
                             <i aria-hidden="true" class="fa fa-question-circle"></i> Question</a>
                         <div class="">
                             <span>
@@ -39,12 +39,12 @@
                     </li>
 
                     <li align="center" aria-expanded="true" class="li-nav  check-changed" [routerLinkActive]="['active']">
-                        <a [routerLink]="['/admin/candidates/',candidate,'evaluation','recommendations']" [ngClass] = "(evalService.recommendationError) ? 'list-group-item-text font-white margin-0 color-red' : 'list-group-item-text font-white margin-0 '" >
+                        <a [routerLink]="['/admin/candidates/',candidate,'evaluation','recommendations']" [ngClass]="(evalService.recommendationError) ? 'list-group-item-text font-white margin-0 color-red' : 'list-group-item-text font-white margin-0 '">
                             <i aria-hidden="true" class="fa fa-thumbs-up"></i> Recommendations</a>
                         <div class="">
                             <span>
                                 <rating [(ngModel)]="evalService.recommendationsRating" [max]="5" iconClass="fa-star" fullIcon="★" emptyIcon="☆" [readonly]="true"
-                                    [disabled]="true" >
+                                    [disabled]="true">
                                 </rating>
                                 <span class="overall-rating-number"> {{evalService.recommendationsRating}}</span>
                             </span>
@@ -52,7 +52,7 @@
                     </li>
 
                     <li align="center" aria-expanded="true" class="li-nav  check-changed" [routerLinkActive]="['active']">
-                        <a [routerLink]="['/admin/candidates/',candidate,'evaluation','feedback']" [ngClass] = "(evalService.feedbackError) ? 'list-group-item-text font-white margin-0 color-red' : 'list-group-item-text font-white margin-0 '">
+                        <a [routerLink]="['/admin/candidates/',candidate,'evaluation','feedback']" [ngClass]="(evalService.feedbackError) ? 'list-group-item-text font-white margin-0 color-red' : 'list-group-item-text font-white margin-0 '">
                             <i aria-hidden="true" class="fa fa-eye"></i> Feedback</a>
                         <div class="">
                             <span>
