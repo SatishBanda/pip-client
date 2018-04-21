@@ -79,8 +79,11 @@ export class FeedbackComponent implements OnInit {
 
   }
 
+  selectTab(tab_id: number) {
+    this.evalTabs.tabs[tab_id].active = true;
+  }
 
-  submitEvaluation(questionData, type) {
+  submitEvaluation(questionData, type, nextTab) {
     let data = {
       "candidateId": this.globalService.decode(this.candidate),
       "questions": questionData,
@@ -107,14 +110,25 @@ export class FeedbackComponent implements OnInit {
                 sum += parseInt(element.questionValue);
               });
               let length = this.feedback1Arr.length + parseInt(this.feedback2Arr.length) + parseInt(this.feedback3Arr.length);
-              this.evalService.feedbackRating = (sum /length).toFixed(2);
+              this.evalService.feedbackRating = (sum / length).toFixed(2);
+              if (nextTab == 'nextSection') {
+                let url: string = 'admin/candidates';
+                this.router.navigate([url]);
+              } else {
+                this.selectTab(nextTab)
+              }
             } else {
-              let url: string = 'admin/candidates';
-              this.router.navigate([url]);
+
             }
 
           } else {
-            this.toasterService.error("Error in saving please try again later.");
+            if (result.validationFailed) {
+              this.toasterService.error(result.errorMessage);
+              this.evalService.addErrorTagToTabs(result.failedSubTabs);
+            } else {
+              this.toasterService.error("Error in saving please try again later.");
+            }
+
           }
         },
         error => {

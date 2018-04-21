@@ -88,6 +88,9 @@ export class RecommendationsComponent implements OnInit {
             });
             this.evalService.recommendationsRating = (sum / this.recommendationsArr.length).toFixed(2);
 
+            let url: string = 'admin/candidates/' + this.candidate + '/evaluation/feedback';
+            this.router.navigate([url]);
+
           } else {
             this.toasterService.error("Error in saving please try again later.");
           }
