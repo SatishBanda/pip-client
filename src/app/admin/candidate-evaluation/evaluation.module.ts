@@ -40,4 +40,6 @@ import { EvaluationResolver } from '../../services/candidate-evaluation.resolver
   providers: [EvaluationService,EvaluationResolver],
   exports:[EvaluationHeaderComponent,]
 })
-export class EvaluationModule { }
+export class EvaluationModule { 
+  
+}

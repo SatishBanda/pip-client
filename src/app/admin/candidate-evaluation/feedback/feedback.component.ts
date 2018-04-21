@@ -67,7 +67,7 @@ export class FeedbackComponent implements OnInit {
 
 
   getLabelsData() {
-
+    this.evalService.feedbackError = false;
     let labelsData = this.route.snapshot;
     let result = labelsData.data["data"].questions;
 

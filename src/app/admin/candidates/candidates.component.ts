@@ -7,6 +7,7 @@ import { GlobalService } from '../../services/global.service';
 import { ToastrService } from 'ngx-toastr';
 import { CandidateUser } from '../../models/candidate-user';
 import { CandidateUserService } from '../../services/candidate-user.service';
+import { EvaluationService } from '../../services/evaluation.service';
 
 @Component({
   selector: 'app-candidates',
@@ -50,6 +51,7 @@ export class CandidatesComponent implements OnInit {
     public globalService: GlobalService,
     private toastrService: ToastrService,
     public candidateUserService: CandidateUserService,
+    public evalService: EvaluationService,
     private title: Title
   ) {
 
@@ -57,6 +59,8 @@ export class CandidatesComponent implements OnInit {
     this.createCompanyUserForm();
     this.candidateUserForm.valueChanges
       .subscribe(data => this.setFormErrorsOnChange(this.candidateUserForm, this.candidateUserFormErrors, data));
+
+      
   }
 
   /**
@@ -78,7 +82,11 @@ export class CandidatesComponent implements OnInit {
    *  Initialiazes component
    */
   ngOnInit() {
-
+    this.evalService.introductionError = false;
+    this.evalService.questionError = false;
+    this.evalService.recommendationError = false;
+    this.evalService.feedbackError = false;
+    console.log(this.evalService.questionError);
     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme, showWeekNumbers: false });
     this.getCandidatesList();
     this._resetCompanyUserFormErrors();
