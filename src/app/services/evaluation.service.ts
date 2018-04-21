@@ -24,6 +24,11 @@ export class EvaluationService {
     public recommendationsRating: any = 0;
     public feedbackRating: any = 0;
 
+    public introductionError: boolean = false;
+    public questionError: boolean = false;
+    public recommendationError: boolean = false;
+    public feedbackError: boolean = false;
+
     constructor(private _globalService: GlobalService,
         private _router: Router,
         private _http: HttpService) {
@@ -148,6 +153,31 @@ export class EvaluationService {
         let length = feedback1.length + parseInt(feedback2.length) + parseInt(feedback3.length);
         this.feedbackRating = (sum / length).toFixed(2);
 
+    }
+
+    public addErrorTagToTabs(errorTabs) {
+
+        this.feedbackError = false;
+        this.recommendationError = false;
+        this.questionError = false;
+        this.introductionError = false;
+
+        errorTabs.forEach(element => {
+            switch (element.main) {
+                case '4':
+                    this.feedbackError = true;
+                    break;
+                case '3':
+                    this.recommendationError = true;
+                    break;
+                case '2':
+                    this.questionError = true;
+                    break;
+                case '1':
+                    this.introductionError = true;
+                    break;
+            };
+        });
     }
 }
 

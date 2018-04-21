@@ -85,6 +85,8 @@ export class IntroductionComponent implements OnInit {
               sum += parseInt(element.questionValue);
             });
             this.evalService.introductionRating = (sum / this.subCategories1Arr.length).toFixed(2);
+            let url: string = 'admin/candidates/' + this.candidate + '/evaluation/questions';
+            this.router.navigate([url]);
 
           } else {
             this.toasterService.error("Error in saving please try again later.");

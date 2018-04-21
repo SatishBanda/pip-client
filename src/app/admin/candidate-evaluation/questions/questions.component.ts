@@ -38,6 +38,7 @@ export class QuestionsComponent implements OnInit {
   public rating5Color = "green-bar";
 
   @ViewChild('evalTabs') evalTabs: TabsetComponent;
+
   subCategories1Arr: any;
   someValue = 0;
   someKeyboardConfig: any = {
@@ -86,7 +87,7 @@ export class QuestionsComponent implements OnInit {
 
   }
 
-  submitEvaluation(questionData) {
+  submitEvaluation(questionData, nextTab) {
     let data = {
       "candidateId": this.globalService.decode(this.candidate),
       "questions": questionData,
@@ -124,6 +125,13 @@ export class QuestionsComponent implements OnInit {
 
             this.evalService.questionsRating = (sum / (this.questions1Arr.length * 7)).toFixed(2);
 
+            if (nextTab == 'nextSection') {
+              let url: string = 'admin/candidates/' + this.candidate + '/evaluation/recommendations';
+              this.router.navigate([url]);
+            } else {
+              this.selectTab(nextTab)
+            }
+
           } else {
             this.toasterService.error("Error in saving please try again later.");
           }
@@ -135,7 +143,10 @@ export class QuestionsComponent implements OnInit {
     } else {
       this.toasterService.error("Please answer all the questions to save.");
     }
+  }
 
+  selectTab(tab_id: number) {
+    this.evalTabs.tabs[tab_id].active = true;
   }
 
 }
