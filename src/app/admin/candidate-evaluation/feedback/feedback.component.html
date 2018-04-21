@@ -104,3 +104,105 @@
         </tabset>
     </div>
 </div>
+
+!-- Add modal start-->
+<div class="modal fade" bsModal #finishMailModal="bs-modal" [config]="{backdrop: 'static'}" role="dialog" aria-labelledby="mySmallModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="width: 66%;">
+        <div class="modal-content">
+            <div class="modal-header modal-header-color">
+                <h4 class="modal-title pull-left color-white">Compose Email</h4>
+                <button type="button" class="close-modal modal-opacity close-modal-blue" (click)="closeModal()" aria-hidden="true">×</button>
+            </div>
+            <form [formGroup]="finishEmailComposeForm">
+                <div class="modal-body" style="padding:27px;">
+
+                    <div class="row">
+
+                        <div class="col-sm-12 nopadding">
+                            <div class="col-sm-2">
+                                <label class="form-control-label">To :
+                                    <span class="red">*</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="form-group required" [ngClass]="{'has-danger': !isComposeFormValid('to')}">
+                                    <input type="text" class="form-control" [formControl]="finishEmailComposeForm.controls['to']" [(ngModel)]="mailCompose.to"
+                                        [ngClass]="{'form-control-danger': !isComposeFormValid('to')}" maxlength="34">
+                                    <span class="help-block help-block-error" *ngIf="!finishEmailComposeFormErrors.to.valid">{{finishEmailComposeFormErrors.to.message}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 nopadding margin-top-10">
+                            <div class="col-sm-2">
+                                <label class="form-control-label">CC :
+                                </label>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="form-group required" [ngClass]="{'has-danger': !isComposeFormValid('cc')}">
+                                    <input type="text" id="candidateuser-cc" class="form-control" [formControl]="finishEmailComposeForm.controls['cc']" [(ngModel)]="mailCompose.cc"
+                                        [ngClass]="{'form-control-danger': !isComposeFormValid('cc')}" maxlength="34">
+                                    <span class="help-block help-block-error" *ngIf="!finishEmailComposeFormErrors.cc.valid">{{finishEmailComposeFormErrors.cc.message}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-12 nopadding margin-top-10">
+                            <div class="col-sm-2">
+                                <label class="form-control-label" for="companyuser-email">BCC :
+                                </label>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="form-group field-companyuser-email" [ngClass]="{'has-danger': !isComposeFormValid('bcc')}">
+                                    <input type="text" id="adminusers-email" class="form-control" aria-required="true" [formControl]="finishEmailComposeForm.controls['bcc']"
+                                        [(ngModel)]="mailCompose.bcc" [ngClass]="{'form-control-danger': !isComposeFormValid('bcc')}"
+                                        maxlength="50">
+                                    <span class="help-block help-block-error" *ngIf="!finishEmailComposeFormErrors.bcc.valid">{{finishEmailComposeFormErrors.bcc.message}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 nopadding margin-top-10">
+                            <div class="col-sm-2">
+                                <label class="form-control-label">Subject :
+                                    <span class="red">*</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="form-group field-companyuser-phone required" [ngClass]="{'has-danger': !isComposeFormValid('subject')}">
+                                    <input type="text" class="form-control" [formControl]="finishEmailComposeForm.controls['subject']" [(ngModel)]="mailCompose.subject"
+                                        [ngClass]="{'form-control-danger': !isComposeFormValid('subject')}" maxlength="34">
+                                    <span class="help-block help-block-error" *ngIf="!finishEmailComposeFormErrors.subject.valid">{{finishEmailComposeFormErrors.subject.message}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-12 nopadding margin-top-10">
+                            <div class="col-sm-2">
+                                <label class="form-control-label">Message
+                                    <span class="red">*</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="form-group field-adminusers-message required" [ngClass]="{'has-danger': !isComposeFormValid('message')}">
+
+                                    <app-tinymce [formControl]="finishEmailComposeForm.controls['message']" [(ngModel)]="mailCompose.message"></app-tinymce>
+                                    <span class="help-block help-block-error" *ngIf="!finishEmailComposeFormErrors.message.valid">{{finishEmailComposeFormErrors.message.message}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer footer-background text-right">
+                    <button type="button" class="btn btn-success" (click)="closeModal()">
+                        <i class="fa fa-mail-forward">&nbsp;Send</i>
+                    </button>
+                    <button type="button" class="btn btn-default" (click)="closeModal()">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

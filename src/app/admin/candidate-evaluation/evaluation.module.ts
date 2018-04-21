@@ -17,7 +17,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { RecommendationsComponent } from './recommendations/recommendations.component';
 import { EvaluationService } from '../../services/evaluation.service';
 import { EvaluationResolver } from '../../services/candidate-evaluation.resolver';
-
+import { TinymceModule } from 'angular2-tinymce';
 
 @NgModule({
   imports: [
@@ -32,7 +32,8 @@ import { EvaluationResolver } from '../../services/candidate-evaluation.resolver
     TabsModule.forRoot(),
     FormsModule,
     NouisliderModule,
-    RatingModule
+    RatingModule,
+    TinymceModule.withConfig({})
   ],
   declarations: [
     IntroductionComponent,EvaluationHeaderComponent,QuestionsComponent,FeedbackComponent,RecommendationsComponent

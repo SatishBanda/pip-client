@@ -286,6 +286,7 @@ export class CandidatesComponent implements OnInit {
       this.candidateUserFormErrors[key].message = message;
     }
   }
+  
   setFormErrorsOnChange(form, formErrors, data?: any) {
     if (!form) { return; }
     for (let field in formErrors) {

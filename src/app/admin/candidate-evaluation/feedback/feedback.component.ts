@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -7,6 +7,10 @@ import { GlobalService } from '../../../services/global.service';
 import { EvaluationService } from '../../../services/evaluation.service';
 import { TabsetComponent } from 'ngx-bootstrap';
 
+import { BsModalService, ModalDirective } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { FinishEmail } from '../../../models/finish-email-compose';
+
 @Component({
   templateUrl: './feedback.component.html',
   styleUrls: [],
@@ -14,10 +18,14 @@ import { TabsetComponent } from 'ngx-bootstrap';
 })
 export class FeedbackComponent implements OnInit {
 
+  finishEmailComposeFormErrors: any;
   candidate: any;
   feedback3Arr: any;
   feedback2Arr: any;
   feedback1Arr: any;
+  public finishEmailComposeForm: FormGroup;
+  public mailCompose: FinishEmail;
+  public composeFormSubmitted: boolean = true;
 
   public rating1Text = "Low";
   public rating2Text = "Medium";
@@ -46,6 +54,8 @@ export class FeedbackComponent implements OnInit {
     }
   }
 
+  modalRef: BsModalRef;
+  @ViewChild('finishMailModal') public finishMailModal: ModalDirective;
 
   constructor(
     public evalService: EvaluationService,
@@ -57,12 +67,92 @@ export class FeedbackComponent implements OnInit {
   ) {
 
     this.candidate = route.snapshot.params['candidate'];
+    this.createFinishEmailComposeForm();
+    this.finishEmailComposeForm.valueChanges.subscribe(
+      data => this.setFormErrorsOnChange(this.finishEmailComposeForm, this.finishEmailComposeFormErrors, data)
+    );
   }
 
+  setFormErrorsOnChange(form, formErrors, data?: any) {
+    if (!form) { return; }
+    for (let field in formErrors) {
+      // clear previous error message (if any)
+      let control = form.get(field);
+      if (control && control.dirty) {
+        formErrors[field].valid = true;
+        formErrors[field].message = '';
+      }
+    }
+  }
+
+  /**
+  * 
+  */
+  public composeFormValidationMessages = {
+    'to': {
+      'required': 'First Name is required.',
+      'pattern': 'No special characters are allowed other than & -',
+      'minlength': 'First Name should be a minimum 2 chars.',
+    },
+    'cc': {
+      'required': 'CC is required.',
+      'pattern': 'No special characters are allowed other than & -',
+      'minlength': 'CC should be a minimum 2 chars.',
+    },
+    'bcc': {
+      'required': 'BCC Address is required.',
+      'pattern': 'Invalid BCC Address.'
+    },
+    'subject': {
+      'required': 'Subject is required.',
+      'minlength': 'Subject should be 10 digit length.',
+    },
+    'message': {
+      'required': 'Message is required.',
+    }
+  }
+
+  /**
+   * 
+   */
+  private createFinishEmailComposeModel() {
+    // Create a new Candidate
+    let composeForm: FinishEmail = {
+      to: '',
+      cc: '',
+      bcc: '',
+      subject: '',
+      message: '',
+      //phone_extension: '',
+    }
+    return composeForm;
+  }
+
+  /**
+  * 
+  */
+  public createFinishEmailComposeForm() {
+    this.finishEmailComposeForm = this._formBuilder.group({
+      to: ['', Validators.compose([Validators.minLength(2), Validators.required])],
+      cc: ['', Validators.compose([Validators.minLength(2), Validators.pattern(this.globalService.emailRegx)])],
+      bcc: ['', Validators.compose([Validators.minLength(2), Validators.pattern(this.globalService.emailRegx)])],
+      subject: ['', Validators.compose([Validators.required])],
+      message: ['', Validators.compose([Validators.required])]
+    });
+  }
+
+  editor;
   ngOnInit() {
-    this.getLabelsData();
     document.getElementById('test1').querySelector('ul').className = "nav nav-stacked flex-column nav-pills col-md-1";
     document.getElementById('test1').querySelector('div.tab-content').className = "tab-content col-md-11";
+
+    this.getLabelsData();
+    this.mailCompose = Object.assign({});
+    this._resetComposerFormErrors();
+  }
+
+  closeModal() {
+    this.finishMailModal.hide();
   }
 
 
@@ -79,8 +169,54 @@ export class FeedbackComponent implements OnInit {
 
   }
 
+  /**
+     * 
+     * @param field 
+     */
+  public isComposeFormValid(field): boolean {
+    let isValid: boolean = false;
+
+    // If the field is not touched and invalid, it is considered as initial loaded form. Thus set as true
+
+    if (this.finishEmailComposeForm.controls[field].touched == false) {
+      isValid = true;
+
+    }
+    // If the field is touched and valid value, then it is considered as valid.
+    else if (this.finishEmailComposeForm.controls[field].touched == true && this.finishEmailComposeForm.controls[field].valid == true) {
+      isValid = true;
+
+    } else if (this.finishEmailComposeForm.controls[field].touched == true && this.finishEmailComposeForm.controls[field].valid == false) {
+      let control = this.finishEmailComposeForm.get(field);
+      const messages = this.composeFormValidationMessages[field];
+
+      this.finishEmailComposeFormErrors[field].valid = false;
+      for (const key in control.errors) {
+        this.finishEmailComposeFormErrors[field].message = messages[key];
+      }
+      isValid = false;
+    }
+    return isValid;
+  }
+
+  /**
+ * 
+ */
+  private _resetComposerFormErrors(): void {
+    this.finishEmailComposeFormErrors = {
+      to: { valid: true, message: '' },
+      cc: { valid: true, message: '' },
+      bcc: { valid: true, message: '' },
+      subject: { valid: true, message: '' },
+      message: { valid: true, message: '' }
+    };
+  }
 
   submitEvaluation(questionData, type) {
+    if (type == "email") {
+      this.finishMailModal.show();
+      return false;
+    }
     let data = {
       "candidateId": this.globalService.decode(this.candidate),
       "questions": questionData,
@@ -107,7 +243,7 @@ export class FeedbackComponent implements OnInit {
                 sum += parseInt(element.questionValue);
               });
               let length = this.feedback1Arr.length + parseInt(this.feedback2Arr.length) + parseInt(this.feedback3Arr.length);
-              this.evalService.feedbackRating = (sum /length).toFixed(2);
+              this.evalService.feedbackRating = (sum / length).toFixed(2);
             } else {
               let url: string = 'admin/candidates';
               this.router.navigate([url]);
