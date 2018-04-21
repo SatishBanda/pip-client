@@ -19,7 +19,8 @@ import { PartialViews } from '../_partial-views/partial-views.module';
 import { TabsModule } from 'ngx-bootstrap';
 import { NouisliderModule } from 'ng2-nouislider';
 import { EvaluationService } from '../services/evaluation.service';
-
+import { CandidatesFilterPipe } from '../_filters/candidates-filter.pipe';
+import { EvaluationHistoryFilterPipe } from '../_filters/evaluation-history-filter.pipe';
 
 
 @NgModule({
@@ -44,9 +45,11 @@ import { EvaluationService } from '../services/evaluation.service';
     StaffComponent,
     SettingsComponent,
     HighchartsChartComponent,
-    EvaluationComponent
+    EvaluationComponent,
+    CandidatesFilterPipe,
+    EvaluationHistoryFilterPipe
   ],
   providers: [EvaluationService],
-  
+
 })
 export class AdminModule { }
