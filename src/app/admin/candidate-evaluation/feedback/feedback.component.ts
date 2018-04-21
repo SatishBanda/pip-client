@@ -25,7 +25,7 @@ export class FeedbackComponent implements OnInit {
   feedback1Arr: any;
   public finishEmailComposeForm: FormGroup;
   public mailCompose: FinishEmail;
-  public composeFormSubmitted: boolean = true;
+  public composeFormSubmitted: boolean = false;
 
   public rating1Text = "Low";
   public rating2Text = "Medium";
@@ -90,13 +90,13 @@ export class FeedbackComponent implements OnInit {
   */
   public composeFormValidationMessages = {
     'to': {
-      'required': 'First Name is required.',
-      'pattern': 'No special characters are allowed other than & -',
+      'required': 'To is required.',
+      'pattern': 'Invalid email provided.',
       'minlength': 'First Name should be a minimum 2 chars.',
     },
     'cc': {
       'required': 'CC is required.',
-      'pattern': 'No special characters are allowed other than & -',
+      'pattern': 'Invalid CC Address provided.',
       'minlength': 'CC should be a minimum 2 chars.',
     },
     'bcc': {
@@ -133,9 +133,9 @@ export class FeedbackComponent implements OnInit {
   */
   public createFinishEmailComposeForm() {
     this.finishEmailComposeForm = this._formBuilder.group({
-      to: ['', Validators.compose([Validators.minLength(2), Validators.required])],
-      cc: ['', Validators.compose([Validators.minLength(2), Validators.pattern(this.globalService.emailRegx)])],
-      bcc: ['', Validators.compose([Validators.minLength(2), Validators.pattern(this.globalService.emailRegx)])],
+      to: ['', Validators.compose([Validators.minLength(2)])],
+      cc: ['', Validators.compose([Validators.pattern(this.globalService.emailRegx)])],
+      bcc: ['', Validators.compose([Validators.pattern(this.globalService.emailRegx)])],
       subject: ['', Validators.compose([Validators.required])],
       message: ['', Validators.compose([Validators.required])]
     });
@@ -217,10 +217,7 @@ export class FeedbackComponent implements OnInit {
   }
 
   submitEvaluation(questionData, type, nextTab) {
-    if (type == "email") {
-      this.finishMailModal.show();
-      return false;
-    }
+
     let data = {
       "candidateId": this.globalService.decode(this.candidate),
       "questions": questionData,
@@ -232,7 +229,7 @@ export class FeedbackComponent implements OnInit {
       this.evalService.saveEvaluation(data).subscribe(
         (result) => {
           if (result.status) {
-            this.toasterService.success("Saved successfully");
+            
             if (type == 'save') {
               let sum = 0;
               this.feedback1Arr.forEach(element => {
@@ -248,14 +245,24 @@ export class FeedbackComponent implements OnInit {
               });
               let length = this.feedback1Arr.length + parseInt(this.feedback2Arr.length) + parseInt(this.feedback3Arr.length);
               this.evalService.feedbackRating = (sum / length).toFixed(2);
+              this.toasterService.success("Saved successfully");
               if (nextTab == 'nextSection') {
                 let url: string = 'admin/candidates';
                 this.router.navigate([url]);
               } else {
                 this.selectTab(nextTab)
               }
+              
             } else {
-
+              if (type == "email") {
+                this.mailCompose.to = localStorage.getItem("useremail");
+                this.finishMailModal.show();
+                return false;
+              } else {
+                let url: string = 'admin/candidates';
+                this.toasterService.success("Evaluation process completed successfully");
+                this.router.navigate([url]);
+              }
             }
 
           } else {
@@ -275,7 +282,22 @@ export class FeedbackComponent implements OnInit {
     } else {
       this.toasterService.error("Please answer all the questions to save.");
     }
-
   }
 
+  public sendFinishEmail() {
+    let data = {
+      "candidateId": this.globalService.decode(this.candidate),
+      "email": this.mailCompose
+    }
+    this.evalService.sendEmail(data).subscribe(
+      (result) => {
+        if (result.status) {
+          let url: string = 'admin/candidates';
+          this.toasterService.success("Evaluation process completed and email sent successfully.");
+          this.router.navigate([url]);
+        } else {
+          this.toasterService.error("Error in sending email please try again later.");
+        }
+      })
+  }
 }
